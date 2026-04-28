@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PMS pour les Nuls – Plan de Maîtrise Sanitaire Complet</title>
+<title>PMS pour les Nuls – Plan de Maîtrise Sanitaire</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -15,60 +15,117 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Sora',sans-serif;background:var(--light);color:var(--navy);}
 
-/* LANDING */
-.hero{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:0;}
-.hero-inner{max-width:900px;margin:0 auto;padding:60px 24px 80px;text-align:center;}
-.badge{display:inline-block;background:var(--teal);color:var(--navy);font-weight:700;font-size:12px;padding:6px 16px;border-radius:30px;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px;}
-.hero h1{font-size:clamp(28px,6vw,56px);font-weight:800;line-height:1.1;margin-bottom:16px;}
+/* ═══════════════════════════════
+   LANDING PAGE
+═══════════════════════════════ */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);color:#fff;padding:0;}
+.hero-inner{max-width:860px;margin:0 auto;padding:64px 24px 80px;text-align:center;}
+.badge{display:inline-block;background:var(--teal);color:var(--navy);font-weight:700;font-size:11px;padding:5px 14px;border-radius:30px;letter-spacing:1px;text-transform:uppercase;margin-bottom:22px;}
+.hero h1{font-size:clamp(30px,6vw,58px);font-weight:800;line-height:1.1;margin-bottom:14px;}
 .hero h1 span{color:var(--teal);}
-.hero p{font-size:17px;opacity:.8;max-width:560px;margin:0 auto 36px;line-height:1.6;}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.btn-main{background:var(--teal);color:var(--navy);font-weight:700;font-size:16px;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;font-family:'Sora',sans-serif;box-shadow:0 4px 20px rgba(0,201,167,.4);}
-.btn-sec{background:rgba(255,255,255,.12);color:#fff;font-weight:600;font-size:15px;padding:14px 28px;border-radius:12px;border:2px solid rgba(255,255,255,.3);cursor:pointer;font-family:'Sora',sans-serif;}
-.wave{display:block;}
-.features{max-width:960px;margin:0 auto;padding:60px 24px;}
-.features h2{text-align:center;font-size:28px;font-weight:800;margin-bottom:40px;}
-.features h2 span{color:var(--teal);}
+.hero-sub{font-size:17px;opacity:.8;max-width:520px;margin:0 auto 36px;line-height:1.6;}
+
+/* BOUTONS HERO */
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+.btn-acheter{background:var(--teal);color:var(--navy);font-weight:800;font-size:17px;padding:16px 36px;border-radius:14px;border:none;cursor:pointer;font-family:'Sora',sans-serif;box-shadow:0 6px 24px rgba(0,201,167,.45);transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-acheter:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,201,167,.5);}
+.btn-code{background:rgba(255,255,255,.12);color:#fff;font-weight:600;font-size:15px;padding:16px 28px;border-radius:14px;border:2px solid rgba(255,255,255,.3);cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-code:hover{background:rgba(255,255,255,.2);}
+
+/* MODAL CODE */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#fff;border-radius:20px;padding:36px 28px;width:100%;max-width:400px;text-align:center;animation:slideUp .3s ease;}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-icon{font-size:44px;margin-bottom:14px;}
+.modal-title{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:8px;}
+.modal-sub{font-size:13px;color:var(--gray);margin-bottom:24px;line-height:1.5;}
+.code-input{width:100%;padding:14px 18px;border:2px solid var(--border);border-radius:12px;font-size:18px;font-family:'Sora',sans-serif;text-align:center;letter-spacing:3px;outline:none;color:var(--navy);background:var(--light);transition:border-color .2s;}
+.code-input:focus{border-color:var(--teal);background:#fff;}
+.code-input.error{border-color:var(--red);animation:shake .3s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.error-msg{color:var(--red);font-size:13px;margin-top:8px;display:none;}
+.modal-btns{display:flex;gap:10px;margin-top:20px;}
+.btn-valider{flex:1;padding:13px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;}
+.btn-fermer{padding:13px 18px;background:var(--light);border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;color:var(--gray);}
+.code-hint{font-size:11px;color:var(--gray);margin-top:12px;}
+
+/* WAVE */
+.wave{display:block;margin-top:-2px;}
+
+/* FEATURES */
+.features{max-width:900px;margin:0 auto;padding:64px 24px 48px;}
+.section-title{text-align:center;font-size:30px;font-weight:800;margin-bottom:10px;}
+.section-title span{color:var(--teal);}
+.section-sub{text-align:center;font-size:15px;color:var(--gray);margin-bottom:44px;}
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
-.feat-card{background:#fff;border-radius:14px;padding:20px;border:1px solid var(--border);box-shadow:var(--shadow);}
+.feat-card{background:#fff;border-radius:14px;padding:22px 18px;border:1px solid var(--border);box-shadow:var(--shadow);transition:transform .2s;}
+.feat-card:hover{transform:translateY(-3px);}
 .feat-icon{font-size:32px;margin-bottom:10px;}
 .feat-card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
 .feat-card p{font-size:13px;color:var(--gray);line-height:1.5;}
-.pricing{background:var(--navy);color:#fff;padding:72px 24px;text-align:center;}
-.pricing h2{font-size:32px;font-weight:800;margin-bottom:10px;}
-.price-box{background:rgba(255,255,255,.06);border:2px solid var(--teal);border-radius:20px;padding:36px;max-width:380px;margin:0 auto;}
-.price-amount{font-size:64px;font-weight:800;color:var(--teal);line-height:1;}
-.price-list{text-align:left;margin:20px 0;display:flex;flex-direction:column;gap:10px;}
-.price-item{display:flex;align-items:center;gap:8px;font-size:14px;}
-.price-item::before{content:"✓";color:var(--teal);font-weight:700;}
-.btn-buy{width:100%;padding:16px;background:var(--teal);color:var(--navy);font-weight:800;font-size:17px;border:none;border-radius:12px;cursor:pointer;font-family:'Sora',sans-serif;margin-top:8px;}
-footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;padding:20px;font-size:12px;}
 
-/* APP HEADER */
+/* SOCIAL PROOF */
+.proof{background:var(--navy);padding:60px 24px;text-align:center;}
+.proof h2{color:#fff;font-size:26px;font-weight:800;margin-bottom:36px;}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:700px;margin:0 auto;}
+.proof-card{background:rgba(255,255,255,.07);border-radius:14px;padding:20px 14px;}
+.proof-number{font-size:36px;font-weight:800;color:var(--teal);}
+.proof-label{font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;}
+
+/* PRICING */
+.pricing{max-width:860px;margin:0 auto;padding:72px 24px;}
+.price-wrap{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:24px;padding:48px 32px;text-align:center;position:relative;overflow:hidden;}
+.price-wrap::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--teal);opacity:.1;border-radius:50%;}
+.price-badge{display:inline-block;background:var(--teal);color:var(--navy);font-weight:700;font-size:12px;padding:5px 14px;border-radius:20px;margin-bottom:20px;}
+.price-wrap h2{color:#fff;font-size:28px;font-weight:800;margin-bottom:6px;}
+.price-wrap p{color:rgba(255,255,255,.6);margin-bottom:32px;font-size:15px;}
+.price-amount{font-size:80px;font-weight:800;color:var(--teal);line-height:1;}
+.price-unit{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:28px;}
+.price-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;max-width:480px;margin:0 auto 32px;}
+.price-item{display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.85);}
+.price-item::before{content:"✓";color:var(--teal);font-weight:700;flex-shrink:0;}
+.btn-acheter-big{display:inline-flex;align-items:center;gap:10px;padding:18px 44px;background:var(--teal);color:var(--navy);font-weight:800;font-size:18px;border:none;border-radius:14px;cursor:pointer;font-family:'Sora',sans-serif;box-shadow:0 6px 24px rgba(0,201,167,.4);text-decoration:none;transition:all .2s;}
+.btn-acheter-big:hover{transform:translateY(-2px);}
+.price-guarantee{color:rgba(255,255,255,.4);font-size:12px;margin-top:14px;}
+
+/* FAQ */
+.faq{max-width:680px;margin:0 auto;padding:0 24px 80px;}
+.faq h2{font-size:28px;font-weight:800;text-align:center;margin-bottom:32px;}
+.faq-item{background:#fff;border-radius:12px;border:1px solid var(--border);margin-bottom:10px;overflow:hidden;}
+.faq-q{padding:16px 20px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:14px;}
+.faq-a{padding:0 20px 16px;color:var(--gray);font-size:13px;line-height:1.6;display:none;}
+.faq-a.open{display:block;}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;padding:24px;font-size:12px;}
+footer a{color:var(--teal);text-decoration:none;}
+
+/* ═══════════════════════════════
+   APP
+═══════════════════════════════ */
 .app-header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 4px 20px rgba(0,0,0,.25);}
 .app-logo{font-size:16px;font-weight:800;}
 .app-logo span{color:var(--teal);}
 .header-btns{display:flex;gap:6px;}
 .hbtn{background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-family:'Sora',sans-serif;font-size:12px;font-weight:600;}
 .hbtn.teal{background:var(--teal);color:var(--navy);}
+.hbtn.red{background:#ff4d4d;color:#fff;}
 
-/* TABS */
-.tabs{background:#fff;border-bottom:2px solid var(--border);display:flex;overflow-x:auto;position:sticky;top:52px;z-index:150;}
-.tab{padding:12px 16px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;color:var(--gray);background:none;border-top:none;border-left:none;border-right:none;font-family:'Sora',sans-serif;}
+.tabs{background:#fff;border-bottom:2px solid var(--border);display:flex;overflow-x:auto;position:sticky;top:52px;z-index:150;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{padding:12px 14px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;color:var(--gray);background:none;border-top:none;border-left:none;border-right:none;font-family:'Sora',sans-serif;}
 .tab.active{color:var(--teal);border-bottom-color:var(--teal);}
 
-/* BODY */
 .app-body{max-width:720px;margin:0 auto;padding:16px 12px 80px;}
 
-/* CARDS */
 .card{background:#fff;border-radius:14px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow);border:1px solid var(--border);}
-.card-title{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.card-title{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px;}
 .card-sub{font-size:12px;color:var(--gray);margin-bottom:16px;}
 .divider{display:flex;align-items:center;gap:8px;margin:14px 0 10px;}
 .divider span{font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
 .divider::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* FORM */
 .fg{display:flex;flex-direction:column;gap:4px;margin-bottom:11px;}
 .fg label{font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.5px;}
 .fg input,.fg select,.fg textarea{border:1.5px solid var(--border);border-radius:8px;padding:8px 11px;font-size:13px;color:var(--navy);background:var(--light);outline:none;font-family:'Sora',sans-serif;width:100%;}
@@ -77,7 +134,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;paddi
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;}
 @media(max-width:480px){.form-grid{grid-template-columns:1fr;}}
 
-/* CHECKLIST */
 .check-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--light);border:1.5px solid transparent;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s;}
 .check-item.checked{background:#edfdf8;border-color:var(--green);}
 .check-box{width:17px;height:17px;border-radius:4px;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
@@ -87,7 +143,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;paddi
 .check-label{font-size:13px;line-height:1.4;}
 .check-sub{font-size:11px;color:var(--gray);margin-top:2px;}
 
-/* TABLES */
 .tbl{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px;}
 .tbl th{background:var(--navy);color:#fff;padding:7px 8px;text-align:left;font-size:11px;}
 .tbl td{padding:6px 8px;border-bottom:1px solid var(--border);vertical-align:middle;}
@@ -95,10 +150,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;paddi
 .tbl input,.tbl select{border:1px solid var(--border);border-radius:6px;padding:4px 6px;font-size:12px;font-family:'Sora',sans-serif;background:#fff;outline:none;width:100%;}
 .tbl input:focus,.tbl select:focus{border-color:var(--teal);}
 .tbl input[type=number]{width:65px;}
-.tbl input[type=date]{width:110px;}
-.tbl input[type=time]{width:72px;}
+.tbl input[type=date]{width:120px;}
 
-/* BUTTONS */
 .nav-btns{display:flex;justify-content:space-between;margin-top:18px;gap:8px;}
 .btn-prev{padding:10px 20px;background:var(--light);border:1.5px solid var(--border);border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;color:var(--navy);}
 .btn-next{padding:10px 22px;background:linear-gradient(135deg,var(--navy),var(--blue));border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;color:#fff;}
@@ -106,21 +159,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;paddi
 .btn-del{padding:4px 8px;background:#fee2e2;color:var(--red);border:none;border-radius:5px;font-size:11px;cursor:pointer;font-family:'Sora',sans-serif;}
 .dl-btn{display:block;width:100%;padding:16px;background:linear-gradient(135deg,var(--teal),#00a88c);color:var(--navy);font-weight:800;font-size:16px;border:none;border-radius:12px;cursor:pointer;font-family:'Sora',sans-serif;text-align:center;margin-bottom:10px;}
 
-/* SCORE */
 .score-box{border-radius:12px;padding:18px;margin-bottom:14px;}
 .score-number{font-size:44px;font-weight:800;line-height:1;}
-.score-msg{font-weight:700;font-size:15px;margin:4px 0;}
 .score-bar{background:rgba(255,255,255,.3);border-radius:6px;height:7px;margin-top:10px;overflow:hidden;}
 .score-fill{height:100%;border-radius:6px;transition:width .5s;}
 .sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
 .sum-card{background:var(--light);border-radius:9px;padding:10px 12px;border:1px solid var(--border);}
 .sum-card-label{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
 .sum-card-val{font-size:13px;font-weight:700;}
-
-/* SAVE INDICATOR */
 .save-bar{background:#edfdf8;border:1px solid var(--green);border-radius:8px;padding:8px 12px;font-size:12px;color:#065f46;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
-
-/* ALLERGEN GRID */
 .allerg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;}
 .allerg-item{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--light);border:1.5px solid transparent;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;}
 .allerg-item.present{background:#fff8e1;border-color:var(--gold);}
@@ -128,74 +175,131 @@ footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;paddi
 .allerg-dot{width:10px;height:10px;border-radius:50%;background:var(--border);flex-shrink:0;}
 .allerg-item.present .allerg-dot{background:var(--gold);}
 .allerg-item.absent .allerg-dot{background:var(--green);}
-
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 24px;border-radius:30px;font-weight:700;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.25);z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;}
-.toast.show{opacity:1;}
 .warn-box{background:#fff8e1;border:1px solid var(--gold);border-radius:10px;padding:12px 14px;font-size:12px;color:#7c5e00;line-height:1.5;margin-bottom:12px;}
 .tip-box{background:#f0fdf8;border:1px solid #a7f3d0;border-radius:10px;padding:12px 14px;font-size:12px;color:#065f46;line-height:1.5;}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 24px;border-radius:30px;font-weight:700;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.25);z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;}
 </style>
 </head>
 <body>
 
-<!-- LANDING -->
+<!-- ═══════════════════════════════
+     LANDING PAGE
+═══════════════════════════════ -->
 <div id="landing">
+
   <section class="hero">
     <div class="hero-inner">
-      <div class="badge">🛡️ HACCP – CE 852/2004</div>
+      <div class="badge">🛡️ HACCP – Règlement CE 852/2004</div>
       <h1>PMS pour <span>les Nuls</span></h1>
-      <p>Créez votre Plan de Maîtrise Sanitaire complet en quelques minutes. PDF professionnel prêt pour votre contrôle DDPP.</p>
+      <p class="hero-sub">Créez votre Plan de Maîtrise Sanitaire complet en 10 minutes. PDF professionnel prêt pour votre contrôle DDPP.</p>
+
       <div class="hero-btns">
-        <button class="btn-main" onclick="startApp()">🚀 Créer mon PMS</button>
-        <button class="btn-sec" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Voir le tarif</button>
+        <a class="btn-acheter" href="https://bureaucrate55.gumroad.com/l/pms-pour-les-nuls" target="_blank">
+          🛒 Acheter l'accès — 99€
+        </a>
+        <button class="btn-code" onclick="openModal()">
+          🔑 J'ai déjà un code
+        </button>
       </div>
+      <p style="color:rgba(255,255,255,.4);font-size:12px">✓ Achat unique · Accès à vie · Satisfait ou remboursé 30 jours</p>
     </div>
     <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 50"><path fill="#f5f7fb" d="M0,25L80,28C160,32,320,40,480,40C640,40,800,32,960,28C1120,25,1280,25,1360,25L1440,25L1440,50L0,50Z"/></svg>
   </section>
+
   <section class="features">
-    <h2>Tout ce qu'il faut pour être <span>conforme</span></h2>
+    <h2 class="section-title">Tout ce qu'il faut pour être <span>conforme</span></h2>
+    <p class="section-sub">8 sections complètes conformes au Règlement CE 852/2004</p>
     <div class="feat-grid">
-      <div class="feat-card"><div class="feat-icon">🏢</div><h3>Identification complète</h3><p>Toutes les infos de votre établissement</p></div>
+      <div class="feat-card"><div class="feat-icon">🏢</div><h3>Identification</h3><p>Toutes les informations de votre établissement</p></div>
       <div class="feat-card"><div class="feat-icon">🌡️</div><h3>Relevés températures</h3><p>Tableaux quotidiens matin/soir avec conformité automatique</p></div>
-      <div class="feat-card"><div class="feat-icon">📦</div><h3>Réception marchandises</h3><p>Fiche de contrôle à la livraison</p></div>
-      <div class="feat-card"><div class="feat-icon">🧹</div><h3>Plan de nettoyage</h3><p>Fréquences, produits, responsables</p></div>
-      <div class="feat-card"><div class="feat-icon">⚠️</div><h3>Gestion allergènes</h3><p>14 allergènes réglementaires</p></div>
-      <div class="feat-card"><div class="feat-icon">👩‍🍳</div><h3>Hygiène personnel</h3><p>Formations HACCP et bonnes pratiques</p></div>
-      <div class="feat-card"><div class="feat-icon">💾</div><h3>Sauvegarde auto</h3><p>Vos données sauvegardées en temps réel</p></div>
+      <div class="feat-card"><div class="feat-icon">📦</div><h3>Réception marchandises</h3><p>Contrôle de chaque livraison documenté</p></div>
+      <div class="feat-card"><div class="feat-icon">🧹</div><h3>Plan de nettoyage</h3><p>Fréquences, produits et responsables</p></div>
+      <div class="feat-card"><div class="feat-icon">⚠️</div><h3>14 Allergènes</h3><p>Gestion complète des allergènes réglementaires</p></div>
+      <div class="feat-card"><div class="feat-icon">👩‍🍳</div><h3>Hygiène personnel</h3><p>Formations HACCP et registre des incidents</p></div>
+      <div class="feat-card"><div class="feat-icon">💾</div><h3>Sauvegarde auto</h3><p>Vos données conservées automatiquement</p></div>
       <div class="feat-card"><div class="feat-icon">📄</div><h3>PDF professionnel</h3><p>Document complet prêt pour la DDPP</p></div>
     </div>
   </section>
-  <section class="pricing" id="pricing">
-    <h2>Un prix. Simple. Définitif.</h2>
-    <p style="opacity:.6;margin-bottom:36px">Accès à vie · Aucun abonnement</p>
-    <div class="price-box">
-      <div class="price-amount">99<span style="font-size:32px">€</span></div>
-      <div style="opacity:.5;margin-bottom:16px;font-size:14px">paiement unique · accès à vie</div>
-      <div class="price-list">
-        <div class="price-item">Application web complète</div>
-        <div class="price-item">8 sections HACCP complètes</div>
-        <div class="price-item">Tableaux de relevés quotidiens</div>
-        <div class="price-item">Gestion des 14 allergènes</div>
-        <div class="price-item">Sauvegarde automatique</div>
-        <div class="price-item">PDF téléchargeable illimité</div>
-        <div class="price-item">Mises à jour incluses</div>
-      </div>
-      <button class="btn-buy" onclick="startApp()">Commencer maintenant →</button>
-      <p style="font-size:11px;opacity:.4;margin-top:10px">✓ Satisfait ou remboursé 30 jours</p>
+
+  <section class="proof">
+    <h2>Pourquoi choisir PMS pour les Nuls ?</h2>
+    <div class="proof-grid">
+      <div class="proof-card"><div class="proof-number">10 min</div><div class="proof-label">Pour créer votre PMS complet</div></div>
+      <div class="proof-card"><div class="proof-number">99€</div><div class="proof-label">Au lieu de 50-150€/mois chez la concurrence</div></div>
+      <div class="proof-card"><div class="proof-number">8</div><div class="proof-label">Sections HACCP complètes</div></div>
+      <div class="proof-card"><div class="proof-number">100%</div><div class="proof-label">Conforme CE 852/2004</div></div>
     </div>
   </section>
-  <footer>© 2025 PMS pour les Nuls · pmspourlesnuls.com · Tous droits réservés</footer>
+
+  <section class="pricing">
+    <div class="price-wrap">
+      <div class="price-badge">🔒 Accès sécurisé par code</div>
+      <h2>Un prix. Simple. Définitif.</h2>
+      <p>Achat unique · Accès à vie · Aucun abonnement</p>
+      <div class="price-amount">99<span style="font-size:36px">€</span></div>
+      <div class="price-unit">paiement unique · accès à vie</div>
+      <div class="price-list">
+        <div class="price-item">Application web complète</div>
+        <div class="price-item">8 sections HACCP</div>
+        <div class="price-item">Relevés quotidiens</div>
+        <div class="price-item">Gestion allergènes</div>
+        <div class="price-item">PDF professionnel</div>
+        <div class="price-item">Sauvegarde automatique</div>
+        <div class="price-item">Code d'accès unique</div>
+        <div class="price-item">Mises à jour incluses</div>
+      </div>
+      <a class="btn-acheter-big" href="https://bureaucrate55.gumroad.com/l/pms-pour-les-nuls" target="_blank">
+        🛒 Acheter maintenant — 99€
+      </a>
+      <p class="price-guarantee">✓ Satisfait ou remboursé 30 jours · Paiement sécurisé</p>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Comment accéder à l'application après achat ?</span><span>+</span></div><div class="faq-a">Après votre achat sur Gumroad, vous recevez immédiatement par email un code d'accès unique. Revenez sur cette page, cliquez sur "J'ai déjà un code" et entrez votre code pour accéder à l'application.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>C'est quoi un PMS exactement ?</span><span>+</span></div><div class="faq-a">Le Plan de Maîtrise Sanitaire est un document obligatoire pour tous les établissements alimentaires en France. Il décrit les mesures prises pour assurer la sécurité alimentaire, conformément au règlement CE 852/2004.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Qui est concerné par le PMS ?</span><span>+</span></div><div class="faq-a">Tous les professionnels de l'alimentation : restaurants, hôtels, traiteurs, cantines, boulangeries, épiceries, food trucks, etc.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Le PDF est-il accepté par la DDPP ?</span><span>+</span></div><div class="faq-a">Oui, le document généré respecte les exigences du règlement CE 852/2004. Il couvre toutes les sections requises lors d'un contrôle sanitaire.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Puis-je mettre à jour mon PMS ?</span><span>+</span></div><div class="faq-a">Oui, vous pouvez créer autant de versions que nécessaire grâce à la sauvegarde automatique. Recommandé : une mise à jour par an minimum.</div></div>
+  </section>
+
+  <footer>
+    © 2025 PMS pour les Nuls · <a href="mailto:contact@pmspourlesnuls.com">contact@pmspourlesnuls.com</a> · Tous droits réservés
+  </footer>
 </div>
 
-<!-- APP -->
+<!-- ═══════════════════════════════
+     MODAL CODE D'ACCÈS
+═══════════════════════════════ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-icon">🔑</div>
+    <div class="modal-title">Code d'accès</div>
+    <div class="modal-sub">Entrez le code reçu par email après votre achat sur Gumroad.</div>
+    <input class="code-input" type="password" id="codeInput" placeholder="Votre code" maxlength="30"
+      onkeydown="if(event.key==='Enter')validerCode()">
+    <div class="error-msg" id="errorMsg">❌ Code incorrect. Vérifiez votre email de confirmation.</div>
+    <div class="modal-btns">
+      <button class="btn-fermer" onclick="closeModal()">Annuler</button>
+      <button class="btn-valider" onclick="validerCode()">Accéder →</button>
+    </div>
+    <div class="code-hint">Vous n'avez pas reçu votre code ? <a href="mailto:contact@pmspourlesnuls.com" style="color:var(--teal)">Contactez-nous</a></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     APPLICATION
+═══════════════════════════════ -->
 <div id="app" style="display:none">
   <div class="app-header">
     <div class="app-logo">PMS <span>pour les Nuls</span></div>
     <div class="header-btns">
       <button class="hbtn teal" onclick="generatePDF()">📄 PDF</button>
-      <button class="hbtn" onclick="document.getElementById('app').style.display='none';document.getElementById('landing').style.display='block'">← Accueil</button>
+      <button class="hbtn red" onclick="deconnexion()">🔒 Déconnexion</button>
     </div>
   </div>
-
   <div class="tabs" id="tabBar"></div>
   <div class="app-body" id="appBody"></div>
 </div>
@@ -204,20 +308,78 @@ footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;paddi
 
 <script>
 // ══════════════════════════════════════════════
-// DATA
+// CODES D'ACCÈS VALIDES
+// Modifiez cette liste pour ajouter/supprimer des codes
 // ══════════════════════════════════════════════
-const TABS = [
-  {id:'etab', label:'🏢 Établissement'},
-  {id:'locaux', label:'🏗️ Locaux'},
-  {id:'temp', label:'🌡️ Températures'},
-  {id:'reception', label:'📦 Réception'},
-  {id:'nettoyage', label:'🧹 Nettoyage'},
-  {id:'allergenes', label:'⚠️ Allergènes'},
-  {id:'personnel', label:'👩‍🍳 Personnel'},
-  {id:'bilan', label:'📊 Bilan'},
+const CODES_VALIDES = [
+  "PMS2025-KEVIN",
+  "PMS2025-ALPHA",
+  "PMS2025-BETA",
+  "PMS2025-001",
+  "PMS2025-002",
+  "PMS2025-003",
+  "PMS2025-004",
+  "PMS2025-005",
 ];
 
-const ALLERGENS = [
+// ══════════════════════════════════════════════
+// AUTHENTIFICATION
+// ══════════════════════════════════════════════
+function openModal(){
+  document.getElementById('modal').classList.add('open');
+  setTimeout(()=>document.getElementById('codeInput').focus(),300);
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('codeInput').value='';
+  document.getElementById('errorMsg').style.display='none';
+  document.getElementById('codeInput').classList.remove('error');
+}
+function validerCode(){
+  const code = document.getElementById('codeInput').value.trim().toUpperCase();
+  const codesUpper = CODES_VALIDES.map(c=>c.toUpperCase());
+  if(codesUpper.includes(code)){
+    localStorage.setItem('pms_access','1');
+    localStorage.setItem('pms_code',code);
+    closeModal();
+    lancerApp();
+  } else {
+    const input = document.getElementById('codeInput');
+    const err = document.getElementById('errorMsg');
+    input.classList.add('error');
+    err.style.display='block';
+    setTimeout(()=>input.classList.remove('error'),400);
+  }
+}
+function deconnexion(){
+  if(confirm('Voulez-vous vous déconnecter ? Vos données restent sauvegardées.')){
+    localStorage.removeItem('pms_access');
+    document.getElementById('app').style.display='none';
+    document.getElementById('landing').style.display='block';
+    window.scrollTo(0,0);
+  }
+}
+// Vérification automatique au chargement
+window.onload = function(){
+  if(localStorage.getItem('pms_access')==='1'){
+    lancerApp();
+  }
+};
+
+// ══════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════
+const TABS=[
+  {id:'etab',label:'🏢 Établissement'},
+  {id:'locaux',label:'🏗️ Locaux'},
+  {id:'temp',label:'🌡️ Températures'},
+  {id:'reception',label:'📦 Réception'},
+  {id:'nettoyage',label:'🧹 Nettoyage'},
+  {id:'allergenes',label:'⚠️ Allergènes'},
+  {id:'personnel',label:'👩‍🍳 Personnel'},
+  {id:'bilan',label:'📊 Bilan'},
+];
+const ALLERGENS=[
   {id:'gluten',label:'🌾 Gluten'},{id:'crustaces',label:'🦐 Crustacés'},
   {id:'oeufs',label:'🥚 Œufs'},{id:'poissons',label:'🐟 Poissons'},
   {id:'arachides',label:'🥜 Arachides'},{id:'soja',label:'🫘 Soja'},
@@ -226,8 +388,7 @@ const ALLERGENS = [
   {id:'sesame',label:'🫙 Sésame'},{id:'so2',label:'🍷 SO2/Sulfites'},
   {id:'lupin',label:'🌼 Lupin'},{id:'mollusques',label:'🐚 Mollusques'},
 ];
-
-const NETTOYAGE_ZONES = [
+const NETT_ZONES=[
   {zone:'Plans de travail',freq:'Après chaque service',produit:'',resp:''},
   {zone:'Sols cuisine',freq:'Après chaque service',produit:'',resp:''},
   {zone:'Réfrigérateurs',freq:'Hebdomadaire',produit:'',resp:''},
@@ -239,8 +400,7 @@ const NETTOYAGE_ZONES = [
   {zone:'Sanitaires personnel',freq:'Quotidien',produit:'',resp:''},
   {zone:'Vestiaires',freq:'Hebdomadaire',produit:'',resp:''},
 ];
-
-const TEMP_REGS = [
+const TEMP_REGS=[
   {l:'Viandes crues',r:'≤ +4°C',max:4,min:null},
   {l:'Poissons frais',r:'0 à +2°C',max:2,min:0},
   {l:'Produits laitiers',r:'≤ +4°C',max:4,min:null},
@@ -248,94 +408,88 @@ const TEMP_REGS = [
   {l:'Surgelés',r:'≤ -18°C',max:-18,min:null},
   {l:'Plats chauds service',r:'≥ +63°C',max:null,min:63},
 ];
+const LOCAUX_CHECKS=[
+  {l:"Marche en avant respectée (séparation propre/sale)",s:"Les flux propres et sales ne se croisent pas"},
+  {l:"Sols, murs et plafonds en matériaux lavables et résistants"},
+  {l:"Ventilation et hottes d'aspiration fonctionnelles"},
+  {l:"Lave-mains à commande non manuelle en cuisine",s:"Savon bactéricide + essuie-mains à usage unique"},
+  {l:"Vestiaires séparés tenues de ville / tenues de travail"},
+  {l:"Éclairage suffisant dans toutes les zones de travail"},
+  {l:"Réfrigérateurs ≤ 4°C avec thermomètre affiché"},
+  {l:"Congélateurs ≤ -18°C avec alarme de rupture"},
+  {l:"Cellule de refroidissement rapide disponible",s:"+63°C à +10°C en moins de 2h"},
+  {l:"Séparation des denrées par nature dans le froid"},
+];
+const TEMP_PROC=[
+  {l:"Relevés effectués matin et soir",s:"Fiche archivée 3 ans minimum"},
+  {l:"Thermomètre sonde étalonné disponible"},
+  {l:"Procédure de rupture de chaîne du froid définie"},
+  {l:"Remise en température à cœur ≥ 75°C documentée"},
+];
+const NETT_CHECKS=[
+  {l:"Plan de nettoyage écrit et affiché en cuisine"},
+  {l:"Nettoyage et désinfection après chaque service"},
+  {l:"Code couleur planches à découper respecté",s:"Rouge:viande / Bleu:poisson / Vert:légumes / Jaune:volaille"},
+  {l:"FDS des produits chimiques disponibles"},
+  {l:"Produits stockés à l'écart des denrées"},
+  {l:"Contrat dératisation / désinsectisation en cours"},
+];
+const PERS_CHECKS=[
+  {l:"Visite médicale d'embauche effectuée"},
+  {l:"Procédure d'exclusion en cas de maladie définie",s:"Gastro, infections cutanées, plaies ouvertes"},
+  {l:"Tenue complète et propre en cuisine",s:"Veste, tablier, charlotte, chaussures sécurité"},
+  {l:"Bijoux et montres retirés en cuisine"},
+  {l:"Cheveux couverts ou attachés"},
+  {l:"Lavage mains à la prise de poste"},
+  {l:"Lavage après manipulation denrées crues"},
+  {l:"Lavage après passage aux toilettes"},
+  {l:"Protocole lavage mains affiché",s:"30 secondes avec savon bactéricide"},
+];
 
 // ══════════════════════════════════════════════
-// STATE — auto-saved to localStorage
+// STATE
 // ══════════════════════════════════════════════
-const SAVE_KEY = 'pms_nuls_v2';
+const SAVE_KEY='pms_nuls_v2';
 let state;
+let curTab='etab';
 
 function defaultState(){
-  return {
+  return{
     etab:{nom:'',type:'',adresse:'',tel:'',email:'',siret:'',responsable:'',
-      datePms:new Date().toISOString().slice(0,10),capacite:'',employes:'',numero_agrement:''},
-    locaux:{checks:Array(10).fill(false), obs:''},
-    temp:{
-      releves: [makeReleve()],
-      procChecks: Array(4).fill(false),
-      actionCorr:''
-    },
+      datePms:new Date().toISOString().slice(0,10),capacite:'',employes:'',agrement:''},
+    locaux:{checks:Array(10).fill(false),obs:''},
+    temp:{releves:[makeReleve()],procChecks:Array(4).fill(false),actionCorr:''},
     reception:{lignes:[makeReception()]},
-    nettoyage:{
-      plan: NETTOYAGE_ZONES.map(z=>({...z})),
-      checks: Array(6).fill(false),
-      obs:''
-    },
-    allergenes:{
-      status: Object.fromEntries(ALLERGENS.map(a=>[a.id,'nc'])),
-      plats:[{nom:'',allergenes:[]}],
-      obs:''
-    },
-    personnel:{
-      checks: Array(9).fill(false),
-      formations:[{date:'',organisme:'',personnes:'',type:''}],
-      accidents:[{date:'',description:'',action:''}],
-      obs:''
-    },
+    nettoyage:{plan:NETT_ZONES.map(z=>({...z})),checks:Array(6).fill(false),obs:''},
+    allergenes:{status:Object.fromEntries(ALLERGENS.map(a=>[a.id,'nc'])),plats:[{nom:'',allergenes:[]}],obs:''},
+    personnel:{checks:Array(9).fill(false),formations:[{date:'',organisme:'',personnes:'',type:''}],accidents:[{date:'',description:'',action:''}],obs:''},
   };
 }
-
-function makeReleve(){
-  return {date:new Date().toISOString().slice(0,10), vals:Array(6).fill(''), matin:Array(6).fill(''), soir:Array(6).fill('')};
-}
-function makeReception(){
-  return {date:'',fournisseur:'',produit:'',temp:'',dlc:'',aspect:'ok',action:''};
-}
-
-function loadState(){
-  try{
-    const s=localStorage.getItem(SAVE_KEY);
-    if(s) return JSON.parse(s);
-  }catch(e){}
-  return defaultState();
-}
-
-function saveState(){
-  try{
-    localStorage.setItem(SAVE_KEY,JSON.stringify(state));
-  }catch(e){}
-}
+function makeReleve(){return{date:new Date().toISOString().slice(0,10),matin:Array(6).fill(''),soir:Array(6).fill('')};}
+function makeReception(){return{date:'',fournisseur:'',produit:'',temp:'',dlc:'',aspect:'ok',action:''};}
+function loadState(){try{const s=localStorage.getItem(SAVE_KEY);if(s)return JSON.parse(s);}catch(e){}return defaultState();}
+function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(state));}catch(e){}}
 
 // ══════════════════════════════════════════════
-// NAVIGATION
+// APP LAUNCH
 // ══════════════════════════════════════════════
-let curTab = 'etab';
-
-function startApp(){
-  state = loadState();
+function lancerApp(){
+  state=loadState();
   document.getElementById('landing').style.display='none';
   document.getElementById('app').style.display='block';
   renderTabs();
   showTab('etab');
   window.scrollTo(0,0);
 }
-
 function renderTabs(){
-  document.getElementById('tabBar').innerHTML = TABS.map(t=>
+  document.getElementById('tabBar').innerHTML=TABS.map(t=>
     `<button class="tab${curTab===t.id?' active':''}" onclick="showTab('${t.id}')">${t.label}</button>`
   ).join('');
 }
-
 function showTab(id){
-  curTab=id;
-  renderTabs();
+  curTab=id;renderTabs();
   const body=document.getElementById('appBody');
-  body.innerHTML='';
-  // Save indicator
-  const saved=document.createElement('div');
-  saved.className='save-bar';
-  saved.innerHTML='💾 Données sauvegardées automatiquement';
-  body.appendChild(saved);
+  body.innerHTML=`<div class="save-bar">💾 Données sauvegardées automatiquement</div>`;
   if(id==='etab') body.innerHTML+=renderEtab();
   else if(id==='locaux') body.innerHTML+=renderLocaux();
   else if(id==='temp') body.innerHTML+=renderTemp();
@@ -351,668 +505,597 @@ function showTab(id){
 // HELPERS
 // ══════════════════════════════════════════════
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function fi(path,label,type='text',ph=''){
-  const val=getPath(state,path)||'';
-  return`<div class="fg"><label>${label}</label><input type="${type}" value="${esc(val)}" placeholder="${ph}" onchange="setPath(state,'${path}',this.value);saveState()"></div>`;
+function getP(o,p){return p.split('.').reduce((x,k)=>x?.[k],o);}
+function setP(o,p,v){const k=p.split('.');let x=o;for(let i=0;i<k.length-1;i++)x=x[k[i]];x[k[k.length-1]]=v;}
+function fi(p,label,type='text',ph=''){
+  return`<div class="fg"><label>${label}</label><input type="${type}" value="${esc(getP(state,p)||'')}" placeholder="${ph}" onchange="setP(state,'${p}',this.value);saveState()"></div>`;
 }
-function fs(path,label,opts){
-  const val=getPath(state,path)||'';
-  return`<div class="fg"><label>${label}</label><select onchange="setPath(state,'${path}',this.value);saveState()">${opts.map(o=>`<option${val===o?' selected':''}>${o}</option>`).join('')}</select></div>`;
+function fsel(p,label,opts){
+  const v=getP(state,p)||'';
+  return`<div class="fg"><label>${label}</label><select onchange="setP(state,'${p}',this.value);saveState()">${opts.map(o=>`<option${v===o?' selected':''}>${o}</option>`).join('')}</select></div>`;
 }
-function fta(path,label,ph=''){
-  const val=getPath(state,path)||'';
-  return`<div class="fg" style="grid-column:1/-1"><label>${label}</label><textarea onchange="setPath(state,'${path}',this.value);saveState()" placeholder="${ph}">${esc(val)}</textarea></div>`;
+function fta(p,label,ph=''){
+  return`<div class="fg" style="grid-column:1/-1"><label>${label}</label><textarea onchange="setP(state,'${p}',this.value);saveState()" placeholder="${ph}">${esc(getP(state,p)||'')}</textarea></div>`;
 }
-function div(t){return`<div class="divider"><span>${t}</span></div>`;}
-function navBtns(prev,next){
-  const tabs=TABS.map(t=>t.id);
-  const pi=tabs.indexOf(prev),ni=tabs.indexOf(next);
-  const p=pi>=0?`<button class="btn-prev" onclick="showTab('${prev}')">← Retour</button>`:'<div></div>';
-  const n=ni>=0?`<button class="btn-next" onclick="showTab('${next}')">Suivant →</button>`:'<div></div>';
+function dv(t){return`<div class="divider"><span>${t}</span></div>`;}
+function nav(prev,next){
+  const p=prev?`<button class="btn-prev" onclick="showTab('${prev}')">← Retour</button>`:'<div></div>';
+  const n=next?`<button class="btn-next" onclick="showTab('${next}')">Suivant →</button>`:'<div></div>';
   return`<div class="nav-btns">${p}${n}</div>`;
 }
-
-function getPath(obj,path){
-  return path.split('.').reduce((o,k)=>o?.[k],obj);
-}
-function setPath(obj,path,val){
-  const keys=path.split('.');
-  let o=obj;
-  for(let i=0;i<keys.length-1;i++) o=o[keys[i]];
-  o[keys[keys.length-1]]=val;
-}
-
-function checkConform(max,min,val){
-  const v=parseFloat(val);
-  if(isNaN(v)) return null;
-  if(max!==null&&v>max) return false;
-  if(min!==null&&v<min) return false;
-  return true;
-}
-
-// ══════════════════════════════════════════════
-// SECTION: ÉTABLISSEMENT
-// ══════════════════════════════════════════════
-function renderEtab(){
-  return`<div class="card">
-    <div class="card-title">🏢 Identification de l'établissement</div>
-    <div class="card-sub">Informations générales — sauvegarde automatique activée</div>
-    <div class="form-grid">
-      ${fi('etab.nom',"Nom de l'établissement",'text',"Restaurant Le Provençal")}
-      ${fs('etab.type',"Type d'établissement",['-- Choisir --','Restaurant traditionnel','Hôtel-restaurant','Café / Brasserie','Restauration rapide','Traiteur','Hôtel avec petit-déjeuner','Collectivité / Cantine','Boulangerie / Pâtisserie','Épicerie / Supérette','Food truck'])}
-      ${fi('etab.adresse','Adresse complète','text','12 rue de la Paix, 75001 Paris')}
-      ${fi('etab.tel','Téléphone','tel','01 23 45 67 89')}
-      ${fi('etab.email','Email','email','contact@restaurant.fr')}
-      ${fi('etab.siret','SIRET','text','123 456 789 00012')}
-      ${fi('etab.responsable','Responsable / Gérant','text','Nom Prénom')}
-      ${fi('etab.datePms','Date du PMS','date','')}
-      ${fi('etab.capacite','Capacité','text','60 couverts')}
-      ${fi('etab.employes',"Nombre d'employés",'text','8')}
-      ${fi('etab.numero_agrement',"Numéro d'agrément sanitaire",'text','FR XX XXX XXX CEE')}
-    </div>
-    ${navBtns('','locaux')}
-  </div>`;
-}
-
-// ══════════════════════════════════════════════
-// SECTION: LOCAUX
-// ══════════════════════════════════════════════
-const LOCAUX_CHECKS = [
-  {l:"Marche en avant respectée (séparation propre/sale)",s:"Les flux propres et sales ne se croisent pas"},
-  {l:"Sols, murs et plafonds en matériaux lavables et résistants"},
-  {l:"Ventilation et hottes d'aspiration fonctionnelles"},
-  {l:"Lave-mains à commande non manuelle en cuisine",s:"Savon bactéricide + essuie-mains à usage unique"},
-  {l:"Vestiaires séparés tenues de ville / tenues de travail"},
-  {l:"Éclairage suffisant dans toutes les zones"},
-  {l:"Réfrigérateurs ≤ 4°C avec thermomètre affiché"},
-  {l:"Congélateurs ≤ -18°C avec alarme de rupture"},
-  {l:"Cellule de refroidissement rapide disponible",s:"+63°C à +10°C en moins de 2h"},
-  {l:"Séparation des denrées par nature dans le froid"},
-];
-
-function renderLocaux(){
-  const checks = state.locaux.checks;
-  const items = LOCAUX_CHECKS.map((c,i)=>`
-    <div class="check-item${checks[i]?' checked':''}" onclick="state.locaux.checks[${i}]=!state.locaux.checks[${i}];saveState();this.classList.toggle('checked')">
+function chkList(group,arr){
+  return arr.map((c,i)=>`
+    <div class="check-item${state[group].checks[i]?' checked':''}" onclick="state['${group}'].checks[${i}]=!state['${group}'].checks[${i}];saveState();this.classList.toggle('checked')">
       <div class="check-box"><span class="check-tick">✓</span></div>
       <div><div class="check-label">${c.l}</div>${c.s?`<div class="check-sub">${c.s}</div>`:''}</div>
     </div>`).join('');
-  return`<div class="card">
-    <div class="card-title">🏗️ Locaux & Équipements</div>
-    <div class="card-sub">Conformité des infrastructures</div>
-    ${items}
-    ${fta('locaux.obs','Observations sur les locaux','État général, travaux prévus, non-conformités...')}
-    ${navBtns('etab','temp')}
-  </div>`;
 }
+function conform(r,val){const v=parseFloat(val);if(isNaN(v))return null;return(r.max===null||v<=r.max)&&(r.min===null||v>=r.min);}
 
 // ══════════════════════════════════════════════
-// SECTION: TEMPÉRATURES
+// SECTIONS
 // ══════════════════════════════════════════════
-const TEMP_PROC_CHECKS = [
-  {l:"Relevés effectués matin et soir",s:"Fiche archivée 3 ans minimum"},
-  {l:"Thermomètre sonde étalonné disponible"},
-  {l:"Procédure de rupture de chaîne du froid définie"},
-  {l:"Remise en température à cœur ≥ 75°C documentée"},
-];
+function renderEtab(){return`<div class="card">
+  <div class="card-title">🏢 Identification</div>
+  <div class="card-sub">Informations générales de votre établissement</div>
+  <div class="form-grid">
+    ${fi('etab.nom',"Nom *",'text','Restaurant Le Provençal')}
+    ${fsel('etab.type',"Type *",['-- Choisir --','Restaurant traditionnel','Hôtel-restaurant','Café / Brasserie','Restauration rapide','Traiteur','Hôtel avec petit-déjeuner','Collectivité / Cantine','Boulangerie / Pâtisserie','Épicerie / Supérette','Food truck'])}
+    ${fi('etab.adresse','Adresse','text','12 rue de la Paix, 75001 Paris')}
+    ${fi('etab.tel','Téléphone','tel','01 23 45 67 89')}
+    ${fi('etab.email','Email','email','contact@restaurant.fr')}
+    ${fi('etab.siret','SIRET','text','123 456 789 00012')}
+    ${fi('etab.responsable','Responsable','text','Nom Prénom')}
+    ${fi('etab.datePms','Date du PMS','date','')}
+    ${fi('etab.capacite','Capacité','text','60 couverts')}
+    ${fi('etab.employes',"Employés",'text','8')}
+    ${fi('etab.agrement',"N° agrément sanitaire",'text','FR XX XXX XXX CEE')}
+  </div>
+  ${nav('','locaux')}
+</div>`;}
+
+function renderLocaux(){return`<div class="card">
+  <div class="card-title">🏗️ Locaux & Équipements</div>
+  <div class="card-sub">Conformité des infrastructures</div>
+  ${chkList('locaux',LOCAUX_CHECKS)}
+  ${fta('locaux.obs','Observations','État général, travaux prévus...')}
+  ${nav('etab','temp')}
+</div>`;}
 
 function renderTemp(){
-  const releves = state.temp.releves;
-  const rows = releves.map((r,ri)=>{
-    const cells = TEMP_REGS.map((tr,ti)=>{
-      const vm=r.matin[ti]||'';
-      const vs=r.soir[ti]||'';
-      const cm=checkConform(tr.max,tr.min,vm);
-      const cs=checkConform(tr.max,tr.min,vs);
-      const confStyle=(c)=>c===null?'color:#999':c?'color:#2ecc71;font-weight:700':'color:#ff4d4d;font-weight:700';
-      return`<tr>
-        <td>${tr.l}</td>
-        <td style="color:#64748b;font-size:11px">${tr.r}</td>
-        <td><input type="number" value="${esc(vm)}" placeholder="°C" style="width:58px"
-          oninput="state.temp.releves[${ri}].matin[${ti}]=this.value;saveState();document.getElementById('cm${ri}_${ti}').textContent=checkConformTxt(${JSON.stringify(tr)},this.value)"
-        ><span id="cm${ri}_${ti}" style="${confStyle(cm)};font-size:11px;margin-left:4px">${cm===null?'':cm?'✓':'✗'}</span></td>
-        <td><input type="number" value="${esc(vs)}" placeholder="°C" style="width:58px"
-          oninput="state.temp.releves[${ri}].soir[${ti}]=this.value;saveState();document.getElementById('cs${ri}_${ti}').textContent=checkConformTxt(${JSON.stringify(tr)},this.value)"
-        ><span id="cs${ri}_${ti}" style="${confStyle(cs)};font-size:11px;margin-left:4px">${cs===null?'':cs?'✓':'✗'}</span></td>
-      </tr>`;
-    }).join('');
-    return`<div class="card" style="margin-bottom:12px">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-weight:700;font-size:14px">📅 Relevé du</span>
-          <input type="date" value="${esc(r.date)}" onchange="state.temp.releves[${ri}].date=this.value;saveState()" style="border:1.5px solid var(--border);border-radius:7px;padding:5px 8px;font-size:13px;font-family:'Sora',sans-serif;background:var(--light);outline:none">
-        </div>
-        ${ri>0?`<button class="btn-del" onclick="state.temp.releves.splice(${ri},1);saveState();showTab('temp')">🗑️ Supprimer</button>`:''}
-      </div>
-      <div style="overflow-x:auto">
-      <table class="tbl">
-        <thead><tr><th>Denrée</th><th>Réglementaire</th><th>🌅 Matin</th><th>🌆 Soir</th></tr></thead>
-        <tbody>${cells}</tbody>
-      </table></div>
-    </div>`;
-  }).join('');
-
-  const procChecks = state.temp.procChecks;
-  const procItems = TEMP_PROC_CHECKS.map((c,i)=>`
-    <div class="check-item${procChecks[i]?' checked':''}" onclick="state.temp.procChecks[${i}]=!state.temp.procChecks[${i}];saveState();this.classList.toggle('checked')">
-      <div class="check-box"><span class="check-tick">✓</span></div>
-      <div><div class="check-label">${c.l}</div>${c.s?`<div class="check-sub">${c.s}</div>`:''}</div>
-    </div>`).join('');
-
-  return`
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-      <div style="font-size:13px;font-weight:700;color:var(--navy)">${releves.length} relevé(s) enregistré(s)</div>
-      <button class="btn-add" onclick="state.temp.releves.push(makeReleve());saveState();showTab('temp')">+ Nouveau relevé</button>
-    </div>
-    ${rows}
-    <div class="card">
-      ${div('Procédures de surveillance')}
-      ${procItems}
-      ${fta('temp.actionCorr',"Actions correctives en cas d'écart",'Retrait des denrées, information du responsable...')}
-      ${navBtns('locaux','reception')}
-    </div>`;
+  if(!state.temp.qcmAnswers) state.temp.qcmAnswers = [null,null,null,null,null,null];
+  var ans = state.temp.qcmAnswers;
+  var qcm = [
+    {q:"Temperature max stockage viandes crues ?", opts:["<= 0C","<= +4C","<= +7C","<= +10C"], c:1},
+    {q:"Temperature stockage poissons frais ?", opts:["0C a +2C","<= +4C","<= +6C","<= -2C"], c:0},
+    {q:"Temperature min service plats chauds ?", opts:[">= +55C",">= +60C",">= +63C",">= +70C"], c:2},
+    {q:"Temperature max surgelés en stockage ?", opts:["<= -10C","<= -15C","<= -18C","<= -25C"], c:2},
+    {q:"Temps refroidissement +63C a +10C ?", opts:["1 heure","2 heures","4 heures","6 heures"], c:1},
+    {q:"Temperature max produits laitiers ?", opts:["<= +2C","<= +4C","<= +6C","<= +8C"], c:1},
+  ];
+  var qHtml = '';
+  for(var qi=0; qi<qcm.length; qi++){
+    var q = qcm[qi];
+    var bColor = ans[qi]===null ? 'var(--border)' : (ans[qi]===q.c ? 'var(--green)' : 'var(--red)');
+    qHtml += '<div style="background:var(--light);border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1.5px solid '+bColor+'">';
+    qHtml += '<div style="font-weight:700;font-size:13px;color:var(--navy);margin-bottom:10px">'+(qi+1)+'. '+q.q+'</div>';
+    qHtml += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">';
+    for(var oi=0; oi<q.opts.length; oi++){
+      var bg = ans[qi]===oi ? (oi===q.c ? '#edfdf8' : '#fee2e2') : '#fff';
+      var bc = ans[qi]===oi ? (oi===q.c ? 'var(--green)' : 'var(--red)') : 'var(--border)';
+      var tc = ans[qi]===oi ? (oi===q.c ? 'var(--green)' : 'var(--red)') : 'var(--navy)';
+      qHtml += '<button onclick="answerQcm('+qi+','+oi+')" style="padding:8px 10px;border-radius:8px;border:1.5px solid '+bc+';font-size:12px;font-family:inherit;cursor:pointer;text-align:left;font-weight:600;background:'+bg+';color:'+tc+'">'+q.opts[oi]+'</button>';
+    }
+    qHtml += '</div>';
+    if(ans[qi]!==null){
+      var ok = ans[qi]===q.c;
+      qHtml += '<div style="margin-top:8px;font-size:12px;font-weight:600;color:'+(ok?'var(--green)':'var(--red)')+'">'+( ok ? 'Bonne reponse !' : 'Reponse correcte : '+q.opts[q.c])+'</div>';
+    }
+    qHtml += '</div>';
+  }
+  var score = 0;
+  for(var i=0;i<ans.length;i++) if(ans[i]===qcm[i].c) score++;
+  var allDone = ans.every(function(a){return a!==null;});
+  var scoreHtml = '';
+  if(allDone){
+    var col = score>=5 ? 'var(--green)' : score>=3 ? 'var(--gold)' : 'var(--red)';
+    var msg = score>=5 ? 'Excellent ! Vous maitrisez les temperatures.' : score>=3 ? 'Bien, quelques revisions simposent.' : 'Des revisions sont necessaires.';
+    scoreHtml = '<div style="background:'+col+'15;border:2px solid '+col+';border-radius:12px;padding:14px;text-align:center;margin-bottom:16px"><div style="font-size:28px;font-weight:800;color:'+col+'">'+score+'/6</div><div style="font-weight:700;font-size:14px;color:'+col+'">'+msg+'</div><button onclick="resetQcm()" style="margin-top:8px;padding:6px 14px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit">Recommencer</button></div>';
+  }
+  return '<div class="card">'
+    + '<div class="card-title">🌡️ Temperatures de Stockage</div>'
+    + '<div class="card-sub">Verifiez vos connaissances puis telechargez vos fiches</div>'
+    + dv('QCM Temperatures reglementaires')
+    + '<div style="background:#f0fdf8;border:1px solid #a7f3d0;border-radius:10px;padding:12px;margin-bottom:14px;font-size:12px;color:#065f46">Testez vos connaissances sur les temperatures HACCP. Ces seuils doivent etre connus de tout le personnel.</div>'
+    + qHtml + scoreHtml
+    + dv('Fiches a telecharger et imprimer')
+    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">'
+    + '<div style="border:2px solid var(--teal);border-radius:14px;padding:16px;text-align:center"><div style="font-size:32px;margin-bottom:6px">🌡️</div><div style="font-weight:800;font-size:14px;color:var(--navy);margin-bottom:4px">Releve Temperatures</div><div style="font-size:11px;color:var(--gray);margin-bottom:12px">Matin et soir - 1 mois - 6 zones</div><button class="dl-btn" style="margin:0;font-size:12px;padding:9px" onclick="dlFicheTemp()">Telecharger PDF</button></div>'
+    + '<div style="border:2px solid var(--gold);border-radius:14px;padding:16px;text-align:center"><div style="font-size:32px;margin-bottom:6px">🍳</div><div style="font-weight:800;font-size:14px;color:var(--navy);margin-bottom:4px">Controle Huile Friture</div><div style="font-size:11px;color:var(--gray);margin-bottom:12px">Releve quotidien - Polar test</div><button class="dl-btn" style="margin:0;font-size:12px;padding:9px;background:linear-gradient(135deg,var(--gold),#e67e00)" onclick="dlFicheHuile()">Telecharger PDF</button></div>'
+    + '</div>'
+    + dv('Procedures de surveillance')
+    + chkList('temp',TEMP_PROC)
+    + fta('temp.actionCorr',"Actions correctives","Retrait des denrees, information du responsable...")
+    + nav('locaux','reception')
+    + '</div>';
+}
+function answerQcm(qi,oi){
+  if(!state.temp.qcmAnswers) state.temp.qcmAnswers=[null,null,null,null,null,null];
+  state.temp.qcmAnswers[qi]=oi; saveState(); showTab('temp');
+}
+function resetQcm(){
+  state.temp.qcmAnswers=[null,null,null,null,null,null]; saveState(); showTab('temp');
 }
 
-function checkConformTxt(tr,val){
-  const v=parseFloat(val);
-  if(isNaN(v)) return '';
-  const ok=(tr.max===null||v<=tr.max)&&(tr.min===null||v>=tr.min);
-  return ok?'✓':'✗';
+function dlFicheTemp(){
+  const{jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+  const pw=297,ph=210,mg=10;
+  const nom=state.etab.nom||'Établissement';
+  const mois=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  doc.setFillColor(10,22,40);doc.rect(0,0,pw,18,'F');
+  doc.setFillColor(0,201,167);doc.rect(0,16,pw,2,'F');
+  doc.setTextColor(255,255,255);doc.setFontSize(12);doc.setFont('helvetica','bold');
+  doc.text('RELEVE DE TEMPERATURES - '+mois.toUpperCase(),mg,11);
+  doc.setFontSize(8);doc.setFont('helvetica','normal');doc.setTextColor(160,210,200);
+  doc.text(nom+' - Ref. CE 852/2004',mg,16);
+  doc.text('PMS pour les Nuls',pw-mg,11,{align:'right'});
+  const headers=[['Jour',10],['Mat.\nViandes\n<=4C',18],['Soir\nViandes\n<=4C',18],['Mat.\nPoissons\n0/+2C',18],['Soir\nPoissons\n0/+2C',18],['Mat.\nLaitages\n<=4C',18],['Soir\nLaitages\n<=4C',18],['Mat.\nCuits\n<=3C',18],['Soir\nCuits\n<=3C',18],['Mat.\nSurgeles\n<=-18C',20],['Soir\nSurgeles\n<=-18C',20],['Mat.\nPlats ch.\n>=63C',20],['Soir\nPlats ch.\n>=63C',20],['Signature',24],['Observations',31]];
+  let y=22,x=mg;
+  doc.setFillColor(26,58,107);
+  headers.forEach(([,w])=>{doc.rect(x,y,w,12,'F');x+=w;});
+  x=mg;doc.setTextColor(255,255,255);doc.setFontSize(5.5);doc.setFont('helvetica','bold');
+  headers.forEach(([label,w])=>{
+    const ls=label.split('\n');
+    ls.forEach((l,i)=>doc.text(l,x+w/2,y+4+i*2.8,{align:'center'}));
+    x+=w;
+  });
+  y+=12;
+  for(let d=1;d<=31;d++){
+    doc.setFillColor(d%2===0?248:255,d%2===0?250:255,d%2===0?252:255);
+    let rx=mg;
+    headers.forEach(([,w])=>{doc.rect(rx,y,w,5,'F');doc.setDrawColor(210,220,230);doc.rect(rx,y,w,5,'S');rx+=w;});
+    doc.setTextColor(40,50,60);doc.setFontSize(6.5);doc.setFont('helvetica','bold');
+    doc.text(String(d).padStart(2,'0'),mg+5,y+3.5);
+    y+=5;
+    if(y>ph-12)break;
+  }
+  doc.setFillColor(10,22,40);doc.rect(0,ph-8,pw,8,'F');
+  doc.setTextColor(150,180,200);doc.setFontSize(6);doc.setFont('helvetica','normal');
+  doc.text('Ce document doit etre archive 3 ans minimum - Reglement CE 852/2004 - PMS pour les Nuls',pw/2,ph-3,{align:'center'});
+  doc.save('Releve_Temperatures_'+mois.replace(' ','_')+'.pdf');
+  toast('PDF temperatures telecharge !');
 }
 
-// ══════════════════════════════════════════════
-// SECTION: RÉCEPTION MARCHANDISES
-// ══════════════════════════════════════════════
+function dlFicheHuile(){
+  const{jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  const pw=210,ph=297,mg=14;
+  const nom=state.etab.nom||'Etablissement';
+  const mois=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  doc.setFillColor(10,22,40);doc.rect(0,0,pw,18,'F');
+  doc.setFillColor(255,179,71);doc.rect(0,16,pw,2,'F');
+  doc.setTextColor(255,255,255);doc.setFontSize(12);doc.setFont('helvetica','bold');
+  doc.text('CONTROLE HUILE DE FRITURE',mg,11);
+  doc.setFontSize(8);doc.setFont('helvetica','normal');doc.setTextColor(200,180,100);
+  doc.text(nom+' - '+mois,mg,16);
+  let y=24;
+  doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);
+  doc.text('Seuil reglementaire : Composes polaires <= 25% - Frequence : A chaque utilisation',mg,y);y+=10;
+  const hcols=[['Date',22],['Heure',16],['N Friteuse',24],['Temp. C',20],['Polar test',22],['Resultat',24],['Action corrective',34],['Signature',22]];
+  doc.setFillColor(10,22,40);
+  let hx=mg;hcols.forEach(([,w])=>{doc.rect(hx,y,w,8,'F');hx+=w;});
+  hx=mg;doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','bold');
+  hcols.forEach(([h,w])=>{doc.text(h,hx+w/2,y+5,{align:'center'});hx+=w;});
+  y+=8;
+  for(let r=0;r<30;r++){
+    doc.setFillColor(r%2===0?255:248,r%2===0?255:250,r%2===0?255:252);
+    let rx=mg;
+    hcols.forEach(([,w])=>{doc.rect(rx,y,w,7,'F');doc.setDrawColor(210,220,230);doc.rect(rx,y,w,7,'S');rx+=w;});
+    y+=7;
+    if(y>ph-30)break;
+  }
+  y+=6;
+  doc.setFillColor(255,248,220);doc.roundedRect(mg,y,pw-mg*2,14,3,3,'F');
+  doc.setTextColor(120,90,0);doc.setFontSize(8);doc.setFont('helvetica','bold');
+  doc.text('Si test positif (>25%) : changer l huile immediatement et documenter.',mg+4,y+6);
+  doc.setFont('helvetica','normal');doc.text('Conserver les tickets de test colorimetrique agrafes a cette fiche.',mg+4,y+11);
+  doc.setFillColor(10,22,40);doc.rect(0,ph-10,pw,10,'F');
+  doc.setTextColor(150,150,180);doc.setFontSize(7);doc.setFont('helvetica','normal');
+  doc.text('Archivage 3 ans minimum - PMS pour les Nuls',pw/2,ph-4,{align:'center'});
+  doc.save('Controle_Huile_Friture_'+mois.replace(' ','_')+'.pdf');
+  toast('PDF huile de friture telecharge !');
+}
+
 function renderReception(){
-  const lignes = state.reception.lignes;
-  const rows = lignes.map((l,i)=>`
-    <tr>
-      <td><input type="date" value="${esc(l.date)}" onchange="state.reception.lignes[${i}].date=this.value;saveState()"></td>
-      <td><input type="text" value="${esc(l.fournisseur)}" placeholder="Fournisseur" onchange="state.reception.lignes[${i}].fournisseur=this.value;saveState()"></td>
-      <td><input type="text" value="${esc(l.produit)}" placeholder="Produit" onchange="state.reception.lignes[${i}].produit=this.value;saveState()"></td>
-      <td><input type="number" value="${esc(l.temp)}" placeholder="°C" style="width:60px" onchange="state.reception.lignes[${i}].temp=this.value;saveState()"></td>
-      <td><input type="date" value="${esc(l.dlc)}" onchange="state.reception.lignes[${i}].dlc=this.value;saveState()"></td>
-      <td><select onchange="state.reception.lignes[${i}].aspect=this.value;saveState()">
-        <option${l.aspect==='ok'?' selected':''}>ok</option>
-        <option${l.aspect==='ko'?' selected':''}>ko</option>
-        <option${l.aspect==='reserve'?' selected':''}>réserve</option>
-      </select></td>
-      <td><input type="text" value="${esc(l.action)}" placeholder="Action" onchange="state.reception.lignes[${i}].action=this.value;saveState()"></td>
-      <td>${i>0?`<button class="btn-del" onclick="state.reception.lignes.splice(${i},1);saveState();showTab('reception')">🗑️</button>`:'—'}</td>
-    </tr>`).join('');
-
-  return`<div class="card">
-    <div class="card-title">📦 Réception des Marchandises</div>
-    <div class="card-sub">Contrôle à chaque livraison — température, DLC, aspect</div>
-    <div style="overflow-x:auto">
-    <table class="tbl">
-      <thead><tr><th>Date</th><th>Fournisseur</th><th>Produit</th><th>Temp.</th><th>DLC</th><th>Aspect</th><th>Action</th><th></th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table></div>
-    <button class="btn-add" onclick="state.reception.lignes.push(makeReception());saveState();showTab('reception')">+ Ajouter une livraison</button>
-    <div class="warn-box" style="margin-top:12px">⚠️ <strong>Rappel :</strong> Refuser toute livraison dont la température dépasse les seuils réglementaires ou dont l'aspect est douteux. Documenter systématiquement les non-conformités.</div>
-    ${navBtns('temp','nettoyage')}
-  </div>`;
+  if(!state.reception.checks) state.reception.checks={visuel:false,temp:false,dlc:false};
+  var rc = state.reception.checks;
+  var h = '<div class="card">';
+  h += '<div class="card-title">📦 Reception des Marchandises</div>';
+  h += '<div class="card-sub">Procedures de controle a chaque livraison</div>';
+  h += dv('A chaque reception, je verifie :');
+  h += '<div class="check-item'+(rc.visuel?' checked':'')+'" onclick="toggleRC(\"visuel\")">'; 
+  h += '<div class="check-box"><span class="check-tick">✓</span></div>';
+  h += '<div><div class="check-label">Controle visuel</div>';
+  h += '<div class="check-sub">Integrite emballages, absence moisissures, couleur et odeur normales</div></div></div>';
+  h += '<div class="check-item'+(rc.temp?' checked':'')+'" onclick="toggleRC(\"temp\")">'; 
+  h += '<div class="check-box"><span class="check-tick">✓</span></div>';
+  h += '<div><div class="check-label">Releve des temperatures</div>';
+  h += '<div class="check-sub">Viandes &lt;=+4C - Poissons 0/+2C - Surgeles &lt;=-18C</div></div></div>';
+  h += '<div class="check-item'+(rc.dlc?' checked':'')+'" onclick="toggleRC(\"dlc\")">'; 
+  h += '<div class="check-box"><span class="check-tick">✓</span></div>';
+  h += '<div><div class="check-label">Verification DLC / DLUO</div>';
+  h += '<div class="check-sub">Date limite valide, rotation FIFO (premier entre, premier sorti)</div></div></div>';
+  h += '<div class="warn-box" style="margin-top:14px">En cas de non-conformite : refuser la livraison ou isoler les produits non conformes.</div>';
+  h += dv('Fiches a telecharger et imprimer');
+  h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">';
+  h += '<div style="border:2px solid var(--blue);border-radius:12px;padding:14px;text-align:center"><div style="font-size:28px;margin-bottom:5px">📦</div><div style="font-weight:800;font-size:13px;color:var(--navy);margin-bottom:3px">Reception Marchandises</div><div style="font-size:11px;color:var(--gray);margin-bottom:10px">30 lignes - Temp - DLC - Aspect</div><button class="dl-btn" style="margin:0;font-size:12px;padding:9px;background:linear-gradient(135deg,var(--blue),#0d2137)" onclick="dlFicheReception()">Telecharger PDF</button></div>';
+  h += '<div style="border:2px solid var(--green);border-radius:12px;padding:14px;text-align:center"><div style="font-size:28px;margin-bottom:5px">📋</div><div style="font-weight:800;font-size:13px;color:var(--navy);margin-bottom:3px">Tracabilite Produits</div><div style="font-size:11px;color:var(--gray);margin-bottom:10px">N lot - DLC - Fournisseur</div><button class="dl-btn" style="margin:0;font-size:12px;padding:9px;background:linear-gradient(135deg,var(--green),#1a7a40)" onclick="dlFicheTracabilite()">Telecharger PDF</button></div>';
+  h += '</div>';
+  h += nav('temp','nettoyage') + '</div>';
+  return h;
 }
-
-// ══════════════════════════════════════════════
-// SECTION: NETTOYAGE
-// ══════════════════════════════════════════════
-const NETT_CHECKS = [
-  {l:"Plan de nettoyage écrit et affiché en cuisine"},
-  {l:"Nettoyage et désinfection après chaque service"},
-  {l:"Code couleur planches à découper respecté",s:"Rouge:viande / Bleu:poisson / Vert:légumes / Jaune:volaille"},
-  {l:"FDS des produits chimiques disponibles"},
-  {l:"Produits stockés à l'écart des denrées"},
-  {l:"Contrat dératisation / désinsectisation en cours"},
-];
-
+function toggleRC(key){
+  if(!state.reception.checks) state.reception.checks={visuel:false,temp:false,dlc:false};
+  state.reception.checks[key]=!state.reception.checks[key];
+  saveState(); showTab('reception');
+}
 function renderNettoyage(){
-  const plan = state.nettoyage.plan;
-  const planRows = plan.map((p,i)=>`
+  const planRows=state.nettoyage.plan.map((p,i)=>`
     <tr>
       <td><strong>${p.zone}</strong></td>
       <td><input type="text" value="${esc(p.freq)}" onchange="state.nettoyage.plan[${i}].freq=this.value;saveState()"></td>
-      <td><input type="text" value="${esc(p.produit)}" placeholder="Produit utilisé" onchange="state.nettoyage.plan[${i}].produit=this.value;saveState()"></td>
+      <td><input type="text" value="${esc(p.produit)}" placeholder="Produit" onchange="state.nettoyage.plan[${i}].produit=this.value;saveState()"></td>
       <td><input type="text" value="${esc(p.resp)}" placeholder="Responsable" onchange="state.nettoyage.plan[${i}].resp=this.value;saveState()"></td>
     </tr>`).join('');
-
-  const netChecks = state.nettoyage.checks;
-  const checkItems = NETT_CHECKS.map((c,i)=>`
-    <div class="check-item${netChecks[i]?' checked':''}" onclick="state.nettoyage.checks[${i}]=!state.nettoyage.checks[${i}];saveState();this.classList.toggle('checked')">
-      <div class="check-box"><span class="check-tick">✓</span></div>
-      <div><div class="check-label">${c.l}</div>${c.s?`<div class="check-sub">${c.s}</div>`:''}</div>
-    </div>`).join('');
-
   return`<div class="card">
-    <div class="card-title">🧹 Plan de Nettoyage & Désinfection</div>
-    <div class="card-sub">Complétez le plan — fréquences, produits et responsables</div>
-    ${div('Plan de nettoyage détaillé')}
+    <div class="card-title">🧹 Nettoyage & Désinfection</div>
+    <div class="card-sub">Plan de nettoyage détaillé</div>
+    ${dv('Plan de nettoyage')}
     <div style="overflow-x:auto">
     <table class="tbl">
       <thead><tr><th>Zone</th><th>Fréquence</th><th>Produit utilisé</th><th>Responsable</th></tr></thead>
       <tbody>${planRows}</tbody>
     </table></div>
-    ${div('Conformité générale')}
-    ${checkItems}
-    ${fta('nettoyage.obs','Observations complémentaires','Points de vigilance, améliorations prévues...')}
-    ${navBtns('reception','allergenes')}
-  </div>`;
-}
+    ${dv('Conformité générale')}
+    ${chkList('nettoyage',NETT_CHECKS)}
+    ${fta('nettoyage.obs','Observations','Points de vigilance...')}
+    ${dv('Fiches a telecharger')}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+      <div style="border:2px solid var(--teal);border-radius:12px;padding:14px;text-align:center">
+        <div style="font-size:28px;margin-bottom:5px">🧹</div>
+        <div style="font-weight:800;font-size:13px;color:var(--navy);margin-bottom:3px">Fiche Nettoyage Quotidien</div>
+        <div style="font-size:11px;color:var(--gray);margin-bottom:10px">Pre-remplie - Cases a cocher - Semaine</div>
+        <button class="dl-btn" style="margin:0;font-size:12px;padding:9px" onclick="dlFicheNettoyage()">Telecharger PDF</button>
+      </div>
+      <div style="border:2px solid var(--navy);border-radius:12px;padding:14px;text-align:center">
+        <div style="font-size:28px;margin-bottom:5px">📋</div>
+        <div style="font-weight:800;font-size:13px;color:var(--navy);margin-bottom:3px">Plan de Nettoyage Complet</div>
+        <div style="font-size:11px;color:var(--gray);margin-bottom:10px">Toutes zones - Frequences - Produits</div>
+        <button class="dl-btn" style="margin:0;font-size:12px;padding:9px;background:linear-gradient(135deg,var(--navy),var(--blue))" onclick="dlPlanNettoyage()">Telecharger PDF</button>
+      </div>
+    </div>
+    ${nav('reception','allergenes')}
+  </div>`;}
 
-// ══════════════════════════════════════════════
-// SECTION: ALLERGÈNES
-// ══════════════════════════════════════════════
 function renderAllergenes(){
-  const status = state.allergenes.status;
-  const grid = ALLERGENS.map(a=>`
-    <div class="allerg-item ${status[a.id]==='present'?'present':status[a.id]==='absent'?'absent':''}"
-      onclick="cycleAllerg('${a.id}')">
-      <div class="allerg-dot"></div>
-      <span>${a.label}</span>
+  const st=state.allergenes.status;
+  const grid=ALLERGENS.map(a=>`
+    <div class="allerg-item ${st[a.id]==='present'?'present':st[a.id]==='absent'?'absent':''}" onclick="cycleA('${a.id}')">
+      <div class="allerg-dot"></div><span>${a.label}</span>
     </div>`).join('');
-
-  const plats = state.allergenes.plats;
-  const platRows = plats.map((p,i)=>`
+  const platRows=state.allergenes.plats.map((p,i)=>`
     <tr>
       <td><input type="text" value="${esc(p.nom)}" placeholder="Nom du plat" onchange="state.allergenes.plats[${i}].nom=this.value;saveState()"></td>
-      <td><input type="text" value="${esc((p.allergenes||[]).join(', '))}" placeholder="Gluten, Lait, Œufs..." onchange="state.allergenes.plats[${i}].allergenes=this.value.split(',').map(s=>s.trim()).filter(Boolean);saveState()"></td>
+      <td><input type="text" value="${esc((p.allergenes||[]).join(', '))}" placeholder="Gluten, Lait..." onchange="state.allergenes.plats[${i}].allergenes=this.value.split(',').map(s=>s.trim()).filter(Boolean);saveState()"></td>
       <td>${i>0?`<button class="btn-del" onclick="state.allergenes.plats.splice(${i},1);saveState();showTab('allergenes')">🗑️</button>`:'—'}</td>
     </tr>`).join('');
-
   return`<div class="card">
     <div class="card-title">⚠️ Gestion des Allergènes</div>
     <div class="card-sub">14 allergènes réglementaires — appuyez pour changer le statut</div>
-    ${div('Présence dans votre établissement')}
-    <div style="margin-bottom:8px;font-size:11px;color:var(--gray)">
-      🟡 Présent dans vos plats &nbsp;|&nbsp; 🟢 Absent &nbsp;|&nbsp; ⬜ Non renseigné
-    </div>
+    <div style="font-size:11px;color:var(--gray);margin-bottom:8px">🟡 Présent · 🟢 Absent · ⬜ Non renseigné</div>
     <div class="allerg-grid">${grid}</div>
-    ${div('Allergènes par plat / produit')}
+    ${dv('Allergènes par plat')}
     <div style="overflow-x:auto">
     <table class="tbl">
       <thead><tr><th>Plat / Produit</th><th>Allergènes présents</th><th></th></tr></thead>
       <tbody>${platRows}</tbody>
     </table></div>
     <button class="btn-add" onclick="state.allergenes.plats.push({nom:'',allergenes:[]});saveState();showTab('allergenes')">+ Ajouter un plat</button>
-    ${fta('allergenes.obs','Procédures de gestion des allergènes','Protocole de prévention des contaminations croisées...')}
-    ${navBtns('nettoyage','personnel')}
-  </div>`;
+    ${fta('allergenes.obs','Procédures anti-contamination croisée','')}
+    ${dv('Tableau allergenes a telecharger')}
+    <button class="dl-btn" style="font-size:13px;padding:12px;margin-bottom:14px;background:linear-gradient(135deg,#e67e00,#f39c12)" onclick="dlFicheAllergenes()">📥 Telecharger Tableau Allergenes</button>
+    ${nav('nettoyage','personnel')}
+  </div>`;}
+function cycleA(id){
+  const s=state.allergenes.status[id];
+  state.allergenes.status[id]=s==='nc'?'present':s==='present'?'absent':'nc';
+  saveState();showTab('allergenes');
 }
-
-function cycleAllerg(id){
-  const s = state.allergenes.status[id];
-  state.allergenes.status[id] = s==='nc'?'present':s==='present'?'absent':'nc';
-  saveState();
-  showTab('allergenes');
-}
-
-// ══════════════════════════════════════════════
-// SECTION: PERSONNEL
-// ══════════════════════════════════════════════
-const PERS_CHECKS = [
-  {l:"Visite médicale d'embauche effectuée"},
-  {l:"Procédure d'exclusion en cas de maladie définie",s:"Gastro, infections cutanées, plaies ouvertes"},
-  {l:"Tenue complète et propre en cuisine",s:"Veste, tablier, charlotte, chaussures sécurité"},
-  {l:"Bijoux et montres retirés en cuisine"},
-  {l:"Cheveux couverts ou attachés"},
-  {l:"Lavage mains à la prise de poste"},
-  {l:"Lavage après manipulation denrées crues"},
-  {l:"Lavage après passage aux toilettes"},
-  {l:"Protocole lavage mains affiché",s:"30 secondes avec savon bactéricide"},
-];
 
 function renderPersonnel(){
-  const persChecks = state.personnel.checks;
-  const checkItems = PERS_CHECKS.map((c,i)=>`
-    <div class="check-item${persChecks[i]?' checked':''}" onclick="state.personnel.checks[${i}]=!state.personnel.checks[${i}];saveState();this.classList.toggle('checked')">
-      <div class="check-box"><span class="check-tick">✓</span></div>
-      <div><div class="check-label">${c.l}</div>${c.s?`<div class="check-sub">${c.s}</div>`:''}</div>
-    </div>`).join('');
-
-  const formations = state.personnel.formations;
-  const formRows = formations.map((f,i)=>`
+  const formRows=state.personnel.formations.map((f,i)=>`
     <tr>
       <td><input type="date" value="${esc(f.date)}" onchange="state.personnel.formations[${i}].date=this.value;saveState()"></td>
       <td><input type="text" value="${esc(f.organisme)}" placeholder="CCI, AFPA..." onchange="state.personnel.formations[${i}].organisme=this.value;saveState()"></td>
       <td><input type="text" value="${esc(f.personnes)}" placeholder="Noms" onchange="state.personnel.formations[${i}].personnes=this.value;saveState()"></td>
-      <td><input type="text" value="${esc(f.type)}" placeholder="HACCP, BPH..." onchange="state.personnel.formations[${i}].type=this.value;saveState()"></td>
+      <td><input type="text" value="${esc(f.type)}" placeholder="HACCP..." onchange="state.personnel.formations[${i}].type=this.value;saveState()"></td>
       <td>${i>0?`<button class="btn-del" onclick="state.personnel.formations.splice(${i},1);saveState();showTab('personnel')">🗑️</button>`:'—'}</td>
     </tr>`).join('');
-
-  const accidents = state.personnel.accidents;
-  const accRows = accidents.map((a,i)=>`
+  const accRows=state.personnel.accidents.map((a,i)=>`
     <tr>
       <td><input type="date" value="${esc(a.date)}" onchange="state.personnel.accidents[${i}].date=this.value;saveState()"></td>
-      <td><input type="text" value="${esc(a.description)}" placeholder="Description de l'incident" onchange="state.personnel.accidents[${i}].description=this.value;saveState()"></td>
+      <td><input type="text" value="${esc(a.description)}" placeholder="Description" onchange="state.personnel.accidents[${i}].description=this.value;saveState()"></td>
       <td><input type="text" value="${esc(a.action)}" placeholder="Action corrective" onchange="state.personnel.accidents[${i}].action=this.value;saveState()"></td>
       <td>${i>0?`<button class="btn-del" onclick="state.personnel.accidents.splice(${i},1);saveState();showTab('personnel')">🗑️</button>`:'—'}</td>
     </tr>`).join('');
-
   return`<div class="card">
     <div class="card-title">👩‍🍳 Hygiène du Personnel</div>
     <div class="card-sub">Bonnes pratiques, formations et incidents</div>
-    ${div('Bonnes pratiques')}
-    ${checkItems}
-    ${div('Historique des formations HACCP')}
+    ${chkList('personnel',PERS_CHECKS)}
+    ${dv('Formations HACCP')}
     <div style="overflow-x:auto">
     <table class="tbl">
-      <thead><tr><th>Date</th><th>Organisme</th><th>Personnes formées</th><th>Type</th><th></th></tr></thead>
+      <thead><tr><th>Date</th><th>Organisme</th><th>Personnes</th><th>Type</th><th></th></tr></thead>
       <tbody>${formRows}</tbody>
     </table></div>
-    <button class="btn-add" onclick="state.personnel.formations.push({date:'',organisme:'',personnes:'',type:''});saveState();showTab('personnel')">+ Ajouter une formation</button>
-    ${div('Registre des incidents / accidents')}
+    <button class="btn-add" onclick="state.personnel.formations.push({date:'',organisme:'',personnes:'',type:''});saveState();showTab('personnel')">+ Formation</button>
+    ${dv('Registre des incidents')}
     <div style="overflow-x:auto">
     <table class="tbl">
       <thead><tr><th>Date</th><th>Description</th><th>Action corrective</th><th></th></tr></thead>
       <tbody>${accRows}</tbody>
     </table></div>
-    <button class="btn-add" onclick="state.personnel.accidents.push({date:'',description:'',action:''});saveState();showTab('personnel')">+ Ajouter un incident</button>
-    ${fta('personnel.obs','Observations générales','Remarques sur l\'hygiène du personnel...')}
-    ${navBtns('allergenes','bilan')}
-  </div>`;
-}
+    <button class="btn-add" onclick="state.personnel.accidents.push({date:'',description:'',action:''});saveState();showTab('personnel')">+ Incident</button>
+    ${fta('personnel.obs','Observations','')}
+    ${nav('allergenes','bilan')}
+  </div>`;}
 
-// ══════════════════════════════════════════════
-// SECTION: BILAN
-// ══════════════════════════════════════════════
 function renderBilan(){
-  const allChecks = [
-    ...state.locaux.checks,
-    ...state.temp.procChecks,
-    ...state.nettoyage.checks,
-    ...state.personnel.checks,
-  ];
-  const total = allChecks.length;
-  const done = allChecks.filter(Boolean).length;
-  const score = Math.round((done/total)*100);
-  const col = score>=80?'#2ecc71':score>=60?'#ffb347':'#ff4d4d';
-  const msg = score>=80?'✅ Bon niveau de conformité':score>=60?'⚠️ Des améliorations nécessaires':'❌ Non-conformités importantes';
-
-  const tempCount = state.temp.releves.length;
-  const recepCount = state.reception.lignes.filter(l=>l.fournisseur||l.produit).length;
-  const allergCount = Object.values(state.allergenes.status).filter(s=>s!=='nc').length;
-  const formCount = state.personnel.formations.filter(f=>f.date).length;
-
+  const allC=[...state.locaux.checks,...state.temp.procChecks,...state.nettoyage.checks,...state.personnel.checks];
+  const tot=allC.length,dn=allC.filter(Boolean).length,pct=Math.round((dn/tot)*100);
+  const col=pct>=80?'#2ecc71':pct>=60?'#ffb347':'#ff4d4d';
+  const msg=pct>=80?'✅ Bon niveau de conformité':pct>=60?'⚠️ Améliorations nécessaires':'❌ Non-conformités importantes';
   return`<div class="card">
     <div class="card-title">📊 Bilan de conformité</div>
-    <div class="card-sub">Récapitulatif complet de votre PMS</div>
-
+    <div class="card-sub">Récapitulatif complet</div>
     <div class="sum-grid">
       <div class="sum-card"><div class="sum-card-label">Établissement</div><div class="sum-card-val">${esc(state.etab.nom)||'—'}</div></div>
       <div class="sum-card"><div class="sum-card-label">Type</div><div class="sum-card-val">${esc(state.etab.type)||'—'}</div></div>
       <div class="sum-card"><div class="sum-card-label">Responsable</div><div class="sum-card-val">${esc(state.etab.responsable)||'—'}</div></div>
       <div class="sum-card"><div class="sum-card-label">Date du PMS</div><div class="sum-card-val">${esc(state.etab.datePms)||'—'}</div></div>
     </div>
-
     <div class="score-box" style="background:${col}18;border:2px solid ${col}">
-      <div class="score-number" style="color:${col}">${score}%</div>
-      <div class="score-msg" style="color:${col}">${msg}</div>
-      <div style="font-size:12px;opacity:.7">${done} critères validés sur ${total}</div>
-      <div class="score-bar"><div class="score-fill" style="width:${score}%;background:${col}"></div></div>
+      <div class="score-number" style="color:${col}">${pct}%</div>
+      <div style="color:${col};font-weight:700;font-size:15px;margin:4px 0">${msg}</div>
+      <div style="font-size:12px;opacity:.7">${dn} critères validés sur ${tot}</div>
+      <div class="score-bar"><div class="score-fill" style="width:${pct}%;background:${col}"></div></div>
     </div>
-
-    <div class="sum-grid" style="margin-bottom:14px">
-      <div class="sum-card"><div class="sum-card-label">📅 Relevés températures</div><div class="sum-card-val">${tempCount} relevé(s)</div></div>
-      <div class="sum-card"><div class="sum-card-label">📦 Réceptions</div><div class="sum-card-val">${recepCount} livraison(s)</div></div>
-      <div class="sum-card"><div class="sum-card-label">⚠️ Allergènes renseignés</div><div class="sum-card-val">${allergCount}/14</div></div>
-      <div class="sum-card"><div class="sum-card-label">🎓 Formations</div><div class="sum-card-val">${formCount} formation(s)</div></div>
+    <div class="sum-grid">
+      <div class="sum-card"><div class="sum-card-label">📅 Relevés temp.</div><div class="sum-card-val">${state.temp.releves.length}</div></div>
+      <div class="sum-card"><div class="sum-card-label">📦 Réceptions</div><div class="sum-card-val">${state.reception.lignes.filter(l=>l.fournisseur).length}</div></div>
+      <div class="sum-card"><div class="sum-card-label">⚠️ Allergènes</div><div class="sum-card-val">${Object.values(state.allergenes.status).filter(s=>s!=='nc').length}/14</div></div>
+      <div class="sum-card"><div class="sum-card-label">🎓 Formations</div><div class="sum-card-val">${state.personnel.formations.filter(f=>f.date).length}</div></div>
     </div>
+    <div class="warn-box">⚠️ Ce PMS doit être présenté lors de tout contrôle DDPP. Conservation 3 ans minimum.</div>
+    <button class="dl-btn" onclick="generatePDF()">📄 Telecharger mon PMS complet en PDF</button>
+    <div class="tip-box" style="margin-bottom:16px">Le PDF se telecharge dans votre dossier Telechargements.</div>
+    ${dv('Documents obligatoires en cas de controle DDPP')}
+    ${getDocsListHTML()}
+    ${nav('personnel','')}
+  </div>`;}
 
-    <div class="warn-box">⚠️ <strong>Rappel réglementaire :</strong> Ce PMS doit être présenté lors de tout contrôle DDPP. Les enregistrements doivent être conservés au minimum 3 ans.</div>
-
-    <button class="dl-btn" onclick="generatePDF()">📄 Télécharger mon PMS complet en PDF</button>
-    <div class="tip-box">💡 Le PDF se télécharge automatiquement dans votre dossier Téléchargements.</div>
-    ${navBtns('personnel','')}
-  </div>`;
+function getDocsListHTML(){
+  var items = [
+    ['📄','Ce PMS signe et date','Document de reference obligatoire'],
+    ['🌡️','Fiches releves temperatures','Minimum 3 mois archives'],
+    ['📦','Fiches reception marchandises','Toutes livraisons documentees'],
+    ['🧹','Fiches controle nettoyage','Signees par le responsable'],
+    ['⚠️','Tableau des allergenes','Affiche et a jour'],
+    ['🎓','Attestations formation HACCP','Pour tout le personnel'],
+    ['🐀','Contrat deratisation/desinsectisation','En cours de validite'],
+    ['🏥','Visites medicales personnel','A jour pour tous les employes'],
+    ['📋','Fiches de tracabilite','Numeros de lots et fournisseurs'],
+    ['🧴','Fiches donnees securite FDS','Des produits de nettoyage'],
+    ['📊','Analyses microbiologiques','Si realisees'],
+    ['📝','Registre des incidents','Avec actions correctives'],
+  ];
+  var h = '<div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px">';
+  h += '<p style="font-size:12px;color:var(--gray);margin-bottom:12px">Presentez ces documents lors de tout controle :</p>';
+  h += '<div style="display:flex;flex-direction:column;gap:8px">';
+  items.forEach(function(d){
+    h += '<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 12px;background:var(--light);border-radius:8px;border:1px solid var(--border)">';
+    h += '<span style="font-size:18px;flex-shrink:0">'+d[0]+'</span>';
+    h += '<div><div style="font-size:13px;font-weight:700;color:var(--navy)">'+d[1]+'</div>';
+    h += '<div style="font-size:11px;color:var(--gray)">'+d[2]+'</div></div></div>';
+  });
+  h += '</div></div>';
+  h += '<div style="background:#fee2e2;border:1px solid var(--red);border-radius:10px;padding:12px;margin-bottom:14px;font-size:12px;color:#7f1d1d">Absence de PMS lors d un controle = mise en demeure ou fermeture. Conservation <strong>3 ans minimum</strong>.</div>';
+  return h;
 }
 
 // ══════════════════════════════════════════════
-// PDF GENERATION
+// PDF
 // ══════════════════════════════════════════════
 function generatePDF(){
   const{jsPDF}=window.jspdf;
   const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
-  const pw=210,ph=297,mg=16;
-  let y=0;
+  const pw=210,ph=297,mg=16;let y=0;
+  function ap(){doc.addPage();y=18;doc.setFillColor(10,22,40);doc.rect(0,0,pw,11,'F');doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','normal');doc.text('PMS pour les Nuls – '+(state.etab.nom||'Établissement'),mg,7);doc.text('Page '+doc.getNumberOfPages(),pw-mg,7,{align:'right'});y=18;}
+  function chk(h=16){if(y+h>ph-14)ap();}
+  function sh(t){chk(14);doc.setFillColor(10,22,40);doc.rect(mg,y,pw-mg*2,9,'F');doc.setFillColor(0,201,167);doc.rect(mg,y,2,9,'F');doc.setTextColor(255,255,255);doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text(t,mg+5,y+6.5);y+=13;}
+  function cr(label,ok){chk(7);doc.setFontSize(8);doc.setFont('helvetica','normal');doc.setTextColor(ok?46:220,ok?204:50,ok?113:50);doc.text(ok?'✓':'✗',mg+2,y+4);doc.setTextColor(40,50,60);const ls=doc.splitTextToSize(label,pw-mg*2-12);doc.text(ls,mg+9,y+4);y+=ls.length*4.5+2;}
+  function nr(lbl,val){chk(7);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(lbl,mg+2,y+4);doc.setFont('helvetica','normal');doc.setTextColor(70,80,100);doc.text(val||'—',mg+50,y+4);y+=7;}
+  function nt(lbl,txt){if(!txt)return;chk(12);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(lbl,mg+2,y);y+=5;doc.setFont('helvetica','normal');doc.setTextColor(70,80,100);const ls=doc.splitTextToSize(txt,pw-mg*2-4);chk(ls.length*4.5+4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
 
-  function addPage(){
-    doc.addPage();y=18;
-    doc.setFillColor(10,22,40);doc.rect(0,0,pw,11,'F');
-    doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','normal');
-    doc.text('PMS pour les Nuls – '+(state.etab.nom||'Établissement'),mg,7);
-    doc.text('Page '+doc.getNumberOfPages(),pw-mg,7,{align:'right'});
-    y=18;
-  }
-  function chk(h=16){if(y+h>ph-14)addPage();}
-  function secHead(t,color=[10,22,40]){
-    chk(14);
-    doc.setFillColor(...color);doc.rect(mg,y,pw-mg*2,9,'F');
-    doc.setFillColor(0,201,167);doc.rect(mg,y,2,9,'F');
-    doc.setTextColor(255,255,255);doc.setFontSize(10);doc.setFont('helvetica','bold');
-    doc.text(t,mg+5,y+6.5);y+=13;
-  }
-  function row(label,val){
-    chk(7);doc.setFontSize(8);
-    doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(label,mg+2,y+4);
-    doc.setFont('helvetica','normal');doc.setTextColor(70,80,100);doc.text(val||'—',mg+50,y+4);y+=7;
-  }
-  function cRow(label,ok){
-    chk(7);doc.setFontSize(8);doc.setFont('helvetica','normal');
-    doc.setTextColor(ok?46:220,ok?204:50,ok?113:50);doc.text(ok?'✓':'✗',mg+2,y+4);
-    doc.setTextColor(40,50,60);
-    const ls=doc.splitTextToSize(label,pw-mg*2-12);doc.text(ls,mg+9,y+4);
-    y+=ls.length*4.5+2;
-  }
-  function note(lbl,txt){
-    if(!txt)return;chk(12);
-    doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(lbl,mg+2,y);y+=5;
-    doc.setFont('helvetica','normal');doc.setTextColor(70,80,100);
-    const ls=doc.splitTextToSize(txt,pw-mg*2-4);chk(ls.length*4.5+4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;
-  }
-
-  // ── COVER ──
+  // COVER
+  const nom=state.etab.nom||'Non renseigné';
   doc.setFillColor(10,22,40);doc.rect(0,0,pw,85,'F');
   doc.setFillColor(0,201,167);doc.rect(0,83,pw,3,'F');
-  doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(0,201,167);
-  doc.text('HACCP – RÈGLEMENT CE 852/2004',mg,20);
-  doc.setFontSize(26);doc.setFont('helvetica','bold');doc.setTextColor(255,255,255);
-  doc.text('PLAN DE MAÎTRISE',mg,33);doc.text('SANITAIRE',mg,44);
-  doc.setFontSize(10);doc.setFont('helvetica','normal');doc.setTextColor(160,200,220);
-  doc.text('PMS pour les Nuls – Version complète',mg,55);
-  doc.setFontSize(8);doc.setTextColor(100,140,180);
-  doc.text('Généré le '+new Date().toLocaleDateString('fr-FR'),mg,63);
-
+  doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(0,201,167);doc.text('HACCP – RÈGLEMENT CE 852/2004',mg,20);
+  doc.setFontSize(26);doc.setFont('helvetica','bold');doc.setTextColor(255,255,255);doc.text('PLAN DE MAÎTRISE',mg,33);doc.text('SANITAIRE',mg,44);
+  doc.setFontSize(10);doc.setFont('helvetica','normal');doc.setTextColor(160,200,220);doc.text('PMS pour les Nuls – pmspourlesnuls.com',mg,55);
+  doc.setFontSize(8);doc.setTextColor(100,140,180);doc.text('Généré le '+new Date().toLocaleDateString('fr-FR'),mg,63);
   y=92;
-  const nom=state.etab.nom||'Non renseigné';
-  doc.setFillColor(244,247,251);doc.roundedRect(mg,y,pw-mg*2,80,4,4,'F');
-  doc.setDrawColor(220,228,238);doc.roundedRect(mg,y,pw-mg*2,80,4,4,'S');
+  doc.setFillColor(244,247,251);doc.roundedRect(mg,y,pw-mg*2,80,4,4,'F');doc.setDrawColor(220,228,238);doc.roundedRect(mg,y,pw-mg*2,80,4,4,'S');
   doc.setFontSize(15);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(nom,mg+7,y+13);
-  const infos=[['Type',state.etab.type],['Adresse',state.etab.adresse],['Responsable',state.etab.responsable],
-    ['SIRET',state.etab.siret],['Agrément',state.etab.numero_agrement],
-    ['Capacité',state.etab.capacite],['Effectif',state.etab.employes+' employés'],['Date du PMS',state.etab.datePms]];
+  const infos=[['Type',state.etab.type],['Adresse',state.etab.adresse],['Responsable',state.etab.responsable],['SIRET',state.etab.siret],['Agrément',state.etab.agrement],['Capacité',state.etab.capacite],['Effectif',state.etab.employes+' employés'],['Date du PMS',state.etab.datePms]];
   doc.setFontSize(8);
-  infos.forEach((r,i)=>{
-    doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(r[0]+' :',mg+7,y+24+i*7);
-    doc.setFont('helvetica','normal');doc.setTextColor(70,80,100);doc.text(r[1]||'—',mg+44,y+24+i*7);
-  });
+  infos.forEach((r,i)=>{doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(r[0]+' :',mg+7,y+24+i*7);doc.setFont('helvetica','normal');doc.setTextColor(70,80,100);doc.text(r[1]||'—',mg+44,y+24+i*7);});
   y+=88;
-
-  const allChecks=[...state.locaux.checks,...state.temp.procChecks,...state.nettoyage.checks,...state.personnel.checks];
-  const tot=allChecks.length,dn=allChecks.filter(Boolean).length,pct=Math.round((dn/tot)*100);
+  const allC=[...state.locaux.checks,...state.temp.procChecks,...state.nettoyage.checks,...state.personnel.checks];
+  const tot=allC.length,dn=allC.filter(Boolean).length,pct=Math.round((dn/tot)*100);
   const sc=pct>=80?[46,204,113]:pct>=60?[255,179,71]:[255,77,77];
-  doc.setFillColor(...sc);doc.roundedRect(mg,y,pw-mg*2,24,4,4,'F');
-  doc.setTextColor(255,255,255);doc.setFontSize(13);doc.setFont('helvetica','bold');
-  doc.text('Score de conformité : '+pct+'%  ('+dn+'/'+tot+' critères validés)',mg+6,y+10);
-  doc.setFontSize(9);doc.setFont('helvetica','normal');
-  const smsg=pct>=80?'Bon niveau de conformité sanitaire':pct>=60?'Des améliorations sont nécessaires':'Non-conformités importantes à corriger';
-  doc.text(smsg,mg+6,y+19);y+=32;
+  doc.setFillColor(...sc);doc.roundedRect(mg,y,pw-mg*2,24,4,4,'F');doc.setTextColor(255,255,255);doc.setFontSize(13);doc.setFont('helvetica','bold');doc.text('Score : '+pct+'% ('+dn+'/'+tot+' critères)',mg+6,y+10);
+  doc.setFontSize(9);doc.setFont('helvetica','normal');doc.text(pct>=80?'Bon niveau de conformité':pct>=60?'Améliorations nécessaires':'Non-conformités importantes',mg+6,y+19);y+=32;
+  doc.setFillColor(255,248,220);doc.roundedRect(mg,y,pw-mg*2,18,3,3,'F');doc.setTextColor(120,90,0);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.text('Rappel réglementaire',mg+4,y+6);doc.setFont('helvetica','normal');doc.text('Ce PMS doit être présenté lors de tout contrôle DDPP. Conservation 3 ans minimum.',mg+4,y+13,{maxWidth:pw-mg*2-8});
 
-  doc.setFillColor(255,248,220);doc.roundedRect(mg,y,pw-mg*2,18,3,3,'F');
-  doc.setTextColor(120,90,0);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.text('Rappel réglementaire',mg+4,y+6);
-  doc.setFont('helvetica','normal');doc.text('Ce PMS doit être présenté lors de tout contrôle DDPP. Conservation 3 ans minimum.',mg+4,y+13,{maxWidth:pw-mg*2-8});
-
-  // ── LOCAUX ──
-  addPage();
-  secHead('🏗  LOCAUX & ÉQUIPEMENTS');
-  LOCAUX_CHECKS.forEach((c,i)=>cRow(c.l,state.locaux.checks[i]));
-  note('Observations :',state.locaux.obs);
-
-  // ── TEMPÉRATURES ──
-  chk(30);secHead('🌡  CONTRÔLE DES TEMPÉRATURES');
+  // SECTIONS
+  ap();sh('LOCAUX & ÉQUIPEMENTS');LOCAUX_CHECKS.forEach((c,i)=>cr(c.l,state.locaux.checks[i]));nt('Observations :',state.locaux.obs);
+  chk(30);sh('CONTRÔLE DES TEMPÉRATURES');
   state.temp.releves.forEach((r,ri)=>{
-    chk(14);
-    doc.setFontSize(9);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);
-    doc.text('Relevé du '+r.date,mg+2,y);y+=6;
-    doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,'F');
-    doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','bold');
-    ['Denrée','Réglementaire','Matin','Conform.','Soir','Conform.'].forEach((h,i)=>{
-      doc.text(h,mg+2+[0,48,88,108,128,148][i],y+5);
-    });
-    y+=7;
+    chk(14);doc.setFontSize(9);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text('Relevé du '+r.date,mg+2,y);y+=6;
+    doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,'F');doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','bold');
+    ['Denrée','Réglementaire','Matin','✓','Soir','✓'].forEach((h,i)=>doc.text(h,mg+2+[0,48,88,108,128,148][i],y+5));y+=7;
     TEMP_REGS.forEach((tr,ti)=>{
-      chk(7);
-      const vm=r.matin[ti]||'',vs=r.soir[ti]||'';
-      const cm=checkConform(tr.max,tr.min,vm),cs=checkConform(tr.max,tr.min,vs);
-      doc.setFillColor(ti%2===0?255:248,ti%2===0?255:250,ti%2===0?255:252);
-      doc.rect(mg,y,pw-mg*2,7,'F');
+      chk(7);const vm=r.matin[ti]||'',vs=r.soir[ti]||'';const cm=conform(tr,vm),cs=conform(tr,vs);
+      doc.setFillColor(ti%2===0?255:248,ti%2===0?255:250,ti%2===0?255:252);doc.rect(mg,y,pw-mg*2,7,'F');
       doc.setFontSize(7.5);doc.setFont('helvetica','normal');doc.setTextColor(40,50,60);
-      doc.text(tr.l,mg+2,y+5);doc.text(tr.r,mg+50,y+5);
-      doc.text(vm?vm+'°C':'—',mg+90,y+5);
+      doc.text(tr.l,mg+2,y+5);doc.text(tr.r,mg+50,y+5);doc.text(vm?vm+'°C':'—',mg+90,y+5);
       if(cm!==null){doc.setTextColor(cm?46:220,cm?204:50,cm?113:50);doc.text(cm?'✓':'✗',mg+112,y+5);}
       doc.setTextColor(40,50,60);doc.text(vs?vs+'°C':'—',mg+130,y+5);
-      if(cs!==null){doc.setTextColor(cs?46:220,cs?204:50,cs?113:50);doc.text(cs?'✓':'✗',mg+152,y+5);}
-      y+=7;
-    });
-    y+=4;
+      if(cs!==null){doc.setTextColor(cs?46:220,cs?204:50,cs?113:50);doc.text(cs?'✓':'✗',mg+152,y+5);}y+=7;
+    });y+=4;
   });
-  TEMP_PROC_CHECKS.forEach((c,i)=>cRow(c.l,state.temp.procChecks[i]));
-  note('Actions correctives :',state.temp.actionCorr);
+  TEMP_PROC.forEach((c,i)=>cr(c.l,state.temp.procChecks[i]));nt('Actions correctives :',state.temp.actionCorr);
 
-  // ── RÉCEPTION ──
-  chk(30);secHead('📦  RÉCEPTION DES MARCHANDISES');
-  const recLignes=state.reception.lignes.filter(l=>l.fournisseur||l.produit);
-  if(recLignes.length>0){
-    doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,'F');
-    doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','bold');
-    ['Date','Fournisseur','Produit','Temp.','DLC','Aspect','Action'].forEach((h,i)=>{
-      doc.text(h,mg+2+[0,24,60,96,112,130,148][i],y+5);
-    });
-    y+=7;
-    recLignes.forEach((l,i)=>{
-      chk(7);
-      doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);
-      doc.rect(mg,y,pw-mg*2,7,'F');
-      doc.setFontSize(7);doc.setFont('helvetica','normal');doc.setTextColor(40,50,60);
-      doc.text(l.date||'—',mg+2,y+5);doc.text((l.fournisseur||'—').slice(0,14),mg+26,y+5);
-      doc.text((l.produit||'—').slice(0,18),mg+62,y+5);doc.text(l.temp?l.temp+'°C':'—',mg+98,y+5);
-      doc.text(l.dlc||'—',mg+114,y+5);
-      const ac=l.aspect==='ok';doc.setTextColor(ac?46:220,ac?204:50,ac?113:50);
-      doc.text(l.aspect||'—',mg+132,y+5);
-      doc.setTextColor(40,50,60);doc.text((l.action||'—').slice(0,12),mg+150,y+5);y+=7;
-    });
-    y+=4;
-  } else {
-    doc.setFontSize(8);doc.setFont('helvetica','italic');doc.setTextColor(150,150,150);
-    doc.text('Aucune réception enregistrée',mg+2,y+5);y+=10;
+  chk(30);sh('RÉCEPTION DES MARCHANDISES');
+  const recL=state.reception.lignes.filter(l=>l.fournisseur||l.produit);
+  if(recL.length>0){
+    doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,'F');doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','bold');
+    ['Date','Fournisseur','Produit','Temp.','DLC','Aspect','Action'].forEach((h,i)=>doc.text(h,mg+2+[0,24,60,96,112,130,148][i],y+5));y+=7;
+    recL.forEach((l,i)=>{chk(7);doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);doc.rect(mg,y,pw-mg*2,7,'F');doc.setFontSize(7);doc.setFont('helvetica','normal');doc.setTextColor(40,50,60);doc.text(l.date||'—',mg+2,y+5);doc.text((l.fournisseur||'—').slice(0,14),mg+26,y+5);doc.text((l.produit||'—').slice(0,18),mg+62,y+5);doc.text(l.temp?l.temp+'°C':'—',mg+98,y+5);doc.text(l.dlc||'—',mg+114,y+5);const ao=l.aspect==='ok';doc.setTextColor(ao?46:220,ao?204:50,ao?113:50);doc.text(l.aspect||'—',mg+132,y+5);doc.setTextColor(40,50,60);doc.text((l.action||'—').slice(0,12),mg+150,y+5);y+=7;});y+=4;
   }
 
-  // ── NETTOYAGE ──
-  chk(30);secHead('🧹  NETTOYAGE & DÉSINFECTION');
-  doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,'F');
-  doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','bold');
-  ['Zone','Fréquence','Produit','Responsable'].forEach((h,i)=>{doc.text(h,mg+2+[0,48,96,144][i],y+5);});
-  y+=7;
-  state.nettoyage.plan.forEach((p,i)=>{
-    chk(7);
-    doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);
-    doc.rect(mg,y,pw-mg*2,7,'F');
-    doc.setFontSize(7.5);doc.setFont('helvetica','normal');doc.setTextColor(40,50,60);
-    doc.text(p.zone,mg+2,y+5);doc.text(p.freq||'—',mg+50,y+5);
-    doc.text((p.produit||'—').slice(0,18),mg+98,y+5);doc.text((p.resp||'—').slice(0,15),mg+146,y+5);y+=7;
-  });
-  y+=4;
-  NETT_CHECKS.forEach((c,i)=>cRow(c.l,state.nettoyage.checks[i]));
-  note('Observations :',state.nettoyage.obs);
+  chk(30);sh('NETTOYAGE & DÉSINFECTION');
+  doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,'F');doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','bold');
+  ['Zone','Fréquence','Produit','Responsable'].forEach((h,i)=>doc.text(h,mg+2+[0,48,96,144][i],y+5));y+=7;
+  state.nettoyage.plan.forEach((p,i)=>{chk(7);doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);doc.rect(mg,y,pw-mg*2,7,'F');doc.setFontSize(7.5);doc.setFont('helvetica','normal');doc.setTextColor(40,50,60);doc.text(p.zone,mg+2,y+5);doc.text(p.freq||'—',mg+50,y+5);doc.text((p.produit||'—').slice(0,18),mg+98,y+5);doc.text((p.resp||'—').slice(0,15),mg+146,y+5);y+=7;});y+=4;
+  NETT_CHECKS.forEach((c,i)=>cr(c.l,state.nettoyage.checks[i]));nt('Observations :',state.nettoyage.obs);
 
-  // ── ALLERGÈNES ──
-  chk(30);secHead('⚠  GESTION DES ALLERGÈNES');
-  const algPresent=ALLERGENS.filter(a=>state.allergenes.status[a.id]==='present').map(a=>a.label.replace(/^.+ /,''));
-  const algAbsent=ALLERGENS.filter(a=>state.allergenes.status[a.id]==='absent').map(a=>a.label.replace(/^.+ /,''));
-  if(algPresent.length>0){
-    doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(200,100,0);
-    doc.text('Allergènes PRÉSENTS :',mg+2,y);y+=5;
-    doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);
-    const ls=doc.splitTextToSize(algPresent.join(', '),pw-mg*2-4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;
-  }
-  if(algAbsent.length>0){
-    doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(46,140,80);
-    doc.text('Allergènes ABSENTS :',mg+2,y);y+=5;
-    doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);
-    const ls=doc.splitTextToSize(algAbsent.join(', '),pw-mg*2-4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;
-  }
-  const platsAllerg=state.allergenes.plats.filter(p=>p.nom);
-  if(platsAllerg.length>0){
-    chk(10);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);
-    doc.text('Allergènes par plat :',mg+2,y);y+=5;
-    platsAllerg.forEach(p=>{
-      chk(6);doc.setFontSize(7.5);doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);
-      doc.text('• '+p.nom+' : '+(p.allergenes||[]).join(', ')||'—',mg+4,y);y+=5;
-    });
-    y+=3;
-  }
-  note('Procédures :',state.allergenes.obs);
+  chk(30);sh('ALLERGÈNES');
+  const algP=ALLERGENS.filter(a=>state.allergenes.status[a.id]==='present').map(a=>a.label.replace(/^.+ /,''));
+  const algA=ALLERGENS.filter(a=>state.allergenes.status[a.id]==='absent').map(a=>a.label.replace(/^.+ /,''));
+  if(algP.length>0){doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(200,100,0);doc.text('Présents :',mg+2,y);y+=5;doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);const ls=doc.splitTextToSize(algP.join(', '),pw-mg*2-4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
+  if(algA.length>0){doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(46,140,80);doc.text('Absents :',mg+2,y);y+=5;doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);const ls=doc.splitTextToSize(algA.join(', '),pw-mg*2-4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
+  nt('Procédures :',state.allergenes.obs);
 
-  // ── PERSONNEL ──
-  chk(30);secHead('👩‍🍳  HYGIÈNE DU PERSONNEL');
-  PERS_CHECKS.forEach((c,i)=>cRow(c.l,state.personnel.checks[i]));
+  chk(30);sh('HYGIÈNE DU PERSONNEL');PERS_CHECKS.forEach((c,i)=>cr(c.l,state.personnel.checks[i]));
   const forms=state.personnel.formations.filter(f=>f.date);
-  if(forms.length>0){
-    chk(10);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);
-    doc.text('Formations HACCP :',mg+2,y);y+=5;
-    forms.forEach(f=>{
-      chk(6);doc.setFontSize(7.5);doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);
-      doc.text('• '+f.date+' – '+f.organisme+' – '+f.personnes+' – '+f.type,mg+4,y);y+=5;
-    });
-    y+=3;
-  }
-  const accs=state.personnel.accidents.filter(a=>a.date);
-  if(accs.length>0){
-    chk(10);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);
-    doc.text('Incidents enregistrés :',mg+2,y);y+=5;
-    accs.forEach(a=>{
-      chk(6);doc.setFontSize(7.5);doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);
-      doc.text('• '+a.date+' – '+a.description+' → '+a.action,mg+4,y);y+=5;
-    });
-    y+=3;
-  }
-  note('Observations :',state.personnel.obs);
+  if(forms.length>0){chk(10);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text('Formations :',mg+2,y);y+=5;forms.forEach(f=>{chk(6);doc.setFontSize(7.5);doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);doc.text('• '+f.date+' – '+f.organisme+' – '+f.personnes,mg+4,y);y+=5;});y+=3;}
+  nt('Observations :',state.personnel.obs);
 
-  // ── SIGNATURE ──
-  chk(40);y+=8;
-  doc.setDrawColor(200,210,220);doc.line(mg,y,pw-mg,y);y+=8;
-  doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);
-  doc.text('Signature du responsable :',mg,y);doc.text('Date :',pw-mg-50,y);
-  y+=18;doc.line(mg,y,mg+70,y);doc.line(pw-mg-44,y,pw-mg,y);
+  // SIGNATURE
+  chk(40);y+=8;doc.setDrawColor(200,210,220);doc.line(mg,y,pw-mg,y);y+=8;doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text('Signature du responsable :',mg,y);doc.text('Date :',pw-mg-50,y);y+=18;doc.line(mg,y,mg+70,y);doc.line(pw-mg-44,y,pw-mg,y);
 
-  // ── FOOTERS ──
+  // FOOTERS
   const np=doc.getNumberOfPages();
-  for(let p=1;p<=np;p++){
-    doc.setPage(p);
-    doc.setFillColor(10,22,40);doc.rect(0,ph-11,pw,11,'F');
-    doc.setTextColor(100,140,180);doc.setFontSize(7);doc.setFont('helvetica','normal');
-    doc.text('PMS pour les Nuls © '+new Date().getFullYear()+' – pmspourlesnuls.com – Règlement CE 852/2004 – Page '+p+'/'+np,pw/2,ph-4,{align:'center'});
+  for(let p=1;p<=np;p++){doc.setPage(p);doc.setFillColor(10,22,40);doc.rect(0,ph-11,pw,11,'F');doc.setTextColor(100,140,180);doc.setFontSize(7);doc.setFont('helvetica','normal');doc.text('PMS pour les Nuls © '+new Date().getFullYear()+' – pmspourlesnuls.com – Page '+p+'/'+np,pw/2,ph-4,{align:'center'});}
+
+  doc.save('PMS_'+(nom.replace(/\s+/g,'_'))+'_'+new Date().toISOString().slice(0,10)+'.pdf');
+  toast('✅ PDF téléchargé !');
+}
+
+function dlFicheAllergenes(){
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+  var pw=297,ph=210,mg=10;
+  var nom=state.etab.nom||'Etablissement';
+  var ALRG=['Gluten','Crustaces','Oeufs','Poissons','Arachides','Soja','Lait','Fr.coque','Celeri','Moutarde','Sesame','SO2','Lupin','Mollusques'];
+  doc.setFillColor(10,22,40);doc.rect(0,0,pw,22,'F');
+  doc.setFillColor(255,179,71);doc.rect(0,20,pw,2,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(14);doc.setTextColor(255,255,255);
+  doc.text('TABLEAU DES ALLERGENES',mg+2,12);
+  doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(200,180,120);
+  doc.text(nom+' - Reglement UE 1169/2011 - 14 allergenes majeurs',mg+2,19);
+  var y=26;
+  var nameW=55;
+  var algW=Math.floor((pw-mg*2-nameW)/14);
+  doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,14,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.setTextColor(255,255,255);
+  doc.text('Plat / Preparation',mg+2,y+9);
+  for(var ai=0;ai<ALRG.length;ai++){
+    var ax=mg+nameW+ai*algW;
+    doc.text(ALRG[ai],ax+algW/2,y+9,{align:'center'});
   }
-
-  const fn='PMS_'+(nom.replace(/\s+/g,'_'))+'_'+new Date().toISOString().slice(0,10)+'.pdf';
-  doc.save(fn);
-  toast('✅ PDF téléchargé avec succès !');
+  y+=14;
+  for(var r=0;r<25;r++){
+    doc.setFillColor(r%2===0?255:247,r%2===0?255:249,r%2===0?255:252);
+    doc.rect(mg,y,pw-mg*2,8,'F');
+    doc.setDrawColor(210,220,230);doc.rect(mg,y,pw-mg*2,8,'S');
+    doc.line(mg+nameW,y,mg+nameW,y+8);
+    for(var ai=0;ai<ALRG.length;ai++){
+      var ax=mg+nameW+ai*algW;
+      doc.line(ax+algW,y,ax+algW,y+8);
+      doc.setDrawColor(150,165,180);doc.rect(ax+algW/2-2.5,y+1.5,5,5,'S');
+    }
+    y+=8;
+  }
+  doc.setFillColor(10,22,40);doc.rect(0,ph-10,pw,10,'F');
+  doc.setFont('helvetica','normal');doc.setFontSize(6);doc.setTextColor(140,170,200);
+  doc.text('Cochez si allergene PRESENT. Afficher et tenir a jour. Archive 3 ans minimum. PMS pour les Nuls',pw/2,ph-3.5,{align:'center'});
+  doc.save('Tableau_Allergenes.pdf');
+  toast('Tableau allergenes telecharge !');
 }
 
-function toast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3000);
+function dlPlanNettoyage(){
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  var pw=210,ph=297,mg=14;
+  var nom=state.etab.nom||'Etablissement';
+  doc.setFillColor(10,22,40);doc.rect(0,0,pw,22,'F');
+  doc.setFillColor(0,201,167);doc.rect(0,20,pw,2,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(14);doc.setTextColor(255,255,255);
+  doc.text('PLAN DE NETTOYAGE & DESINFECTION',mg,12);
+  doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(160,210,200);
+  doc.text(nom,mg,19);
+  var y=28;
+  var cols=['Zone','Frequence','Mode operatoire','Produit','Responsable'];
+  var widths=[42,26,36,42,30];
+  doc.setFillColor(10,22,40);
+  var hx=mg;
+  for(var ci=0;ci<widths.length;ci++){doc.rect(hx,y,widths[ci],9,'F');hx+=widths[ci];}
+  hx=mg;doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(255,255,255);
+  for(var ci=0;ci<cols.length;ci++){doc.text(cols[ci],hx+widths[ci]/2,y+6,{align:'center'});hx+=widths[ci];}
+  y+=9;
+  var plan=state.nettoyage.plan;
+  for(var ri=0;ri<plan.length;ri++){
+    var p=plan[ri];
+    var rh=13;
+    doc.setFillColor(ri%2===0?255:247,ri%2===0?255:249,ri%2===0?255:252);
+    var rx=mg;
+    for(var ci=0;ci<widths.length;ci++){doc.rect(rx,y,widths[ci],rh,'F');doc.setDrawColor(200,215,225);doc.rect(rx,y,widths[ci],rh,'S');rx+=widths[ci];}
+    doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(10,22,40);
+    doc.text(p.zone||'',mg+2,y+5);
+    doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.setTextColor(60,80,100);
+    if(p.freq) doc.text('('+p.freq+')',mg+2,y+10);
+    doc.setFontSize(7);doc.text('1.Enlever residus',mg+widths[0]+2,y+4.5);
+    doc.text('2.Appliquer detergent',mg+widths[0]+2,y+8);
+    doc.text('3.Rincer et secher',mg+widths[0]+2,y+11.5);
+    if(p.produit) doc.text((p.produit).slice(0,20),mg+widths[0]+widths[1]+widths[2]+2,y+7);
+    if(p.resp) doc.text((p.resp).slice(0,16),mg+widths[0]+widths[1]+widths[2]+widths[3]+2,y+7);
+    y+=rh;
+    if(y>ph-40) break;
+  }
+  doc.setFillColor(10,22,40);doc.rect(0,ph-10,pw,10,'F');
+  doc.setFont('helvetica','normal');doc.setFontSize(6);doc.setTextColor(140,170,200);
+  doc.text('PMS pour les Nuls - pmspourlesnuls.com - Archive 3 ans minimum',pw/2,ph-4,{align:'center'});
+  doc.save('Plan_Nettoyage.pdf');
+  toast('Plan nettoyage telecharge !');
 }
+
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+function toggleFaq(el){const a=el.nextElementSibling;a.classList.toggle('open');el.querySelector('span:last-child').textContent=a.classList.contains('open')?'−':'+';}
 </script>
 </body>
 </html>
