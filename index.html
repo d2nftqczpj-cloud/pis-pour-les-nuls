@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PMS pour les Nuls</title>
+
+<!-- SEO -->
+<title>PMS pour les Nuls - Plan de Maitrise Sanitaire Restaurant HACCP</title>
+<meta name="description" content="Creez votre Plan de Maitrise Sanitaire (PMS) conforme HACCP en 10 minutes. PDF professionnel pret pour votre controle DDPP. Pour restaurants, hotels, traiteurs. 99 euros achat unique.">
+<meta name="keywords" content="plan maitrise sanitaire, PMS restaurant, HACCP restaurant, PMS DDPP, hygiene alimentaire, PMS obligatoire restaurant, controle sanitaire restaurant, HACCP obligatoire, plan nettoyage restaurant, allergenes restaurant, tracabilite restaurant, PMS hotel, PMS traiteur, document hygiene restaurant">
+<meta name="author" content="PMS pour les Nuls">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pmspourlesnuls.com">
+
+<!-- Open Graph (Facebook, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pmspourlesnuls.com">
+<meta property="og:title" content="PMS pour les Nuls - Plan de Maitrise Sanitaire Restaurant HACCP">
+<meta property="og:description" content="Creez votre Plan de Maitrise Sanitaire conforme HACCP en 10 minutes. PDF professionnel pret pour votre controle DDPP. 99 euros achat unique acces a vie.">
+<meta property="og:site_name" content="PMS pour les Nuls">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PMS pour les Nuls - Plan de Maitrise Sanitaire HACCP">
+<meta name="twitter:description" content="Creez votre PMS restaurant en 10 minutes. Conforme DDPP. 99 euros acces a vie.">
+
+<!-- Schema.org (Google Rich Results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PMS pour les Nuls",
+  "description": "Application de creation de Plan de Maitrise Sanitaire pour restaurants et etablissements alimentaires. Conforme HACCP et reglementation DDPP.",
+  "url": "https://pmspourlesnuls.com",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "99",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Kevin Soria"
+  },
+  "keywords": "PMS restaurant, plan maitrise sanitaire, HACCP, DDPP, hygiene alimentaire"
+}
+</script>
 <script>
 // Load jsPDF with fallback
 (function(){
@@ -15,28 +56,27 @@
     s.onerror = function(){ if(cb) cb(false); };
     document.head.appendChild(s);
   }
-
-var cdns = [
-‘https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js’,
-‘https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js’,
-‘https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js’
-];
-
-var idx = 0;
-function tryNext(){
-if(idx >= cdns.length){
-console.warn(‘jsPDF not loaded from any CDN’);
-return;
-}
-loadScript(cdns[idx++], function(ok){
-if(!ok) tryNext();
-else console.log(‘jsPDF loaded from CDN’, idx);
-});
-}
-tryNext();
+  
+  var cdns = [
+    'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+    'https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js',
+    'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js'
+  ];
+  
+  var idx = 0;
+  function tryNext(){
+    if(idx >= cdns.length){ 
+      console.warn('jsPDF not loaded from any CDN');
+      return;
+    }
+    loadScript(cdns[idx++], function(ok){
+      if(!ok) tryNext();
+      else console.log('jsPDF loaded from CDN', idx);
+    });
+  }
+  tryNext();
 })();
 </script>
-
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0a1628;--blue:#1a3a6b;--teal:#00c9a7;--gold:#ffb347;--red:#ff4d4d;--green:#2ecc71;--light:#f5f7fb;--white:#fff;--gray:#64748b;--border:#e2e8f0;}
@@ -155,7 +195,6 @@ body{font-family:'Sora',sans-serif;background:var(--light);color:var(--navy);}
 <body>
 
 <!-- LOGIN SCREEN -->
-
 <div class="login-wrap" id="loginScreen">
   <div class="login-box">
     <div class="login-logo">🛡️</div>
@@ -171,7 +210,6 @@ body{font-family:'Sora',sans-serif;background:var(--light);color:var(--navy);}
 </div>
 
 <!-- LANDING PAGE -->
-
 <div id="landing" style="display:none">
   <section class="hero">
     <div class="hero-inner">
@@ -222,7 +260,6 @@ body{font-family:'Sora',sans-serif;background:var(--light);color:var(--navy);}
   </section>
 
   <!-- LEGAL FOOTER -->
-
   <div class="legal-footer">
     <div style="max-width:960px;margin:0 auto 20px">
       <div class="disclaimer">⚠️ <strong>Avertissement :</strong> PMS pour les Nuls est un outil numerique d'aide a la creation de documents sanitaires. Il ne remplace pas l'accompagnement d'un professionnel certifie en hygiene alimentaire. L'utilisateur reste seul responsable de la conformite de son etablissement aux reglementations en vigueur.</div>
@@ -260,7 +297,6 @@ body{font-family:'Sora',sans-serif;background:var(--light);color:var(--navy);}
 </div>
 
 <!-- APP -->
-
 <div id="app" style="display:none">
   <div class="app-header">
     <div class="app-logo">PMS <span>pour les Nuls</span></div>
@@ -418,743 +454,741 @@ function fs(path,label,opts){
 }
 function fta(path,label,ph){
   return '<div class="fg" style="grid-column:1/-1"><label>'+label+'</label><textarea onchange="sp(\''+path+'\',this.value);saveState()" placeholder="'+(ph||'')+'">'+esc(gp(path)||'')+'</textarea></div>';
-
 }
-function dv(t){ return ‘<div class="div-line"><span>’+t+’</span></div>’; }
+function dv(t){ return '<div class="div-line"><span>'+t+'</span></div>'; }
 function nav(p,n){
-var prev = p ? ‘<button class="btn-prev" onclick="showTab(\''+p+'\')">← Retour</button>’ : ‘<div></div>’;
-var next = n ? ‘<button class="btn-next" onclick="showTab(\''+n+'\')">Suivant →</button>’ : ‘<div></div>’;
-return ‘<div class="nav-btns">’+prev+next+’</div>’;
+  var prev = p ? '<button class="btn-prev" onclick="showTab(\''+p+'\')">&larr; Retour</button>' : '<div></div>';
+  var next = n ? '<button class="btn-next" onclick="showTab(\''+n+'\')">Suivant &rarr;</button>' : '<div></div>';
+  return '<div class="nav-btns">'+prev+next+'</div>';
 }
 function chkItem(group,idx,label,sub){
-var arr = state[group].checks;
-var ck = arr[idx] ? ’ chk’ : ‘’;
-return ‘<div class="check-item'+ck+'" onclick="toggleChk(\''+group+'\','+idx+',this)"><div class="chk-box"><span class="chk-tick">✓</span></div><div><div class="chk-label">’+label+’</div>’+(sub?’<div class="chk-sub">’+sub+’</div>’:’’ )+’</div></div>’;
+  var arr = state[group].checks;
+  var ck = arr[idx] ? ' chk' : '';
+  return '<div class="check-item'+ck+'" onclick="toggleChk(\''+group+'\','+idx+',this)"><div class="chk-box"><span class="chk-tick">&#10003;</span></div><div><div class="chk-label">'+label+'</div>'+(sub?'<div class="chk-sub">'+sub+'</div>':'' )+'</div></div>';
 }
 function toggleChk(group,idx,el){
-state[group].checks[idx] = !state[group].checks[idx];
-if(state[group].checks[idx]) el.classList.add(‘chk’); else el.classList.remove(‘chk’);
-saveState();
+  state[group].checks[idx] = !state[group].checks[idx];
+  if(state[group].checks[idx]) el.classList.add('chk'); else el.classList.remove('chk');
+  saveState();
 }
 function dlCard(title,sub,icon,color,fn){
-return ‘<div style="border:2px solid '+color+';border-radius:12px;padding:14px;text-align:center"><div style="font-size:28px;margin-bottom:5px">’+icon+’</div><div style="font-weight:800;font-size:13px;color:var(--navy);margin-bottom:3px">’+title+’</div><div style="font-size:11px;color:var(--gray);margin-bottom:10px">’+sub+’</div><button class="dl-btn" style="margin:0;font-size:12px;padding:9px;background:linear-gradient(135deg,'+color+','+color+'cc)" onclick="'+fn+'()">📥 Telecharger PDF</button></div>’;
+  return '<div style="border:2px solid '+color+';border-radius:12px;padding:14px;text-align:center"><div style="font-size:28px;margin-bottom:5px">'+icon+'</div><div style="font-weight:800;font-size:13px;color:var(--navy);margin-bottom:3px">'+title+'</div><div style="font-size:11px;color:var(--gray);margin-bottom:10px">'+sub+'</div><button class="dl-btn" style="margin:0;font-size:12px;padding:9px;background:linear-gradient(135deg,'+color+','+color+'cc)" onclick="'+fn+'()">&#128229; Telecharger PDF</button></div>';
 }
 
 // ═══════════════════════════════════════════
 // SECTIONS
 // ═══════════════════════════════════════════
 function renderEtab(){
-return ‘<div class="card"><div class="card-title">🏢 Identification</div><div class="card-sub">Informations generales de votre etablissement</div>’
-+’<div class="form-grid">’
-+fi(‘etab.nom’,‘Nom *’,‘text’,‘Restaurant Le Provencal’)
-+fs(‘etab.type’,‘Type *’,[’– Choisir –’,‘Restaurant traditionnel’,‘Hotel-restaurant’,‘Cafe / Brasserie’,‘Restauration rapide’,‘Traiteur’,‘Hotel avec petit-dejeuner’,‘Collectivite / Cantine’,‘Boulangerie / Patisserie’,‘Food truck’])
-+fi(‘etab.adresse’,‘Adresse’,‘text’,‘12 rue de la Paix, 75001 Paris’)
-+fi(‘etab.tel’,‘Telephone’,‘tel’,‘01 23 45 67 89’)
-+fi(‘etab.email’,‘Email’,‘email’,‘contact@restaurant.fr’)
-+fi(‘etab.siret’,‘SIRET’,‘text’,‘123 456 789 00012’)
-+fi(‘etab.responsable’,‘Responsable’,‘text’,‘Nom Prenom’)
-+fi(‘etab.datePms’,‘Date du PMS’,‘date’,’’)
-+fi(‘etab.capacite’,‘Capacite’,‘text’,‘60 couverts’)
-+fi(‘etab.employes’,‘Employes’,‘text’,‘8’)
-+’</div>’
-+nav(’’,‘locaux’)+’</div>’;
+  return '<div class="card"><div class="card-title">🏢 Identification</div><div class="card-sub">Informations generales de votre etablissement</div>'
+  +'<div class="form-grid">'
+  +fi('etab.nom','Nom *','text','Restaurant Le Provencal')
+  +fs('etab.type','Type *',['-- Choisir --','Restaurant traditionnel','Hotel-restaurant','Cafe / Brasserie','Restauration rapide','Traiteur','Hotel avec petit-dejeuner','Collectivite / Cantine','Boulangerie / Patisserie','Food truck'])
+  +fi('etab.adresse','Adresse','text','12 rue de la Paix, 75001 Paris')
+  +fi('etab.tel','Telephone','tel','01 23 45 67 89')
+  +fi('etab.email','Email','email','contact@restaurant.fr')
+  +fi('etab.siret','SIRET','text','123 456 789 00012')
+  +fi('etab.responsable','Responsable','text','Nom Prenom')
+  +fi('etab.datePms','Date du PMS','date','')
+  +fi('etab.capacite','Capacite','text','60 couverts')
+  +fi('etab.employes','Employes','text','8')
+  +'</div>'
+  +nav('','locaux')+'</div>';
 }
 
 var LOC_CHECKS = [
-{l:‘Marche en avant respectee (separation propre/sale)’,s:‘Les flux propres et sales ne se croisent pas’},
-{l:‘Sols, murs et plafonds en materiaux lavables’},
-{l:‘Ventilation et hottes d aspiration fonctionnelles’},
-{l:‘Lave-mains a commande non manuelle en cuisine’,s:‘Savon bactericide + essuie-mains usage unique’},
-{l:‘Vestiaires separes tenues ville / tenues travail’},
-{l:‘Eclairage suffisant dans toutes les zones’},
-{l:‘Refrigerateurs positifs <= 4C avec thermometre’},
-{l:‘Congelateurs <= -18C avec alarme de rupture’},
-{l:‘Cellule de refroidissement rapide disponible’,s:’+63C a +10C en moins de 2h’},
-{l:‘Separation des denrees par nature dans le froid’}
+  {l:'Marche en avant respectee (separation propre/sale)',s:'Les flux propres et sales ne se croisent pas'},
+  {l:'Sols, murs et plafonds en materiaux lavables'},
+  {l:'Ventilation et hottes d aspiration fonctionnelles'},
+  {l:'Lave-mains a commande non manuelle en cuisine',s:'Savon bactericide + essuie-mains usage unique'},
+  {l:'Vestiaires separes tenues ville / tenues travail'},
+  {l:'Eclairage suffisant dans toutes les zones'},
+  {l:'Refrigerateurs positifs <= 4C avec thermometre'},
+  {l:'Congelateurs <= -18C avec alarme de rupture'},
+  {l:'Cellule de refroidissement rapide disponible',s:'+63C a +10C en moins de 2h'},
+  {l:'Separation des denrees par nature dans le froid'}
 ];
 
 function renderLocaux(){
-var h = ‘<div class="card"><div class="card-title">🏗️ Locaux & Equipements</div><div class="card-sub">Conformite des infrastructures</div>’;
-LOC_CHECKS.forEach(function(c,i){ h += chkItem(‘locaux’,i,c.l,c.s||’’); });
-h += fta(‘locaux.obs’,‘Observations’,‘Etat general, travaux prevus…’);
-h += nav(‘etab’,‘temp’)+’</div>’;
-return h;
+  var h = '<div class="card"><div class="card-title">🏗️ Locaux & Equipements</div><div class="card-sub">Conformite des infrastructures</div>';
+  LOC_CHECKS.forEach(function(c,i){ h += chkItem('locaux',i,c.l,c.s||''); });
+  h += fta('locaux.obs','Observations','Etat general, travaux prevus...');
+  h += nav('etab','temp')+'</div>';
+  return h;
 }
 
 var QCM = [
-{q:‘Temperature max stockage viandes crues ?’, opts:[’<= 0C’,’<= +4C’,’<= +7C’,’<= +10C’], c:1},
-{q:‘Temperature stockage poissons frais ?’, opts:[‘0C a +2C’,’<= +4C’,’<= +6C’,’<= -2C’], c:0},
-{q:‘Temperature min service plats chauds ?’, opts:[’>= +55C’,’>= +60C’,’>= +63C’,’>= +70C’], c:2},
-{q:‘Temperature max surgeles en stockage ?’, opts:[’<= -10C’,’<= -15C’,’<= -18C’,’<= -25C’], c:2},
-{q:‘Temps refroidissement de +63C a +10C ?’, opts:[‘1 heure’,‘2 heures’,‘4 heures’,‘6 heures’], c:1},
-{q:‘Temperature max produits laitiers ?’, opts:[’<= +2C’,’<= +4C’,’<= +6C’,’<= +8C’], c:1}
+  {q:'Temperature max stockage viandes crues ?', opts:['<= 0C','<= +4C','<= +7C','<= +10C'], c:1},
+  {q:'Temperature stockage poissons frais ?', opts:['0C a +2C','<= +4C','<= +6C','<= -2C'], c:0},
+  {q:'Temperature min service plats chauds ?', opts:['>= +55C','>= +60C','>= +63C','>= +70C'], c:2},
+  {q:'Temperature max surgeles en stockage ?', opts:['<= -10C','<= -15C','<= -18C','<= -25C'], c:2},
+  {q:'Temps refroidissement de +63C a +10C ?', opts:['1 heure','2 heures','4 heures','6 heures'], c:1},
+  {q:'Temperature max produits laitiers ?', opts:['<= +2C','<= +4C','<= +6C','<= +8C'], c:1}
 ];
 var TEMP_PROC = [
-{l:‘Releves de temperatures matin et soir’,s:‘Fiche archivee 3 ans minimum’},
-{l:‘Thermometre sonde etalone disponible’},
-{l:‘Procedure rupture chaine du froid definie’},
-{l:‘Remise en temperature a coeur >= 75C documentee’}
+  {l:'Releves de temperatures matin et soir',s:'Fiche archivee 3 ans minimum'},
+  {l:'Thermometre sonde etalone disponible'},
+  {l:'Procedure rupture chaine du froid definie'},
+  {l:'Remise en temperature a coeur >= 75C documentee'}
 ];
 
 function renderTemp(){
-var ans = state.temp.qcmAnswers;
-var qHtml = ‘’;
-QCM.forEach(function(q,qi){
-var bc = ans[qi]===null ? ‘var(–border)’ : (ans[qi]===q.c ? ‘var(–green)’ : ‘var(–red)’);
-qHtml += ‘<div style="background:var(--light);border-radius:12px;padding:14px;margin-bottom:12px;border:1.5px solid '+bc+'">’;
-qHtml += ‘<div style="font-weight:700;font-size:13px;margin-bottom:10px">’+(qi+1)+’. ‘+q.q+’</div>’;
-qHtml += ‘<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">’;
-q.opts.forEach(function(opt,oi){
-var bg = ans[qi]===oi ? (oi===q.c?’#edfdf8’:’#fee2e2’) : ‘#fff’;
-var bc2 = ans[qi]===oi ? (oi===q.c?‘var(–green)’:‘var(–red)’) : ‘var(–border)’;
-var tc = ans[qi]===oi ? (oi===q.c?‘var(–green)’:‘var(–red)’) : ‘var(–navy)’;
-qHtml += ‘<button onclick="answerQ('+qi+','+oi+')" style="padding:8px;border-radius:8px;border:1.5px solid '+bc2+';font-size:12px;font-family:inherit;cursor:pointer;background:'+bg+';color:'+tc+';font-weight:600;text-align:left">’+opt+’</button>’;
-});
-qHtml += ‘</div>’;
-if(ans[qi]!==null){
-var ok = ans[qi]===q.c;
-qHtml += ‘<div style="margin-top:8px;font-size:12px;font-weight:600;color:'+(ok?'var(--green)':'var(--red)')+'">’+( ok?‘Bonne reponse !’:‘Reponse correcte : ‘+q.opts[q.c])+’</div>’;
-}
-qHtml += ‘</div>’;
-});
-var score = ans.filter(function(a,i){return a===QCM[i].c;}).length;
-var allDone = ans.every(function(a){return a!==null;});
-var scoreHtml = ‘’;
-if(allDone){
-var col = score>=5?‘var(–green)’:score>=3?‘var(–gold)’:‘var(–red)’;
-var msg = score>=5?‘Excellent ! Temperatures maitrisees.’:score>=3?‘Bien, quelques revisions simposent.’:‘Des revisions sont necessaires.’;
-scoreHtml = ‘<div style="border:2px solid '+col+';border-radius:12px;padding:14px;text-align:center;margin-bottom:16px"><div style="font-size:28px;font-weight:800;color:'+col+'">’+score+’/6</div><div style="font-weight:700;font-size:14px;color:'+col+'">’+msg+’</div><button onclick="resetQ()" style="margin-top:8px;padding:6px 14px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit">Recommencer</button></div>’;
-}
+  var ans = state.temp.qcmAnswers;
+  var qHtml = '';
+  QCM.forEach(function(q,qi){
+    var bc = ans[qi]===null ? 'var(--border)' : (ans[qi]===q.c ? 'var(--green)' : 'var(--red)');
+    qHtml += '<div style="background:var(--light);border-radius:12px;padding:14px;margin-bottom:12px;border:1.5px solid '+bc+'">';
+    qHtml += '<div style="font-weight:700;font-size:13px;margin-bottom:10px">'+(qi+1)+'. '+q.q+'</div>';
+    qHtml += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">';
+    q.opts.forEach(function(opt,oi){
+      var bg = ans[qi]===oi ? (oi===q.c?'#edfdf8':'#fee2e2') : '#fff';
+      var bc2 = ans[qi]===oi ? (oi===q.c?'var(--green)':'var(--red)') : 'var(--border)';
+      var tc = ans[qi]===oi ? (oi===q.c?'var(--green)':'var(--red)') : 'var(--navy)';
+      qHtml += '<button onclick="answerQ('+qi+','+oi+')" style="padding:8px;border-radius:8px;border:1.5px solid '+bc2+';font-size:12px;font-family:inherit;cursor:pointer;background:'+bg+';color:'+tc+';font-weight:600;text-align:left">'+opt+'</button>';
+    });
+    qHtml += '</div>';
+    if(ans[qi]!==null){
+      var ok = ans[qi]===q.c;
+      qHtml += '<div style="margin-top:8px;font-size:12px;font-weight:600;color:'+(ok?'var(--green)':'var(--red)')+'">'+( ok?'Bonne reponse !':'Reponse correcte : '+q.opts[q.c])+'</div>';
+    }
+    qHtml += '</div>';
+  });
+  var score = ans.filter(function(a,i){return a===QCM[i].c;}).length;
+  var allDone = ans.every(function(a){return a!==null;});
+  var scoreHtml = '';
+  if(allDone){
+    var col = score>=5?'var(--green)':score>=3?'var(--gold)':'var(--red)';
+    var msg = score>=5?'Excellent ! Temperatures maitrisees.':score>=3?'Bien, quelques revisions simposent.':'Des revisions sont necessaires.';
+    scoreHtml = '<div style="border:2px solid '+col+';border-radius:12px;padding:14px;text-align:center;margin-bottom:16px"><div style="font-size:28px;font-weight:800;color:'+col+'">'+score+'/6</div><div style="font-weight:700;font-size:14px;color:'+col+'">'+msg+'</div><button onclick="resetQ()" style="margin-top:8px;padding:6px 14px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit">Recommencer</button></div>';
+  }
 
-var tempCards = ‘<div class="temp-cards">’
-+[‘Viandes crues|<= +4C|var(–teal)’,‘Poissons frais|0C a +2C|var(–blue)’,‘Laitages/Charcuterie|<= +4C|var(–gold)’,‘Surgeles|<= -18C|var(–navy)’,‘Plats chauds|>= +63C|var(–green)’,‘Refroidissement|+63 vers +10C en 2h|var(–red)’].map(function(r){
-var p=r.split(’|’); return ‘<div class="temp-card" style="border-color:'+p[2]+'"><div style="font-weight:700;font-size:12px">’+p[0]+’</div><div class="temp-val" style="color:'+p[2]+'">’+p[1]+’</div></div>’;
-}).join(’’)+’</div>’;
+  var tempCards = '<div class="temp-cards">'
+  +['Viandes crues|<= +4C|var(--teal)','Poissons frais|0C a +2C|var(--blue)','Laitages/Charcuterie|<= +4C|var(--gold)','Surgeles|<= -18C|var(--navy)','Plats chauds|>= +63C|var(--green)','Refroidissement|+63 vers +10C en 2h|var(--red)'].map(function(r){
+    var p=r.split('|'); return '<div class="temp-card" style="border-color:'+p[2]+'"><div style="font-weight:700;font-size:12px">'+p[0]+'</div><div class="temp-val" style="color:'+p[2]+'">'+p[1]+'</div></div>';
+  }).join('')+'</div>';
 
-var h = ‘<div class="card"><div class="card-title">🌡️ Temperatures</div><div class="card-sub">Temperatures reglementaires, QCM et fiches a imprimer</div>’;
-h += dv(‘Temperatures de stockage reglementaires’);
-h += tempCards;
-h += dv(‘QCM - Testez vos connaissances’);
-h += ‘<div class="info-box">Ces seuils doivent etre connus de tout le personnel. Le QCM peut etre realise lors des formations.</div>’;
-h += qHtml + scoreHtml;
-h += dv(‘Procedures de surveillance’);
-TEMP_PROC.forEach(function(c,i){ h += chkItem(‘temp’,i,c.l,c.s||’’); });
-h += fta(‘temp.actionCorr’,‘Actions correctives en cas d ecart’,‘Retrait des denrees, information du responsable…’);
-h += dv(‘Fiches a telecharger et imprimer’);
-h += ‘<div class="info-box">Imprimez une fiche par mois. Completez matin et soir. Archivez 3 ans minimum.</div>’;
-h += ‘<div class="dl-grid">’;
-h += dlCard(‘Releve Temperatures Mensuel’,‘Matin et soir - 31 jours - 6 zones’,‘🌡️’,’#00c9a7’,‘dlFicheTemp’);
-h += dlCard(‘Controle Huile Friture’,‘Releve quotidien - Test colorimetrique’,‘🍳’,’#ffb347’,‘dlFicheHuile’);
-h += ‘</div>’;
-h += nav(‘locaux’,‘reception’)+’</div>’;
-return h;
+  var h = '<div class="card"><div class="card-title">🌡️ Temperatures</div><div class="card-sub">Temperatures reglementaires, QCM et fiches a imprimer</div>';
+  h += dv('Temperatures de stockage reglementaires');
+  h += tempCards;
+  h += dv('QCM - Testez vos connaissances');
+  h += '<div class="info-box">Ces seuils doivent etre connus de tout le personnel. Le QCM peut etre realise lors des formations.</div>';
+  h += qHtml + scoreHtml;
+  h += dv('Procedures de surveillance');
+  TEMP_PROC.forEach(function(c,i){ h += chkItem('temp',i,c.l,c.s||''); });
+  h += fta('temp.actionCorr','Actions correctives en cas d ecart','Retrait des denrees, information du responsable...');
+  h += dv('Fiches a telecharger et imprimer');
+  h += '<div class="info-box">Imprimez une fiche par mois. Completez matin et soir. Archivez 3 ans minimum.</div>';
+  h += '<div class="dl-grid">';
+  h += dlCard('Releve Temperatures Mensuel','Matin et soir - 31 jours - 6 zones','🌡️','#00c9a7','dlFicheTemp');
+  h += dlCard('Controle Huile Friture','Releve quotidien - Test colorimetrique','🍳','#ffb347','dlFicheHuile');
+  h += '</div>';
+  h += nav('locaux','reception')+'</div>';
+  return h;
 }
 
 function answerQ(qi,oi){
-state.temp.qcmAnswers[qi]=oi; saveState(); showTab(‘temp’);
+  state.temp.qcmAnswers[qi]=oi; saveState(); showTab('temp');
 }
 function resetQ(){
-state.temp.qcmAnswers=Array(6).fill(null); saveState(); showTab(‘temp’);
+  state.temp.qcmAnswers=Array(6).fill(null); saveState(); showTab('temp');
 }
 
 function renderReception(){
-var rc = state.reception.checks;
-var h = ‘<div class="card"><div class="card-title">📦 Reception des Marchandises</div><div class="card-sub">Procedures de controle a chaque livraison</div>’;
-h += dv(‘A chaque reception, je verifie :’);
-var items = [
-{k:‘visuel’,l:‘Controle visuel’,s:‘Integrite emballages - absence moisissures - couleur et odeur normales’},
-{k:‘temp’,l:‘Releve des temperatures’,s:‘Viandes <=+4C - Poissons 0/+2C - Surgeles <=-18C - Charcuterie <=+4C’},
-{k:‘dlc’,l:‘Verification DLC / DLUO’,s:‘Date limite valide - rotation FIFO (premier entre, premier sorti)’}
-];
-items.forEach(function(item){
-var ck = rc[item.k] ? ’ chk’ : ‘’;
-h += ‘<div class="check-item'+ck+'" onclick="toggleRC(\''+item.k+'\',this)"><div class="chk-box"><span class="chk-tick">✓</span></div><div><div class="chk-label">’+item.l+’</div><div class="chk-sub">’+item.s+’</div></div></div>’;
-});
-h += ‘<div class="warn-box" style="margin-top:12px">En cas de non-conformite : refuser la livraison ou isoler les produits. Documenter sur la fiche de reception.</div>’;
-h += dv(‘Fiches a telecharger et imprimer’);
-h += ‘<div class="info-box">Remplissez une ligne a chaque livraison. Archivez 3 ans minimum.</div>’;
-h += ‘<div class="dl-grid">’;
-h += dlCard(‘Reception Marchandises’,‘30 lignes - Temp - DLC - Aspect’,‘📦’,’#1a3a6b’,‘dlFicheReception’);
-h += dlCard(‘Tracabilite Produits’,‘N lot - DLC - Fournisseur’,‘📋’,’#2ecc71’,‘dlFicheTracabilite’);
-h += ‘</div>’;
-h += nav(‘temp’,‘nettoyage’)+’</div>’;
-return h;
+  var rc = state.reception.checks;
+  var h = '<div class="card"><div class="card-title">📦 Reception des Marchandises</div><div class="card-sub">Procedures de controle a chaque livraison</div>';
+  h += dv('A chaque reception, je verifie :');
+  var items = [
+    {k:'visuel',l:'Controle visuel',s:'Integrite emballages - absence moisissures - couleur et odeur normales'},
+    {k:'temp',l:'Releve des temperatures',s:'Viandes <=+4C - Poissons 0/+2C - Surgeles <=-18C - Charcuterie <=+4C'},
+    {k:'dlc',l:'Verification DLC / DLUO',s:'Date limite valide - rotation FIFO (premier entre, premier sorti)'}
+  ];
+  items.forEach(function(item){
+    var ck = rc[item.k] ? ' chk' : '';
+    h += '<div class="check-item'+ck+'" onclick="toggleRC(\''+item.k+'\',this)"><div class="chk-box"><span class="chk-tick">&#10003;</span></div><div><div class="chk-label">'+item.l+'</div><div class="chk-sub">'+item.s+'</div></div></div>';
+  });
+  h += '<div class="warn-box" style="margin-top:12px">En cas de non-conformite : refuser la livraison ou isoler les produits. Documenter sur la fiche de reception.</div>';
+  h += dv('Fiches a telecharger et imprimer');
+  h += '<div class="info-box">Remplissez une ligne a chaque livraison. Archivez 3 ans minimum.</div>';
+  h += '<div class="dl-grid">';
+  h += dlCard('Reception Marchandises','30 lignes - Temp - DLC - Aspect','📦','#1a3a6b','dlFicheReception');
+  h += dlCard('Tracabilite Produits','N lot - DLC - Fournisseur','📋','#2ecc71','dlFicheTracabilite');
+  h += '</div>';
+  h += nav('temp','nettoyage')+'</div>';
+  return h;
 }
 
 function toggleRC(key,el){
-state.reception.checks[key] = !state.reception.checks[key];
-if(state.reception.checks[key]) el.classList.add(‘chk’); else el.classList.remove(‘chk’);
-saveState();
+  state.reception.checks[key] = !state.reception.checks[key];
+  if(state.reception.checks[key]) el.classList.add('chk'); else el.classList.remove('chk');
+  saveState();
 }
 
 var NETT_CHECKS = [
-{l:‘Plan de nettoyage ecrit et affiche en cuisine’},
-{l:‘Nettoyage et desinfection apres chaque service’},
-{l:‘Code couleur planches a decoupe respecte’,s:‘Rouge:viande / Bleu:poisson / Vert:legumes / Jaune:volaille’},
-{l:‘FDS des produits chimiques disponibles’},
-{l:‘Produits stockes a l ecart des denrees’},
-{l:‘Contrat deratisation / desinsectisation en cours’}
+  {l:'Plan de nettoyage ecrit et affiche en cuisine'},
+  {l:'Nettoyage et desinfection apres chaque service'},
+  {l:'Code couleur planches a decoupe respecte',s:'Rouge:viande / Bleu:poisson / Vert:legumes / Jaune:volaille'},
+  {l:'FDS des produits chimiques disponibles'},
+  {l:'Produits stockes a l ecart des denrees'},
+  {l:'Contrat deratisation / desinsectisation en cours'}
 ];
 
 function renderNettoyage(){
-var h = ‘<div class="card"><div class="card-title">🧹 Nettoyage & Desinfection</div><div class="card-sub">Plan de nettoyage et procedures</div>’;
-NETT_CHECKS.forEach(function(c,i){ h += chkItem(‘nettoyage’,i,c.l,c.s||’’); });
-h += dv(‘Plan de nettoyage detaille’);
-h += ‘<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Zone</th><th>Frequence</th><th>Produit utilise</th><th>Responsable</th></tr></thead><tbody>’;
-state.nettoyage.plan.forEach(function(p,i){
-h += ‘<tr><td><strong>’+esc(p.zone)+’</strong></td>’;
-h += ‘<td><input type="text" value="'+esc(p.freq)+'" onchange="state.nettoyage.plan['+i+'].freq=this.value;saveState()"></td>’;
-h += ‘<td><input type="text" value="'+esc(p.produit)+'" placeholder="Produit" onchange="state.nettoyage.plan['+i+'].produit=this.value;saveState()"></td>’;
-h += ‘<td><input type="text" value="'+esc(p.resp)+'" placeholder="Responsable" onchange="state.nettoyage.plan['+i+'].resp=this.value;saveState()"></td></tr>’;
-});
-h += ‘</tbody></table></div>’;
-h += fta(‘nettoyage.obs’,‘Observations’,‘Points de vigilance, ameliorations prevues…’);
-h += dv(‘Fiches a telecharger’);
-h += ‘<div class="info-box">Les fiches sont pre-remplies avec vos zones. Imprimez et cochez chaque jour.</div>’;
-h += ‘<div class="dl-grid">’;
-h += dlCard(‘Fiche Nettoyage Quotidien’,‘Pre-remplie - Cases a cocher - Semaine’,‘🧹’,’#00c9a7’,‘dlFicheNettoyage’);
-h += dlCard(‘Plan de Nettoyage Complet’,‘Toutes zones - Frequences - Produits’,‘📋’,’#0a1628’,‘dlPlanNettoyage’);
-h += ‘</div>’;
-h += nav(‘reception’,‘allergenes’)+’</div>’;
-return h;
+  var h = '<div class="card"><div class="card-title">🧹 Nettoyage & Desinfection</div><div class="card-sub">Plan de nettoyage et procedures</div>';
+  NETT_CHECKS.forEach(function(c,i){ h += chkItem('nettoyage',i,c.l,c.s||''); });
+  h += dv('Plan de nettoyage detaille');
+  h += '<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Zone</th><th>Frequence</th><th>Produit utilise</th><th>Responsable</th></tr></thead><tbody>';
+  state.nettoyage.plan.forEach(function(p,i){
+    h += '<tr><td><strong>'+esc(p.zone)+'</strong></td>';
+    h += '<td><input type="text" value="'+esc(p.freq)+'" onchange="state.nettoyage.plan['+i+'].freq=this.value;saveState()"></td>';
+    h += '<td><input type="text" value="'+esc(p.produit)+'" placeholder="Produit" onchange="state.nettoyage.plan['+i+'].produit=this.value;saveState()"></td>';
+    h += '<td><input type="text" value="'+esc(p.resp)+'" placeholder="Responsable" onchange="state.nettoyage.plan['+i+'].resp=this.value;saveState()"></td></tr>';
+  });
+  h += '</tbody></table></div>';
+  h += fta('nettoyage.obs','Observations','Points de vigilance, ameliorations prevues...');
+  h += dv('Fiches a telecharger');
+  h += '<div class="info-box">Les fiches sont pre-remplies avec vos zones. Imprimez et cochez chaque jour.</div>';
+  h += '<div class="dl-grid">';
+  h += dlCard('Fiche Nettoyage Quotidien','Pre-remplie - Cases a cocher - Semaine','🧹','#00c9a7','dlFicheNettoyage');
+  h += dlCard('Plan de Nettoyage Complet','Toutes zones - Frequences - Produits','📋','#0a1628','dlPlanNettoyage');
+  h += '</div>';
+  h += nav('reception','allergenes')+'</div>';
+  return h;
 }
 
 var ALLERGENS = [
-{id:‘gluten’,label:‘Gluten’},{id:‘crustaces’,label:‘Crustaces’},
-{id:‘oeufs’,label:‘Oeufs’},{id:‘poissons’,label:‘Poissons’},
-{id:‘arachides’,label:‘Arachides’},{id:‘soja’,label:‘Soja’},
-{id:‘lait’,label:‘Lait’},{id:‘fruits_coque’,label:‘Fruits a coque’},
-{id:‘celeri’,label:‘Celeri’},{id:‘moutarde’,label:‘Moutarde’},
-{id:‘sesame’,label:‘Sesame’},{id:‘so2’,label:‘SO2/Sulfites’},
-{id:‘lupin’,label:‘Lupin’},{id:‘mollusques’,label:‘Mollusques’}
+  {id:'gluten',label:'Gluten'},{id:'crustaces',label:'Crustaces'},
+  {id:'oeufs',label:'Oeufs'},{id:'poissons',label:'Poissons'},
+  {id:'arachides',label:'Arachides'},{id:'soja',label:'Soja'},
+  {id:'lait',label:'Lait'},{id:'fruits_coque',label:'Fruits a coque'},
+  {id:'celeri',label:'Celeri'},{id:'moutarde',label:'Moutarde'},
+  {id:'sesame',label:'Sesame'},{id:'so2',label:'SO2/Sulfites'},
+  {id:'lupin',label:'Lupin'},{id:'mollusques',label:'Mollusques'}
 ];
 
 function renderAllergenes(){
-var st = state.allergenes.status;
-var grid = ‘’;
-ALLERGENS.forEach(function(a){
-var s = st[a.id]||‘nc’;
-var bg = s===‘present’?’#fff8e1’:s===‘absent’?’#edfdf8’:‘var(–light)’;
-var bc = s===‘present’?‘var(–gold)’:s===‘absent’?‘var(–green)’:‘var(–border)’;
-var dot = s===‘present’?’#ffb347’:s===‘absent’?’#2ecc71’:’#cbd5e0’;
-grid += ‘<div onclick="cycleA(\''+a.id+'\')" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:'+bg+';border:1.5px solid '+bc+';border-radius:8px;cursor:pointer;font-size:12px;font-weight:600"><div style="width:10px;height:10px;border-radius:50%;background:'+dot+';flex-shrink:0"></div>’+a.label+’</div>’;
-});
-var h = ‘<div class="card"><div class="card-title">⚠️ Allergenes</div><div class="card-sub">14 allergenes reglementaires - cliquez pour changer le statut</div>’;
-h += dv(‘Presence dans votre etablissement’);
-h += ‘<div style="font-size:11px;color:var(--gray);margin-bottom:10px">🟡 Present dans vos plats  |  🟢 Absent  |  ⬜ Non renseigne</div>’;
-h += ‘<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:16px">’+grid+’</div>’;
-h += fta(‘allergenes.obs’,‘Procedures de gestion des allergenes’,‘Protocole de prevention des contaminations croisees…’);
-h += dv(‘Tableau allergenes a telecharger’);
-h += ‘<div class="info-box">Tableau pre-rempli avec les 14 allergenes. Ajoutez le nom de chaque plat et cochez.</div>’;
-h += ‘<button class="dl-btn" style="background:linear-gradient(135deg,#e67e00,#f39c12)" onclick="dlFicheAllergenes()">📥 Telecharger Tableau Allergenes</button>’;
-h += nav(‘nettoyage’,‘personnel’)+’</div>’;
-return h;
+  var st = state.allergenes.status;
+  var grid = '';
+  ALLERGENS.forEach(function(a){
+    var s = st[a.id]||'nc';
+    var bg = s==='present'?'#fff8e1':s==='absent'?'#edfdf8':'var(--light)';
+    var bc = s==='present'?'var(--gold)':s==='absent'?'var(--green)':'var(--border)';
+    var dot = s==='present'?'#ffb347':s==='absent'?'#2ecc71':'#cbd5e0';
+    grid += '<div onclick="cycleA(\''+a.id+'\')" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:'+bg+';border:1.5px solid '+bc+';border-radius:8px;cursor:pointer;font-size:12px;font-weight:600"><div style="width:10px;height:10px;border-radius:50%;background:'+dot+';flex-shrink:0"></div>'+a.label+'</div>';
+  });
+  var h = '<div class="card"><div class="card-title">⚠️ Allergenes</div><div class="card-sub">14 allergenes reglementaires - cliquez pour changer le statut</div>';
+  h += dv('Presence dans votre etablissement');
+  h += '<div style="font-size:11px;color:var(--gray);margin-bottom:10px">🟡 Present dans vos plats &nbsp;|&nbsp; 🟢 Absent &nbsp;|&nbsp; ⬜ Non renseigne</div>';
+  h += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:16px">'+grid+'</div>';
+  h += fta('allergenes.obs','Procedures de gestion des allergenes','Protocole de prevention des contaminations croisees...');
+  h += dv('Tableau allergenes a telecharger');
+  h += '<div class="info-box">Tableau pre-rempli avec les 14 allergenes. Ajoutez le nom de chaque plat et cochez.</div>';
+  h += '<button class="dl-btn" style="background:linear-gradient(135deg,#e67e00,#f39c12)" onclick="dlFicheAllergenes()">📥 Telecharger Tableau Allergenes</button>';
+  h += nav('nettoyage','personnel')+'</div>';
+  return h;
 }
 
 function cycleA(id){
-var s = state.allergenes.status[id]||‘nc’;
-state.allergenes.status[id] = s===‘nc’?‘present’:s===‘present’?‘absent’:‘nc’;
-saveState(); showTab(‘allergenes’);
+  var s = state.allergenes.status[id]||'nc';
+  state.allergenes.status[id] = s==='nc'?'present':s==='present'?'absent':'nc';
+  saveState(); showTab('allergenes');
 }
 
 var PERS_CHECKS = [
-{l:‘Visite medicale d embauche effectuee’},
-{l:‘Procedure exclusion en cas de maladie definie’,s:‘Gastro, infections cutanees, plaies ouvertes’},
-{l:‘Tenue complete et propre en cuisine’,s:‘Veste, tablier, charlotte, chaussures securite’},
-{l:‘Bijoux et montres retires en cuisine’},
-{l:‘Cheveux couverts ou attaches’},
-{l:‘Lavage mains a la prise de poste’},
-{l:‘Lavage apres manipulation denrees crues’},
-{l:‘Lavage apres passage aux toilettes’},
-{l:‘Protocole lavage mains affiche’,s:‘30 secondes avec savon bactericide’}
+  {l:'Visite medicale d embauche effectuee'},
+  {l:'Procedure exclusion en cas de maladie definie',s:'Gastro, infections cutanees, plaies ouvertes'},
+  {l:'Tenue complete et propre en cuisine',s:'Veste, tablier, charlotte, chaussures securite'},
+  {l:'Bijoux et montres retires en cuisine'},
+  {l:'Cheveux couverts ou attaches'},
+  {l:'Lavage mains a la prise de poste'},
+  {l:'Lavage apres manipulation denrees crues'},
+  {l:'Lavage apres passage aux toilettes'},
+  {l:'Protocole lavage mains affiche',s:'30 secondes avec savon bactericide'}
 ];
 
 function renderPersonnel(){
-var h = ‘<div class="card"><div class="card-title">👩‍🍳 Hygiene du Personnel</div><div class="card-sub">Bonnes pratiques et formations HACCP</div>’;
-PERS_CHECKS.forEach(function(c,i){ h += chkItem(‘personnel’,i,c.l,c.s||’’); });
-h += dv(‘Historique des formations HACCP’);
-h += ‘<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Date</th><th>Organisme</th><th>Personnes</th><th>Type</th></tr></thead><tbody>’;
-state.personnel.formations.forEach(function(f,i){
-h += ‘<tr>’;
-h += ‘<td><input type="date" value="'+esc(f.date)+'" onchange="state.personnel.formations['+i+'].date=this.value;saveState()"></td>’;
-h += ‘<td><input type="text" value="'+esc(f.organisme)+'" placeholder="CCI, AFPA..." onchange="state.personnel.formations['+i+'].organisme=this.value;saveState()"></td>’;
-h += ‘<td><input type="text" value="'+esc(f.personnes)+'" placeholder="Noms" onchange="state.personnel.formations['+i+'].personnes=this.value;saveState()"></td>’;
-h += ‘<td><input type="text" value="'+esc(f.type)+'" placeholder="HACCP..." onchange="state.personnel.formations['+i+'].type=this.value;saveState()"></td>’;
-h += ‘</tr>’;
-});
-h += ‘</tbody></table></div>’;
-h += ‘<button class="dl-btn" style="font-size:12px;padding:10px;margin-top:8px" onclick="addFormation()">+ Ajouter une formation</button>’;
-h += fta(‘personnel.obs’,‘Observations’,‘Remarques sur l hygiene du personnel…’);
-h += nav(‘allergenes’,‘bilan’)+’</div>’;
-return h;
+  var h = '<div class="card"><div class="card-title">👩‍🍳 Hygiene du Personnel</div><div class="card-sub">Bonnes pratiques et formations HACCP</div>';
+  PERS_CHECKS.forEach(function(c,i){ h += chkItem('personnel',i,c.l,c.s||''); });
+  h += dv('Historique des formations HACCP');
+  h += '<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Date</th><th>Organisme</th><th>Personnes</th><th>Type</th></tr></thead><tbody>';
+  state.personnel.formations.forEach(function(f,i){
+    h += '<tr>';
+    h += '<td><input type="date" value="'+esc(f.date)+'" onchange="state.personnel.formations['+i+'].date=this.value;saveState()"></td>';
+    h += '<td><input type="text" value="'+esc(f.organisme)+'" placeholder="CCI, AFPA..." onchange="state.personnel.formations['+i+'].organisme=this.value;saveState()"></td>';
+    h += '<td><input type="text" value="'+esc(f.personnes)+'" placeholder="Noms" onchange="state.personnel.formations['+i+'].personnes=this.value;saveState()"></td>';
+    h += '<td><input type="text" value="'+esc(f.type)+'" placeholder="HACCP..." onchange="state.personnel.formations['+i+'].type=this.value;saveState()"></td>';
+    h += '</tr>';
+  });
+  h += '</tbody></table></div>';
+  h += '<button class="dl-btn" style="font-size:12px;padding:10px;margin-top:8px" onclick="addFormation()">+ Ajouter une formation</button>';
+  h += fta('personnel.obs','Observations','Remarques sur l hygiene du personnel...');
+  h += nav('allergenes','bilan')+'</div>';
+  return h;
 }
 
 function addFormation(){
-state.personnel.formations.push({date:’’,organisme:’’,personnes:’’,type:’’});
-saveState(); showTab(‘personnel’);
+  state.personnel.formations.push({date:'',organisme:'',personnes:'',type:''});
+  saveState(); showTab('personnel');
 }
 
 function renderBilan(){
-var allChecks = [].concat(state.locaux.checks,state.temp.checks,state.nettoyage.checks,state.personnel.checks);
-var tot = allChecks.length;
-var done = allChecks.filter(Boolean).length;
-var score = Math.round((done/tot)*100);
-var col = score>=80?‘var(–green)’:score>=60?‘var(–gold)’:‘var(–red)’;
-var msg = score>=80?‘Bon niveau de conformite’:score>=60?‘Des ameliorations necessaires’:‘Non-conformites importantes’;
+  var allChecks = [].concat(state.locaux.checks,state.temp.checks,state.nettoyage.checks,state.personnel.checks);
+  var tot = allChecks.length;
+  var done = allChecks.filter(Boolean).length;
+  var score = Math.round((done/tot)*100);
+  var col = score>=80?'var(--green)':score>=60?'var(--gold)':'var(--red)';
+  var msg = score>=80?'Bon niveau de conformite':score>=60?'Des ameliorations necessaires':'Non-conformites importantes';
 
-var h = ‘<div class="card"><div class="card-title">📊 Bilan de conformite</div><div class="card-sub">Recapitulatif de votre PMS</div>’;
-h += ‘<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">’;
-[{l:‘Etablissement’,v:state.etab.nom},{l:‘Type’,v:state.etab.type},{l:‘Responsable’,v:state.etab.responsable},{l:‘Date PMS’,v:state.etab.datePms}].forEach(function(x){
-h += ‘<div style="background:var(--light);border-radius:10px;padding:10px 12px;border:1px solid var(--border)"><div style="font-size:10px;color:var(--gray);text-transform:uppercase;margin-bottom:3px">’+x.l+’</div><div style="font-size:13px;font-weight:700">’+(esc(x.v)||’—’)+’</div></div>’;
-});
-h += ‘</div>’;
-h += ‘<div style="border:2px solid '+col+';border-radius:12px;padding:18px;margin-bottom:14px;background:'+col+'10"><div style="font-size:44px;font-weight:800;color:'+col+'">’+score+’%</div><div style="font-weight:700;font-size:15px;color:'+col+'">’+msg+’</div><div style="font-size:12px;color:var(--gray)">’+done+’ criteres valides sur ‘+tot+’</div><div style="background:var(--border);border-radius:6px;height:7px;margin-top:10px;overflow:hidden"><div style="height:100%;width:'+score+'%;background:'+col+';border-radius:6px"></div></div></div>’;
-h += ‘<div class="warn-box">Ce PMS doit etre presente lors de tout controle DDPP. Conservation 3 ans minimum.</div>’;
-h += ‘<button class="dl-btn" onclick="safeGenPDF()">📄 Telecharger mon PMS complet en PDF</button>’;
-h += dv(‘Documents obligatoires en cas de controle DDPP’);
-h += getDocsList();
-h += nav(‘personnel’,’’)+’</div>’;
-return h;
+  var h = '<div class="card"><div class="card-title">📊 Bilan de conformite</div><div class="card-sub">Recapitulatif de votre PMS</div>';
+  h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">';
+  [{l:'Etablissement',v:state.etab.nom},{l:'Type',v:state.etab.type},{l:'Responsable',v:state.etab.responsable},{l:'Date PMS',v:state.etab.datePms}].forEach(function(x){
+    h += '<div style="background:var(--light);border-radius:10px;padding:10px 12px;border:1px solid var(--border)"><div style="font-size:10px;color:var(--gray);text-transform:uppercase;margin-bottom:3px">'+x.l+'</div><div style="font-size:13px;font-weight:700">'+(esc(x.v)||'—')+'</div></div>';
+  });
+  h += '</div>';
+  h += '<div style="border:2px solid '+col+';border-radius:12px;padding:18px;margin-bottom:14px;background:'+col+'10"><div style="font-size:44px;font-weight:800;color:'+col+'">'+score+'%</div><div style="font-weight:700;font-size:15px;color:'+col+'">'+msg+'</div><div style="font-size:12px;color:var(--gray)">'+done+' criteres valides sur '+tot+'</div><div style="background:var(--border);border-radius:6px;height:7px;margin-top:10px;overflow:hidden"><div style="height:100%;width:'+score+'%;background:'+col+';border-radius:6px"></div></div></div>';
+  h += '<div class="warn-box">Ce PMS doit etre presente lors de tout controle DDPP. Conservation 3 ans minimum.</div>';
+  h += '<button class="dl-btn" onclick="safeGenPDF()">📄 Telecharger mon PMS complet en PDF</button>';
+  h += dv('Documents obligatoires en cas de controle DDPP');
+  h += getDocsList();
+  h += nav('personnel','')+'</div>';
+  return h;
 }
 
 function getDocsList(){
-var items = [
-[‘📄’,‘Ce PMS signe et date’,‘Document de reference obligatoire’],
-[‘🌡️’,‘Fiches releves temperatures’,‘Minimum 3 mois archives’],
-[‘📦’,‘Fiches reception marchandises’,‘Toutes livraisons documentees’],
-[‘🧹’,‘Fiches controle nettoyage’,‘Signees par le responsable’],
-[‘⚠️’,‘Tableau des allergenes’,‘Affiche et a jour’],
-[‘🎓’,‘Attestations formation HACCP’,‘Pour tout le personnel’],
-[‘🐀’,‘Contrat deratisation/desinsectisation’,‘En cours de validite’],
-[‘🏥’,‘Visites medicales personnel’,‘A jour pour tous’],
-[‘📋’,‘Fiches de tracabilite’,‘Numeros de lots et fournisseurs’],
-[‘🧴’,‘Fiches donnees securite FDS’,‘Des produits de nettoyage’],
-[‘📊’,‘Analyses microbiologiques’,‘Si realisees’],
-[‘📝’,‘Registre des incidents’,‘Avec actions correctives’]
-];
-var h = ‘<div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px">’;
-h += ‘<p style="font-size:12px;color:var(--gray);margin-bottom:10px">Presentez ces documents lors de tout controle :</p>’;
-h += ‘<div style="display:flex;flex-direction:column;gap:7px">’;
-items.forEach(function(d){
-h += ‘<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:var(--light);border-radius:8px"><span style="font-size:16px;flex-shrink:0">’+d[0]+’</span><div><div style="font-size:12px;font-weight:700">’+d[1]+’</div><div style="font-size:11px;color:var(--gray)">’+d[2]+’</div></div></div>’;
-});
-h += ‘</div></div>’;
-h += ‘<div style="background:#fee2e2;border:1px solid var(--red);border-radius:10px;padding:12px;margin-bottom:14px;font-size:12px;color:#7f1d1d">Absence de PMS lors d un controle = mise en demeure ou fermeture administrative. Conservation <strong>3 ans minimum</strong>.</div>’;
-return h;
+  var items = [
+    ['📄','Ce PMS signe et date','Document de reference obligatoire'],
+    ['🌡️','Fiches releves temperatures','Minimum 3 mois archives'],
+    ['📦','Fiches reception marchandises','Toutes livraisons documentees'],
+    ['🧹','Fiches controle nettoyage','Signees par le responsable'],
+    ['⚠️','Tableau des allergenes','Affiche et a jour'],
+    ['🎓','Attestations formation HACCP','Pour tout le personnel'],
+    ['🐀','Contrat deratisation/desinsectisation','En cours de validite'],
+    ['🏥','Visites medicales personnel','A jour pour tous'],
+    ['📋','Fiches de tracabilite','Numeros de lots et fournisseurs'],
+    ['🧴','Fiches donnees securite FDS','Des produits de nettoyage'],
+    ['📊','Analyses microbiologiques','Si realisees'],
+    ['📝','Registre des incidents','Avec actions correctives']
+  ];
+  var h = '<div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px">';
+  h += '<p style="font-size:12px;color:var(--gray);margin-bottom:10px">Presentez ces documents lors de tout controle :</p>';
+  h += '<div style="display:flex;flex-direction:column;gap:7px">';
+  items.forEach(function(d){
+    h += '<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:var(--light);border-radius:8px"><span style="font-size:16px;flex-shrink:0">'+d[0]+'</span><div><div style="font-size:12px;font-weight:700">'+d[1]+'</div><div style="font-size:11px;color:var(--gray)">'+d[2]+'</div></div></div>';
+  });
+  h += '</div></div>';
+  h += '<div style="background:#fee2e2;border:1px solid var(--red);border-radius:10px;padding:12px;margin-bottom:14px;font-size:12px;color:#7f1d1d">Absence de PMS lors d un controle = mise en demeure ou fermeture administrative. Conservation <strong>3 ans minimum</strong>.</div>';
+  return h;
 }
 
 // ═══════════════════════════════════════════
 // PDF HELPERS
 // ═══════════════════════════════════════════
 function pdfHeader(doc,pw,title,sub,accent){
-accent = accent || [0,201,167];
-doc.setFillColor(10,22,40); doc.rect(0,0,pw,22,‘F’);
-doc.setFillColor(accent[0],accent[1],accent[2]); doc.rect(0,20,pw,2,‘F’);
-doc.setFont(‘helvetica’,‘bold’); doc.setFontSize(13); doc.setTextColor(255,255,255);
-doc.text(title,14,12);
-if(sub){ doc.setFont(‘helvetica’,‘normal’); doc.setFontSize(7.5); doc.setTextColor(160,200,220); doc.text(sub,14,19); }
-doc.setFontSize(7); doc.setTextColor(120,160,200);
-doc.text(‘PMS pour les Nuls - pmspourlesnuls.com’,pw-14,12,{align:‘right’});
+  accent = accent || [0,201,167];
+  doc.setFillColor(10,22,40); doc.rect(0,0,pw,22,'F');
+  doc.setFillColor(accent[0],accent[1],accent[2]); doc.rect(0,20,pw,2,'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(255,255,255);
+  doc.text(title,14,12);
+  if(sub){ doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor(160,200,220); doc.text(sub,14,19); }
+  doc.setFontSize(7); doc.setTextColor(120,160,200);
+  doc.text('PMS pour les Nuls - pmspourlesnuls.com',pw-14,12,{align:'right'});
 }
 function pdfFooter(doc,pw,ph){
-var np = doc.getNumberOfPages();
-for(var p=1;p<=np;p++){
-doc.setPage(p);
-doc.setFillColor(10,22,40); doc.rect(0,ph-10,pw,10,‘F’);
-doc.setFillColor(0,201,167); doc.rect(0,ph-10,pw,1.5,‘F’);
-doc.setFont(‘helvetica’,‘normal’); doc.setFontSize(6.5); doc.setTextColor(140,175,210);
-doc.text(‘PMS pour les Nuls - pmspourlesnuls.com - Archive 3 ans minimum - Regl. CE 852/2004’,pw/2,ph-4,{align:‘center’});
-doc.setFont(‘helvetica’,‘bold’); doc.setTextColor(0,201,167);
-doc.text(‘Page ‘+p+’/’+np,pw-14,ph-4,{align:‘right’});
-}
+  var np = doc.getNumberOfPages();
+  for(var p=1;p<=np;p++){
+    doc.setPage(p);
+    doc.setFillColor(10,22,40); doc.rect(0,ph-10,pw,10,'F');
+    doc.setFillColor(0,201,167); doc.rect(0,ph-10,pw,1.5,'F');
+    doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor(140,175,210);
+    doc.text('PMS pour les Nuls - pmspourlesnuls.com - Archive 3 ans minimum - Regl. CE 852/2004',pw/2,ph-4,{align:'center'});
+    doc.setFont('helvetica','bold'); doc.setTextColor(0,201,167);
+    doc.text('Page '+p+'/'+np,pw-14,ph-4,{align:'right'});
+  }
 }
 function pdfTblHead(doc,mg,y,cols,widths,bg){
-bg = bg || [10,22,40];
-doc.setFillColor(bg[0],bg[1],bg[2]);
-var hx=mg; widths.forEach(function(w){doc.rect(hx,y,w,9,‘F’);hx+=w;});
-hx=mg; doc.setTextColor(255,255,255); doc.setFontSize(6.5); doc.setFont(‘helvetica’,‘bold’);
-cols.forEach(function(h,i){
-var words=h.split(’ ’);
-words.forEach(function(w,wi){doc.text(w,hx+widths[i]/2,y+3+(wi*2.5),{align:‘center’});});
-hx+=widths[i];
-});
-return y+9;
+  bg = bg || [10,22,40];
+  doc.setFillColor(bg[0],bg[1],bg[2]);
+  var hx=mg; widths.forEach(function(w){doc.rect(hx,y,w,9,'F');hx+=w;});
+  hx=mg; doc.setTextColor(255,255,255); doc.setFontSize(6.5); doc.setFont('helvetica','bold');
+  cols.forEach(function(h,i){
+    var words=h.split(' ');
+    words.forEach(function(w,wi){doc.text(w,hx+widths[i]/2,y+3+(wi*2.5),{align:'center'});});
+    hx+=widths[i];
+  });
+  return y+9;
 }
 function pdfTblRow(doc,mg,y,vals,widths,ri){
-var even=ri%2===0;
-doc.setFillColor(even?255:247,even?255:249,even?255:252);
-var rx=mg; widths.forEach(function(w){doc.rect(rx,y,w,6,‘F’);doc.setDrawColor(205,218,230);doc.rect(rx,y,w,6,‘S’);rx+=w;});
-rx=mg; doc.setFont(‘helvetica’,‘normal’); doc.setFontSize(7); doc.setTextColor(30,40,55);
-vals.forEach(function(v,i){if(v)doc.text(String(v).slice(0,Math.floor(widths[i]/2.2)),rx+2,y+4.2);rx+=widths[i];});
-return y+6;
+  var even=ri%2===0;
+  doc.setFillColor(even?255:247,even?255:249,even?255:252);
+  var rx=mg; widths.forEach(function(w){doc.rect(rx,y,w,6,'F');doc.setDrawColor(205,218,230);doc.rect(rx,y,w,6,'S');rx+=w;});
+  rx=mg; doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(30,40,55);
+  vals.forEach(function(v,i){if(v)doc.text(String(v).slice(0,Math.floor(widths[i]/2.2)),rx+2,y+4.2);rx+=widths[i];});
+  return y+6;
 }
 
 // ═══════════════════════════════════════════
 // PDF FICHES DOWNLOAD
 // ═══════════════════════════════════════════
 function dlFicheTemp(){
-var jsPDF=window.jspdf.jsPDF;
-var doc=new jsPDF({orientation:‘landscape’,unit:‘mm’,format:‘a4’});
-var pw=297,ph=210,mg=10;
-var nom=state.etab.nom||‘Etablissement’;
-var mois=new Date().toLocaleDateString(‘fr-FR’,{month:‘long’,year:‘numeric’});
-pdfHeader(doc,pw,‘RELEVE DE TEMPERATURES - ‘+mois.toUpperCase(),nom);
-var HDRS=[‘Jour’,‘Mat.\nViandes’,‘Soir\nViandes’,‘Mat.\nPoissons’,‘Soir\nPoissons’,‘Mat.\nLaitages’,‘Soir\nLaitages’,‘Mat.\nCuits’,‘Soir\nCuits’,‘Mat.\nSurgeles’,‘Soir\nSurgeles’,‘Mat.\nPlats ch.’,‘Soir\nPlats ch.’,‘Signature’,‘Observations’];
-var WIDTHS=[10,18,18,18,18,18,18,18,18,20,20,20,20,24,31];
-var y=pdfTblHead(doc,mg,26,HDRS,WIDTHS);
-for(var d=1;d<=31;d++){
-doc.setFillColor(d%2===0?248:255,d%2===0?250:255,d%2===0?252:255);
-var rx=mg; WIDTHS.forEach(function(w){doc.rect(rx,y,w,5,‘F’);doc.setDrawColor(210,220,230);doc.rect(rx,y,w,5,‘S’);rx+=w;});
-doc.setTextColor(40,50,60);doc.setFontSize(6.5);doc.setFont(‘helvetica’,‘bold’);
-doc.text(String(d).padStart(2,‘0’),mg+5,y+3.5);
-y+=5; if(y>ph-14) break;
-}
-pdfFooter(doc,pw,ph);
-doc.save(‘Releve_Temperatures_’+mois.replace(’ ‘,’_’)+’.pdf’);
-toast(‘Fiche temperatures telechargee !’);
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+  var pw=297,ph=210,mg=10;
+  var nom=state.etab.nom||'Etablissement';
+  var mois=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  pdfHeader(doc,pw,'RELEVE DE TEMPERATURES - '+mois.toUpperCase(),nom);
+  var HDRS=['Jour','Mat.\nViandes','Soir\nViandes','Mat.\nPoissons','Soir\nPoissons','Mat.\nLaitages','Soir\nLaitages','Mat.\nCuits','Soir\nCuits','Mat.\nSurgeles','Soir\nSurgeles','Mat.\nPlats ch.','Soir\nPlats ch.','Signature','Observations'];
+  var WIDTHS=[10,18,18,18,18,18,18,18,18,20,20,20,20,24,31];
+  var y=pdfTblHead(doc,mg,26,HDRS,WIDTHS);
+  for(var d=1;d<=31;d++){
+    doc.setFillColor(d%2===0?248:255,d%2===0?250:255,d%2===0?252:255);
+    var rx=mg; WIDTHS.forEach(function(w){doc.rect(rx,y,w,5,'F');doc.setDrawColor(210,220,230);doc.rect(rx,y,w,5,'S');rx+=w;});
+    doc.setTextColor(40,50,60);doc.setFontSize(6.5);doc.setFont('helvetica','bold');
+    doc.text(String(d).padStart(2,'0'),mg+5,y+3.5);
+    y+=5; if(y>ph-14) break;
+  }
+  pdfFooter(doc,pw,ph);
+  doc.save('Releve_Temperatures_'+mois.replace(' ','_')+'.pdf');
+  toast('Fiche temperatures telechargee !');
 }
 
 function dlFicheHuile(){
-var jsPDF=window.jspdf.jsPDF;
-var doc=new jsPDF({orientation:‘portrait’,unit:‘mm’,format:‘a4’});
-var pw=210,ph=297,mg=14;
-var nom=state.etab.nom||‘Etablissement’;
-var mois=new Date().toLocaleDateString(‘fr-FR’,{month:‘long’,year:‘numeric’});
-pdfHeader(doc,pw,‘CONTROLE HUILE DE FRITURE’,nom+’ - ’+mois,[255,179,71]);
-var y=28;
-doc.setFontSize(8);doc.setFont(‘helvetica’,‘bold’);doc.setTextColor(10,22,40);
-doc.text(‘Seuil reglementaire : Composes polaires <= 25% - Frequence : A chaque utilisation’,mg,y);y+=10;
-var COLS=[‘Date’,‘Heure’,‘N Friteuse’,‘Temp. C’,‘Polar test’,‘Resultat’,‘Action corrective’,‘Signature’];
-var WIDTHS=[22,16,24,20,22,24,34,22];
-y=pdfTblHead(doc,mg,y,COLS,WIDTHS);
-for(var r=0;r<28;r++){y=pdfTblRow(doc,mg,y,[],WIDTHS,r);if(y>ph-30)break;}
-pdfFooter(doc,pw,ph);
-doc.save(‘Controle_Huile_Friture.pdf’);
-toast(‘Fiche huile telechargee !’);
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  var pw=210,ph=297,mg=14;
+  var nom=state.etab.nom||'Etablissement';
+  var mois=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  pdfHeader(doc,pw,'CONTROLE HUILE DE FRITURE',nom+' - '+mois,[255,179,71]);
+  var y=28;
+  doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);
+  doc.text('Seuil reglementaire : Composes polaires <= 25% - Frequence : A chaque utilisation',mg,y);y+=10;
+  var COLS=['Date','Heure','N Friteuse','Temp. C','Polar test','Resultat','Action corrective','Signature'];
+  var WIDTHS=[22,16,24,20,22,24,34,22];
+  y=pdfTblHead(doc,mg,y,COLS,WIDTHS);
+  for(var r=0;r<28;r++){y=pdfTblRow(doc,mg,y,[],WIDTHS,r);if(y>ph-30)break;}
+  pdfFooter(doc,pw,ph);
+  doc.save('Controle_Huile_Friture.pdf');
+  toast('Fiche huile telechargee !');
 }
 
 function dlFicheReception(){
-var jsPDF=window.jspdf.jsPDF;
-var doc=new jsPDF({orientation:‘landscape’,unit:‘mm’,format:‘a4’});
-var pw=297,ph=210,mg=10;
-var nom=state.etab.nom||‘Etablissement’;
-var mois=new Date().toLocaleDateString(‘fr-FR’,{month:‘long’,year:‘numeric’});
-pdfHeader(doc,pw,‘FICHE DE RECEPTION DES MARCHANDISES’,nom+’ - ’+mois,[26,58,107]);
-var COLS=[‘Date’,‘Heure’,‘Fournisseur’,‘Produit’,‘Temp C’,‘DLC’,‘Aspect visuel’,‘T conforme’,‘DLC conforme’,‘Action corrective’,‘Visa’];
-var WIDTHS=[18,14,28,32,16,20,18,16,18,36,20];
-var y=pdfTblHead(doc,mg,26,COLS,WIDTHS,[26,58,107]);
-for(var r=0;r<26;r++){y=pdfTblRow(doc,mg,y,[],WIDTHS,r);if(y>ph-22)break;}
-y+=3;doc.setFillColor(255,248,220);doc.rect(mg,y,pw-mg*2,10,‘F’);
-doc.setTextColor(120,90,0);doc.setFontSize(6.5);doc.setFont(‘helvetica’,‘bold’);
-doc.text(‘Temperatures : Viandes <=+4C | Poissons 0/+2C | Surgeles <=-18C | Charcuterie <=+4C | En cas de non-conformite : REFUSER et documenter’,mg+4,y+4.5);
-pdfFooter(doc,pw,ph);
-doc.save(‘Fiche_Reception_Marchandises.pdf’);
-toast(‘Fiche reception telechargee !’);
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+  var pw=297,ph=210,mg=10;
+  var nom=state.etab.nom||'Etablissement';
+  var mois=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  pdfHeader(doc,pw,'FICHE DE RECEPTION DES MARCHANDISES',nom+' - '+mois,[26,58,107]);
+  var COLS=['Date','Heure','Fournisseur','Produit','Temp C','DLC','Aspect visuel','T conforme','DLC conforme','Action corrective','Visa'];
+  var WIDTHS=[18,14,28,32,16,20,18,16,18,36,20];
+  var y=pdfTblHead(doc,mg,26,COLS,WIDTHS,[26,58,107]);
+  for(var r=0;r<26;r++){y=pdfTblRow(doc,mg,y,[],WIDTHS,r);if(y>ph-22)break;}
+  y+=3;doc.setFillColor(255,248,220);doc.rect(mg,y,pw-mg*2,10,'F');
+  doc.setTextColor(120,90,0);doc.setFontSize(6.5);doc.setFont('helvetica','bold');
+  doc.text('Temperatures : Viandes <=+4C | Poissons 0/+2C | Surgeles <=-18C | Charcuterie <=+4C | En cas de non-conformite : REFUSER et documenter',mg+4,y+4.5);
+  pdfFooter(doc,pw,ph);
+  doc.save('Fiche_Reception_Marchandises.pdf');
+  toast('Fiche reception telechargee !');
 }
 
 function dlFicheTracabilite(){
-var jsPDF=window.jspdf.jsPDF;
-var doc=new jsPDF({orientation:‘landscape’,unit:‘mm’,format:‘a4’});
-var pw=297,ph=210,mg=10;
-var nom=state.etab.nom||‘Etablissement’;
-var mois=new Date().toLocaleDateString(‘fr-FR’,{month:‘long’,year:‘numeric’});
-pdfHeader(doc,pw,‘FICHE DE TRACABILITE DES PRODUITS’,nom+’ - ’+mois,[46,204,113]);
-var COLS=[‘Date utilisation’,‘Produit’,‘Fournisseur’,‘N de lot’,‘DLC/DLUO’,‘Qte utilisee’,‘Plat servi’,‘Date service’,‘Nb couverts’,‘Responsable’,‘Observations’];
-var WIDTHS=[22,28,24,20,20,18,28,18,16,22,37];
-var y=pdfTblHead(doc,mg,26,COLS,WIDTHS,[30,120,70]);
-for(var r=0;r<26;r++){y=pdfTblRow(doc,mg,y,[],WIDTHS,r);if(y>ph-16)break;}
-pdfFooter(doc,pw,ph);
-doc.save(‘Fiche_Tracabilite_Produits.pdf’);
-toast(‘Fiche tracabilite telechargee !’);
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+  var pw=297,ph=210,mg=10;
+  var nom=state.etab.nom||'Etablissement';
+  var mois=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  pdfHeader(doc,pw,'FICHE DE TRACABILITE DES PRODUITS',nom+' - '+mois,[46,204,113]);
+  var COLS=['Date utilisation','Produit','Fournisseur','N de lot','DLC/DLUO','Qte utilisee','Plat servi','Date service','Nb couverts','Responsable','Observations'];
+  var WIDTHS=[22,28,24,20,20,18,28,18,16,22,37];
+  var y=pdfTblHead(doc,mg,26,COLS,WIDTHS,[30,120,70]);
+  for(var r=0;r<26;r++){y=pdfTblRow(doc,mg,y,[],WIDTHS,r);if(y>ph-16)break;}
+  pdfFooter(doc,pw,ph);
+  doc.save('Fiche_Tracabilite_Produits.pdf');
+  toast('Fiche tracabilite telechargee !');
 }
 
 function dlFicheNettoyage(){
-var jsPDF=window.jspdf.jsPDF;
-var doc=new jsPDF({orientation:‘portrait’,unit:‘mm’,format:‘a4’});
-var pw=210,ph=297,mg=12;
-var nom=state.etab.nom||‘Etablissement’;
-pdfHeader(doc,pw,‘CONTROLE NETTOYAGE & DESINFECTION’,nom);
-var y=28;
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(8);doc.setTextColor(10,22,40);
-doc.text(‘Semaine du ***/***/___ au ***/***/___’,mg,y);
-doc.text(‘Responsable : _______________________’,pw/2+5,y);
-y+=8;
-var JOURS=[‘Zone / Tache’,‘Produit’,‘Lu’,‘Ma’,‘Me’,‘Je’,‘Ve’,‘Sa’,‘Di’,‘Visa’];
-var WIDTHS=[50,34,10,10,10,10,10,10,10,22];
-y=pdfTblHead(doc,mg,y,JOURS,WIDTHS);
-state.nettoyage.plan.forEach(function(p,ri){
-var rh=11;
-doc.setFillColor(ri%2===0?255:247,ri%2===0?255:249,ri%2===0?255:252);
-var rx=mg; WIDTHS.forEach(function(w){doc.rect(rx,y,w,rh,‘F’);doc.setDrawColor(200,215,225);doc.rect(rx,y,w,rh,‘S’);rx+=w;});
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(7.5);doc.setTextColor(10,22,40);
-doc.text((p.zone||’’).slice(0,22),mg+2,y+5);
-doc.setFont(‘helvetica’,‘italic’);doc.setFontSize(6);doc.setTextColor(100,120,140);
-if(p.freq) doc.text(’(’+p.freq+’)’,mg+2,y+9.5);
-if(p.produit){doc.setFont(‘helvetica’,‘normal’);doc.setFontSize(7);doc.setTextColor(40,55,70);doc.text(p.produit.slice(0,16),mg+WIDTHS[0]+2,y+6.5);}
-for(var di=0;di<7;di++){doc.setDrawColor(150,165,180);doc.rect(mg+WIDTHS[0]+WIDTHS[1]+di*10+3,y+3,4.5,4.5,‘S’);}
-y+=rh; if(y>ph-40) return;
-});
-y+=5;doc.setDrawColor(180,195,215);doc.line(mg,y,pw-mg,y);y+=6;
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(7.5);doc.setTextColor(10,22,40);
-doc.text(‘Visa responsable :’,mg,y);doc.text(‘Date :’,pw/2+5,y);
-y+=14;doc.line(mg,y,mg+60,y);doc.line(pw/2+5,y,pw-mg,y);
-pdfFooter(doc,pw,ph);
-doc.save(‘Fiche_Nettoyage_Quotidien.pdf’);
-toast(‘Fiche nettoyage telechargee !’);
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  var pw=210,ph=297,mg=12;
+  var nom=state.etab.nom||'Etablissement';
+  pdfHeader(doc,pw,'CONTROLE NETTOYAGE & DESINFECTION',nom);
+  var y=28;
+  doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(10,22,40);
+  doc.text('Semaine du ___/___/___ au ___/___/___',mg,y);
+  doc.text('Responsable : _______________________',pw/2+5,y);
+  y+=8;
+  var JOURS=['Zone / Tache','Produit','Lu','Ma','Me','Je','Ve','Sa','Di','Visa'];
+  var WIDTHS=[50,34,10,10,10,10,10,10,10,22];
+  y=pdfTblHead(doc,mg,y,JOURS,WIDTHS);
+  state.nettoyage.plan.forEach(function(p,ri){
+    var rh=11;
+    doc.setFillColor(ri%2===0?255:247,ri%2===0?255:249,ri%2===0?255:252);
+    var rx=mg; WIDTHS.forEach(function(w){doc.rect(rx,y,w,rh,'F');doc.setDrawColor(200,215,225);doc.rect(rx,y,w,rh,'S');rx+=w;});
+    doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(10,22,40);
+    doc.text((p.zone||'').slice(0,22),mg+2,y+5);
+    doc.setFont('helvetica','italic');doc.setFontSize(6);doc.setTextColor(100,120,140);
+    if(p.freq) doc.text('('+p.freq+')',mg+2,y+9.5);
+    if(p.produit){doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(40,55,70);doc.text(p.produit.slice(0,16),mg+WIDTHS[0]+2,y+6.5);}
+    for(var di=0;di<7;di++){doc.setDrawColor(150,165,180);doc.rect(mg+WIDTHS[0]+WIDTHS[1]+di*10+3,y+3,4.5,4.5,'S');}
+    y+=rh; if(y>ph-40) return;
+  });
+  y+=5;doc.setDrawColor(180,195,215);doc.line(mg,y,pw-mg,y);y+=6;
+  doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(10,22,40);
+  doc.text('Visa responsable :',mg,y);doc.text('Date :',pw/2+5,y);
+  y+=14;doc.line(mg,y,mg+60,y);doc.line(pw/2+5,y,pw-mg,y);
+  pdfFooter(doc,pw,ph);
+  doc.save('Fiche_Nettoyage_Quotidien.pdf');
+  toast('Fiche nettoyage telechargee !');
 }
 
 function dlPlanNettoyage(){
-var jsPDF=window.jspdf.jsPDF;
-var doc=new jsPDF({orientation:‘portrait’,unit:‘mm’,format:‘a4’});
-var pw=210,ph=297,mg=14;
-var nom=state.etab.nom||‘Etablissement’;
-pdfHeader(doc,pw,‘PLAN DE NETTOYAGE & DESINFECTION’,nom);
-var y=28;
-var COLS=[‘Zone’,‘Frequence’,‘Mode operatoire’,‘Produit’,‘Responsable’];
-var WIDTHS=[42,26,36,42,30];
-y=pdfTblHead(doc,mg,y,COLS,WIDTHS);
-state.nettoyage.plan.forEach(function(p,ri){
-var rh=13;
-doc.setFillColor(ri%2===0?255:247,ri%2===0?255:249,ri%2===0?255:252);
-var rx=mg; WIDTHS.forEach(function(w){doc.rect(rx,y,w,rh,‘F’);doc.setDrawColor(200,215,225);doc.rect(rx,y,w,rh,‘S’);rx+=w;});
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(7.5);doc.setTextColor(10,22,40);
-doc.text(p.zone||’’,mg+2,y+5);
-doc.setFont(‘helvetica’,‘italic’);doc.setFontSize(6);doc.setTextColor(80,100,120);
-if(p.freq) doc.text(’(’+p.freq+’)’,mg+2,y+10);
-doc.setFont(‘helvetica’,‘normal’);doc.setFontSize(6.5);doc.setTextColor(40,55,70);
-doc.text(‘1. Enlever residus’,mg+WIDTHS[0]+2,y+4);
-doc.text(‘2. Appliquer detergent’,mg+WIDTHS[0]+2,y+7.5);
-doc.text(‘3. Rincer et secher’,mg+WIDTHS[0]+2,y+11);
-if(p.produit) doc.text(p.produit.slice(0,20),mg+WIDTHS[0]+WIDTHS[1]+WIDTHS[2]+2,y+7);
-if(p.resp) doc.text(p.resp.slice(0,14),mg+WIDTHS[0]+WIDTHS[1]+WIDTHS[2]+WIDTHS[3]+2,y+7);
-y+=rh; if(y>ph-40) return;
-});
-pdfFooter(doc,pw,ph);
-doc.save(‘Plan_Nettoyage.pdf’);
-toast(‘Plan nettoyage telecharge !’);
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  var pw=210,ph=297,mg=14;
+  var nom=state.etab.nom||'Etablissement';
+  pdfHeader(doc,pw,'PLAN DE NETTOYAGE & DESINFECTION',nom);
+  var y=28;
+  var COLS=['Zone','Frequence','Mode operatoire','Produit','Responsable'];
+  var WIDTHS=[42,26,36,42,30];
+  y=pdfTblHead(doc,mg,y,COLS,WIDTHS);
+  state.nettoyage.plan.forEach(function(p,ri){
+    var rh=13;
+    doc.setFillColor(ri%2===0?255:247,ri%2===0?255:249,ri%2===0?255:252);
+    var rx=mg; WIDTHS.forEach(function(w){doc.rect(rx,y,w,rh,'F');doc.setDrawColor(200,215,225);doc.rect(rx,y,w,rh,'S');rx+=w;});
+    doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(10,22,40);
+    doc.text(p.zone||'',mg+2,y+5);
+    doc.setFont('helvetica','italic');doc.setFontSize(6);doc.setTextColor(80,100,120);
+    if(p.freq) doc.text('('+p.freq+')',mg+2,y+10);
+    doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.setTextColor(40,55,70);
+    doc.text('1. Enlever residus',mg+WIDTHS[0]+2,y+4);
+    doc.text('2. Appliquer detergent',mg+WIDTHS[0]+2,y+7.5);
+    doc.text('3. Rincer et secher',mg+WIDTHS[0]+2,y+11);
+    if(p.produit) doc.text(p.produit.slice(0,20),mg+WIDTHS[0]+WIDTHS[1]+WIDTHS[2]+2,y+7);
+    if(p.resp) doc.text(p.resp.slice(0,14),mg+WIDTHS[0]+WIDTHS[1]+WIDTHS[2]+WIDTHS[3]+2,y+7);
+    y+=rh; if(y>ph-40) return;
+  });
+  pdfFooter(doc,pw,ph);
+  doc.save('Plan_Nettoyage.pdf');
+  toast('Plan nettoyage telecharge !');
 }
 
 function dlFicheAllergenes(){
-var jsPDF=window.jspdf.jsPDF;
-var doc=new jsPDF({orientation:‘landscape’,unit:‘mm’,format:‘a4’});
-var pw=297,ph=210,mg=10;
-var nom=state.etab.nom||‘Etablissement’;
-var ALRG=[‘Gluten’,‘Crustaces’,‘Oeufs’,‘Poissons’,‘Arachides’,‘Soja’,‘Lait’,‘Fr.coque’,‘Celeri’,‘Moutarde’,‘Sesame’,‘SO2’,‘Lupin’,‘Mollusques’];
-pdfHeader(doc,pw,‘TABLEAU DES ALLERGENES’,nom+’ - Reglement UE 1169/2011’,[255,179,71]);
-var y=26;
-var nameW=55;
-var algW=Math.floor((pw-mg*2-nameW)/14);
-doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,12,‘F’);
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(6.5);doc.setTextColor(255,255,255);
-doc.text(‘Plat / Preparation’,mg+2,y+8);
-for(var ai=0;ai<ALRG.length;ai++){
-doc.text(ALRG[ai],mg+nameW+ai*algW+algW/2,y+8,{align:‘center’});
-}
-y+=12;
-for(var r=0;r<25;r++){
-doc.setFillColor(r%2===0?255:247,r%2===0?255:249,r%2===0?255:252);
-doc.rect(mg,y,pw-mg*2,8,‘F’);
-doc.setDrawColor(210,220,230);doc.rect(mg,y,pw-mg*2,8,‘S’);
-doc.line(mg+nameW,y,mg+nameW,y+8);
-for(var ai=0;ai<ALRG.length;ai++){
-var ax=mg+nameW+ai*algW;
-doc.line(ax+algW,y,ax+algW,y+8);
-doc.setDrawColor(150,165,180);doc.rect(ax+algW/2-2.5,y+1.5,5,5,‘S’);
-}
-y+=8;
-}
-pdfFooter(doc,pw,ph);
-doc.save(‘Tableau_Allergenes.pdf’);
-toast(‘Tableau allergenes telecharge !’);
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+  var pw=297,ph=210,mg=10;
+  var nom=state.etab.nom||'Etablissement';
+  var ALRG=['Gluten','Crustaces','Oeufs','Poissons','Arachides','Soja','Lait','Fr.coque','Celeri','Moutarde','Sesame','SO2','Lupin','Mollusques'];
+  pdfHeader(doc,pw,'TABLEAU DES ALLERGENES',nom+' - Reglement UE 1169/2011',[255,179,71]);
+  var y=26;
+  var nameW=55;
+  var algW=Math.floor((pw-mg*2-nameW)/14);
+  doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,12,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.setTextColor(255,255,255);
+  doc.text('Plat / Preparation',mg+2,y+8);
+  for(var ai=0;ai<ALRG.length;ai++){
+    doc.text(ALRG[ai],mg+nameW+ai*algW+algW/2,y+8,{align:'center'});
+  }
+  y+=12;
+  for(var r=0;r<25;r++){
+    doc.setFillColor(r%2===0?255:247,r%2===0?255:249,r%2===0?255:252);
+    doc.rect(mg,y,pw-mg*2,8,'F');
+    doc.setDrawColor(210,220,230);doc.rect(mg,y,pw-mg*2,8,'S');
+    doc.line(mg+nameW,y,mg+nameW,y+8);
+    for(var ai=0;ai<ALRG.length;ai++){
+      var ax=mg+nameW+ai*algW;
+      doc.line(ax+algW,y,ax+algW,y+8);
+      doc.setDrawColor(150,165,180);doc.rect(ax+algW/2-2.5,y+1.5,5,5,'S');
+    }
+    y+=8;
+  }
+  pdfFooter(doc,pw,ph);
+  doc.save('Tableau_Allergenes.pdf');
+  toast('Tableau allergenes telecharge !');
 }
 
 // ═══════════════════════════════════════════
 // MAIN PDF
 // ═══════════════════════════════════════════
 function safeGenPDF(){
-if(!window.jspdf || !window.jspdf.jsPDF){
-// Try to load jsPDF on demand
-var s = document.createElement(‘script’);
-s.src = ‘https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js’;
-s.onload = function(){
-toast(‘Pret ! Cliquez a nouveau sur Telecharger PDF’);
-};
-s.onerror = function(){
-// Last resort: use print
-toast(‘Utilisez Ctrl+P (ou Cmd+P) pour imprimer le bilan’);
-};
-document.head.appendChild(s);
-toast(‘Chargement de la librairie PDF, patientez 3 secondes…’);
-return;
-}
-try{
-genPDF();
-}catch(e){
-toast(’Erreur : ’ + e.message.slice(0,50));
-console.error(‘PDF error:’, e);
-}
+  if(!window.jspdf || !window.jspdf.jsPDF){
+    // Try to load jsPDF on demand
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js';
+    s.onload = function(){ 
+      toast('Pret ! Cliquez a nouveau sur Telecharger PDF');
+    };
+    s.onerror = function(){
+      // Last resort: use print
+      toast('Utilisez Ctrl+P (ou Cmd+P) pour imprimer le bilan');
+    };
+    document.head.appendChild(s);
+    toast('Chargement de la librairie PDF, patientez 3 secondes...');
+    return;
+  }
+  try{
+    genPDF();
+  }catch(e){
+    toast('Erreur : ' + e.message.slice(0,50));
+    console.error('PDF error:', e);
+  }
 }
 function genPDF(){
-var jsPDF=window.jspdf.jsPDF;
-var doc=new jsPDF({orientation:‘portrait’,unit:‘mm’,format:‘a4’});
-var pw=210,ph=297,mg=16;
-var y=0;
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  var pw=210,ph=297,mg=16;
+  var y=0;
 
-function addPage(){
-doc.addPage();y=18;
-doc.setFillColor(10,22,40);doc.rect(0,0,pw,11,‘F’);
-doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont(‘helvetica’,‘normal’);
-doc.text(’PMS pour les Nuls - ’+(state.etab.nom||‘Etablissement’),mg,7);
-doc.text(’Page ’+doc.getNumberOfPages(),pw-mg,7,{align:‘right’});
-y=18;
-}
-function chk(h){if(y+(h||16)>ph-16) addPage();}
+  function addPage(){
+    doc.addPage();y=18;
+    doc.setFillColor(10,22,40);doc.rect(0,0,pw,11,'F');
+    doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','normal');
+    doc.text('PMS pour les Nuls - '+(state.etab.nom||'Etablissement'),mg,7);
+    doc.text('Page '+doc.getNumberOfPages(),pw-mg,7,{align:'right'});
+    y=18;
+  }
+  function chk(h){if(y+(h||16)>ph-16) addPage();}
 
-// COVER
-doc.setFillColor(10,22,40);doc.rect(0,0,pw,88,‘F’);
-doc.setFillColor(0,201,167);doc.rect(0,85,pw,3,‘F’);
-doc.setFillColor(255,179,71);doc.rect(0,88,pw,1,‘F’);
-doc.setFont(‘helvetica’,‘normal’);doc.setFontSize(8);doc.setTextColor(0,201,167);
-doc.text(‘HACCP - REGLEMENT CE 852/2004’,mg,20);
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(28);doc.setTextColor(255,255,255);
-doc.text(‘PLAN DE’,mg,35);doc.text(‘MAITRISE’,mg,48);doc.setTextColor(0,201,167);doc.text(‘SANITAIRE’,mg,61);
-doc.setFont(‘helvetica’,‘normal’);doc.setFontSize(9);doc.setTextColor(160,200,220);
-doc.text(‘PMS pour les Nuls - pmspourlesnuls.com’,mg,72);
-doc.setFontSize(7.5);doc.setTextColor(100,140,180);
-doc.text(’Genere le ’+new Date().toLocaleDateString(‘fr-FR’),mg,79);
+  // COVER
+  doc.setFillColor(10,22,40);doc.rect(0,0,pw,88,'F');
+  doc.setFillColor(0,201,167);doc.rect(0,85,pw,3,'F');
+  doc.setFillColor(255,179,71);doc.rect(0,88,pw,1,'F');
+  doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(0,201,167);
+  doc.text('HACCP - REGLEMENT CE 852/2004',mg,20);
+  doc.setFont('helvetica','bold');doc.setFontSize(28);doc.setTextColor(255,255,255);
+  doc.text('PLAN DE',mg,35);doc.text('MAITRISE',mg,48);doc.setTextColor(0,201,167);doc.text('SANITAIRE',mg,61);
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(160,200,220);
+  doc.text('PMS pour les Nuls - pmspourlesnuls.com',mg,72);
+  doc.setFontSize(7.5);doc.setTextColor(100,140,180);
+  doc.text('Genere le '+new Date().toLocaleDateString('fr-FR'),mg,79);
 
-y=96;
-var nom=state.etab.nom||‘Non renseigne’;
-doc.setFillColor(244,247,251);doc.roundedRect(mg,y,pw-mg*2,82,4,4,‘F’);
-doc.setDrawColor(220,228,238);doc.roundedRect(mg,y,pw-mg*2,82,4,4,‘S’);
-doc.setFillColor(0,201,167);doc.roundedRect(mg,y,3,82,2,2,‘F’);
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(15);doc.setTextColor(10,22,40);
-doc.text(nom,mg+8,y+13);
-doc.setDrawColor(220,228,238);doc.line(mg+8,y+16,pw-mg-4,y+16);
-var infos=[[‘Type’,state.etab.type],[‘Adresse’,state.etab.adresse],[‘Responsable’,state.etab.responsable],[‘SIRET’,state.etab.siret],[‘Agrement’,state.etab.agrement],[‘Capacite’,state.etab.capacite],[‘Effectif’,state.etab.employes+’ employes’],[‘Date du PMS’,state.etab.datePms]];
-doc.setFontSize(8);
-infos.forEach(function(r,i){
-var row=Math.floor(i/2),col=i%2;
-var x=mg+8+(col*(pw-mg*2-8)/2);var ry=y+24+row*9;
-doc.setFont(‘helvetica’,‘bold’);doc.setTextColor(100,120,140);doc.text((r[0]+’ :’).toUpperCase(),x,ry);
-doc.setFont(‘helvetica’,‘normal’);doc.setTextColor(10,22,40);doc.setFontSize(8.5);doc.text(r[1]||’_’,x,ry+5);doc.setFontSize(8);
-});
-y+=90;
+  y=96;
+  var nom=state.etab.nom||'Non renseigne';
+  doc.setFillColor(244,247,251);doc.roundedRect(mg,y,pw-mg*2,82,4,4,'F');
+  doc.setDrawColor(220,228,238);doc.roundedRect(mg,y,pw-mg*2,82,4,4,'S');
+  doc.setFillColor(0,201,167);doc.roundedRect(mg,y,3,82,2,2,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(15);doc.setTextColor(10,22,40);
+  doc.text(nom,mg+8,y+13);
+  doc.setDrawColor(220,228,238);doc.line(mg+8,y+16,pw-mg-4,y+16);
+  var infos=[['Type',state.etab.type],['Adresse',state.etab.adresse],['Responsable',state.etab.responsable],['SIRET',state.etab.siret],['Agrement',state.etab.agrement],['Capacite',state.etab.capacite],['Effectif',state.etab.employes+' employes'],['Date du PMS',state.etab.datePms]];
+  doc.setFontSize(8);
+  infos.forEach(function(r,i){
+    var row=Math.floor(i/2),col=i%2;
+    var x=mg+8+(col*(pw-mg*2-8)/2);var ry=y+24+row*9;
+    doc.setFont('helvetica','bold');doc.setTextColor(100,120,140);doc.text((r[0]+' :').toUpperCase(),x,ry);
+    doc.setFont('helvetica','normal');doc.setTextColor(10,22,40);doc.setFontSize(8.5);doc.text(r[1]||'_',x,ry+5);doc.setFontSize(8);
+  });
+  y+=90;
 
-var allChecks=[].concat(state.locaux.checks,state.temp.checks,state.nettoyage.checks,state.personnel.checks);
-var tot=allChecks.length,dn=allChecks.filter(Boolean).length,pct=Math.round((dn/tot)*100);
-var sc=pct>=80?[46,204,113]:pct>=60?[255,179,71]:[255,77,77];
-doc.setFillColor(sc[0],sc[1],sc[2]);doc.roundedRect(mg,y,pw-mg*2,24,4,4,‘F’);
-doc.setTextColor(255,255,255);doc.setFontSize(13);doc.setFont(‘helvetica’,‘bold’);
-doc.text(‘Score de conformite : ‘+pct+’%’,mg+6,y+10);
-doc.setFontSize(9);doc.setFont(‘helvetica’,‘normal’);
-doc.text((pct>=80?‘Bon niveau de conformite’:pct>=60?‘Des ameliorations necessaires’:‘Non-conformites importantes’)+’ (’+dn+’/’+tot+’)’,mg+6,y+19);
-y+=30;
-doc.setFillColor(255,248,220);doc.roundedRect(mg,y,pw-mg*2,18,3,3,‘F’);
-doc.setTextColor(120,90,0);doc.setFontSize(8);doc.setFont(‘helvetica’,‘bold’);
-doc.text(‘Rappel reglementaire’,mg+4,y+7);
-doc.setFont(‘helvetica’,‘normal’);doc.setFontSize(7.5);
-doc.text(‘Ce PMS doit etre presente lors de tout controle DDPP. Conservation 3 ans minimum.’,mg+4,y+13,{maxWidth:pw-mg*2-8});
+  var allChecks=[].concat(state.locaux.checks,state.temp.checks,state.nettoyage.checks,state.personnel.checks);
+  var tot=allChecks.length,dn=allChecks.filter(Boolean).length,pct=Math.round((dn/tot)*100);
+  var sc=pct>=80?[46,204,113]:pct>=60?[255,179,71]:[255,77,77];
+  doc.setFillColor(sc[0],sc[1],sc[2]);doc.roundedRect(mg,y,pw-mg*2,24,4,4,'F');
+  doc.setTextColor(255,255,255);doc.setFontSize(13);doc.setFont('helvetica','bold');
+  doc.text('Score de conformite : '+pct+'%',mg+6,y+10);
+  doc.setFontSize(9);doc.setFont('helvetica','normal');
+  doc.text((pct>=80?'Bon niveau de conformite':pct>=60?'Des ameliorations necessaires':'Non-conformites importantes')+' ('+dn+'/'+tot+')',mg+6,y+19);
+  y+=30;
+  doc.setFillColor(255,248,220);doc.roundedRect(mg,y,pw-mg*2,18,3,3,'F');
+  doc.setTextColor(120,90,0);doc.setFontSize(8);doc.setFont('helvetica','bold');
+  doc.text('Rappel reglementaire',mg+4,y+7);
+  doc.setFont('helvetica','normal');doc.setFontSize(7.5);
+  doc.text('Ce PMS doit etre presente lors de tout controle DDPP. Conservation 3 ans minimum.',mg+4,y+13,{maxWidth:pw-mg*2-8});
 
-addPage();
+  addPage();
 
-function sh(t){chk(14);doc.setFillColor(10,22,40);doc.rect(mg,y,pw-mg*2,10,‘F’);doc.setFillColor(0,201,167);doc.rect(mg,y,3,10,‘F’);doc.setTextColor(255,255,255);doc.setFontSize(10);doc.setFont(‘helvetica’,‘bold’);doc.text(t.toUpperCase(),mg+7,y+7);y+=14;}
-function cr(label,ok){chk(8);doc.setFontSize(8);doc.setFont(‘helvetica’,‘normal’);doc.setTextColor(ok?46:220,ok?204:50,ok?113:50);doc.text(ok?‘V’:‘X’,mg+2,y+4);doc.setTextColor(40,50,60);var ls=doc.splitTextToSize(label,pw-mg*2-12);doc.text(ls,mg+9,y+4);y+=ls.length*4.5+2;}
-function tr(l,v){chk(8);doc.setFontSize(8);doc.setFont(‘helvetica’,‘bold’);doc.setTextColor(10,22,40);doc.text(l,mg+2,y+4);doc.setFont(‘helvetica’,‘normal’);doc.setTextColor(70,80,100);doc.text(v||’_’,mg+50,y+4);y+=7;}
-function nt(l,t){if(!t)return;chk(12);doc.setFontSize(8);doc.setFont(‘helvetica’,‘bold’);doc.setTextColor(10,22,40);doc.text(l,mg+2,y);y+=5;doc.setFont(‘helvetica’,‘normal’);doc.setTextColor(70,80,100);var ls=doc.splitTextToSize(t,pw-mg*2-4);chk(ls.length*4.5+4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
+  function sh(t){chk(14);doc.setFillColor(10,22,40);doc.rect(mg,y,pw-mg*2,10,'F');doc.setFillColor(0,201,167);doc.rect(mg,y,3,10,'F');doc.setTextColor(255,255,255);doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text(t.toUpperCase(),mg+7,y+7);y+=14;}
+  function cr(label,ok){chk(8);doc.setFontSize(8);doc.setFont('helvetica','normal');doc.setTextColor(ok?46:220,ok?204:50,ok?113:50);doc.text(ok?'V':'X',mg+2,y+4);doc.setTextColor(40,50,60);var ls=doc.splitTextToSize(label,pw-mg*2-12);doc.text(ls,mg+9,y+4);y+=ls.length*4.5+2;}
+  function tr(l,v){chk(8);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(l,mg+2,y+4);doc.setFont('helvetica','normal');doc.setTextColor(70,80,100);doc.text(v||'_',mg+50,y+4);y+=7;}
+  function nt(l,t){if(!t)return;chk(12);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(10,22,40);doc.text(l,mg+2,y);y+=5;doc.setFont('helvetica','normal');doc.setTextColor(70,80,100);var ls=doc.splitTextToSize(t,pw-mg*2-4);chk(ls.length*4.5+4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
 
-sh(‘Locaux & Equipements’);
-LOC_CHECKS.forEach(function(c,i){cr(c.l,state.locaux.checks[i]);});
-nt(‘Observations :’,state.locaux.obs);
+  sh('Locaux & Equipements');
+  LOC_CHECKS.forEach(function(c,i){cr(c.l,state.locaux.checks[i]);});
+  nt('Observations :',state.locaux.obs);
 
-chk(30);sh(‘Controle des Temperatures’);
-var tRows=[[‘Viandes crues’,’<= +4C’],[‘Poissons frais’,‘0C a +2C’],[‘Laitages’,’<= +4C’],[‘Cuits refroidis’,’<= +3C’],[‘Surgeles’,’<= -18C’],[‘Plats chauds’,’>= +63C’]];
-doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,‘F’);
-doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont(‘helvetica’,‘bold’);
-[‘Denree’,‘Reglementaire’].forEach(function(h,i){doc.text(h,mg+2+i*58,y+5);});
-y+=7;
-tRows.forEach(function(r,i){
-doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);
-doc.rect(mg,y,pw-mg*2,7,‘F’);
-doc.setTextColor(40,50,60);doc.setFontSize(8);doc.setFont(‘helvetica’,‘normal’);
-doc.text(r[0],mg+2,y+5);doc.text(r[1],mg+60,y+5);
-y+=7;
-});
-y+=4;
-TEMP_PROC.forEach(function(c,i){cr(c.l,state.temp.checks[i]);});
-nt(‘Actions correctives :’,state.temp.actionCorr);
+  chk(30);sh('Controle des Temperatures');
+  var tRows=[['Viandes crues','<= +4C'],['Poissons frais','0C a +2C'],['Laitages','<= +4C'],['Cuits refroidis','<= +3C'],['Surgeles','<= -18C'],['Plats chauds','>= +63C']];
+  doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,'F');
+  doc.setTextColor(255,255,255);doc.setFontSize(7);doc.setFont('helvetica','bold');
+  ['Denree','Reglementaire'].forEach(function(h,i){doc.text(h,mg+2+i*58,y+5);});
+  y+=7;
+  tRows.forEach(function(r,i){
+    doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);
+    doc.rect(mg,y,pw-mg*2,7,'F');
+    doc.setTextColor(40,50,60);doc.setFontSize(8);doc.setFont('helvetica','normal');
+    doc.text(r[0],mg+2,y+5);doc.text(r[1],mg+60,y+5);
+    y+=7;
+  });
+  y+=4;
+  TEMP_PROC.forEach(function(c,i){cr(c.l,state.temp.checks[i]);});
+  nt('Actions correctives :',state.temp.actionCorr);
 
-chk(30);sh(‘Hygiene du Personnel’);
-PERS_CHECKS.forEach(function(c,i){cr(c.l,state.personnel.checks[i]);});
-y+=3;
-state.personnel.formations.forEach(function(f){
-if(f.date) tr(‘Formation ‘+f.date+’ :’,f.organisme+’ - ‘+f.personnes+’ - ’+f.type);
-});
-nt(‘Observations :’,state.personnel.obs);
+  chk(30);sh('Hygiene du Personnel');
+  PERS_CHECKS.forEach(function(c,i){cr(c.l,state.personnel.checks[i]);});
+  y+=3;
+  state.personnel.formations.forEach(function(f){
+    if(f.date) tr('Formation '+f.date+' :',f.organisme+' - '+f.personnes+' - '+f.type);
+  });
+  nt('Observations :',state.personnel.obs);
 
-chk(30);sh(‘Nettoyage & Desinfection’);
-NETT_CHECKS.forEach(function(c,i){cr(c.l,state.nettoyage.checks[i]);});
-y+=3;
-doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,‘F’);
-doc.setTextColor(255,255,255);doc.setFontSize(6.5);doc.setFont(‘helvetica’,‘bold’);
-[‘Zone’,‘Frequence’,‘Produit’,‘Responsable’].forEach(function(h,i){doc.text(h,mg+2+[0,48,90,140][i],y+5);});
-y+=7;
-state.nettoyage.plan.forEach(function(p,i){
-chk(7);
-doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);
-doc.rect(mg,y,pw-mg*2,7,‘F’);
-doc.setTextColor(40,50,60);doc.setFontSize(7.5);doc.setFont(‘helvetica’,‘bold’);
-doc.text(p.zone||’’,mg+2,y+5);
-doc.setFont(‘helvetica’,‘normal’);
-if(p.freq) doc.text(p.freq,mg+50,y+5);
-if(p.produit) doc.text(p.produit.slice(0,18),mg+92,y+5);
-if(p.resp) doc.text(p.resp.slice(0,14),mg+142,y+5);
-y+=7;
-});
-nt(‘Observations :’,state.nettoyage.obs);
+  chk(30);sh('Nettoyage & Desinfection');
+  NETT_CHECKS.forEach(function(c,i){cr(c.l,state.nettoyage.checks[i]);});
+  y+=3;
+  doc.setFillColor(26,58,107);doc.rect(mg,y,pw-mg*2,7,'F');
+  doc.setTextColor(255,255,255);doc.setFontSize(6.5);doc.setFont('helvetica','bold');
+  ['Zone','Frequence','Produit','Responsable'].forEach(function(h,i){doc.text(h,mg+2+[0,48,90,140][i],y+5);});
+  y+=7;
+  state.nettoyage.plan.forEach(function(p,i){
+    chk(7);
+    doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);
+    doc.rect(mg,y,pw-mg*2,7,'F');
+    doc.setTextColor(40,50,60);doc.setFontSize(7.5);doc.setFont('helvetica','bold');
+    doc.text(p.zone||'',mg+2,y+5);
+    doc.setFont('helvetica','normal');
+    if(p.freq) doc.text(p.freq,mg+50,y+5);
+    if(p.produit) doc.text(p.produit.slice(0,18),mg+92,y+5);
+    if(p.resp) doc.text(p.resp.slice(0,14),mg+142,y+5);
+    y+=7;
+  });
+  nt('Observations :',state.nettoyage.obs);
 
-chk(30);sh(‘Gestion des Allergenes’);
-var present=ALLERGENS.filter(function(a){return state.allergenes.status[a.id]===‘present’;}).map(function(a){return a.label;});
-var absent=ALLERGENS.filter(function(a){return state.allergenes.status[a.id]===‘absent’;}).map(function(a){return a.label;});
-if(present.length){chk(10);doc.setFontSize(8);doc.setFont(‘helvetica’,‘bold’);doc.setTextColor(200,100,0);doc.text(‘Allergenes PRESENTS :’,mg+2,y);y+=5;doc.setFont(‘helvetica’,‘normal’);doc.setTextColor(60,60,60);var ls=doc.splitTextToSize(present.join(’, ‘),pw-mg*2-4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
-if(absent.length){chk(10);doc.setFontSize(8);doc.setFont(‘helvetica’,‘bold’);doc.setTextColor(46,140,80);doc.text(‘Allergenes ABSENTS :’,mg+2,y);y+=5;doc.setFont(‘helvetica’,‘normal’);doc.setTextColor(60,60,60);var ls=doc.splitTextToSize(absent.join(’, ’),pw-mg*2-4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
-nt(‘Procedures :’,state.allergenes.obs);
+  chk(30);sh('Gestion des Allergenes');
+  var present=ALLERGENS.filter(function(a){return state.allergenes.status[a.id]==='present';}).map(function(a){return a.label;});
+  var absent=ALLERGENS.filter(function(a){return state.allergenes.status[a.id]==='absent';}).map(function(a){return a.label;});
+  if(present.length){chk(10);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(200,100,0);doc.text('Allergenes PRESENTS :',mg+2,y);y+=5;doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);var ls=doc.splitTextToSize(present.join(', '),pw-mg*2-4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
+  if(absent.length){chk(10);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(46,140,80);doc.text('Allergenes ABSENTS :',mg+2,y);y+=5;doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);var ls=doc.splitTextToSize(absent.join(', '),pw-mg*2-4);doc.text(ls,mg+2,y);y+=ls.length*4.5+4;}
+  nt('Procedures :',state.allergenes.obs);
 
-// DOCUMENTS LIST
-chk(60);y+=6;
-doc.setFillColor(10,22,40);doc.rect(mg,y,pw-mg*2,10,‘F’);doc.setFillColor(255,179,71);doc.rect(mg,y,3,10,‘F’);
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(10);doc.setTextColor(255,255,255);
-doc.text(‘DOCUMENTS A JOINDRE AU PMS’,mg+7,y+7);y+=14;
-var docList=[[‘Ce PMS signe et date’,‘Document de reference’],[‘Fiches releves temperatures’,‘Min 3 mois archives’],[‘Fiches reception marchandises’,‘Toutes livraisons’],[‘Fiches controle nettoyage’,‘Signees par responsable’],[‘Tableau des allergenes’,‘Affiche et a jour’],[‘Attestations formation HACCP’,‘Tout le personnel’],[‘Contrat deratisation’,‘En cours de validite’],[‘Visites medicales’,‘A jour pour tous’],[‘Fiches tracabilite’,‘N lots et fournisseurs’],[‘FDS produits nettoyage’,‘Disponibles en cuisine’]];
-docList.forEach(function(d,i){
-chk(8);
-doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);
-doc.rect(mg,y,pw-mg*2,8,‘F’);doc.setDrawColor(220,228,238);doc.rect(mg,y,pw-mg*2,8,‘S’);
-doc.setDrawColor(150,165,180);doc.rect(mg+2,y+1.5,5,5,‘S’);
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(8);doc.setTextColor(10,22,40);
-doc.text(d[0],mg+10,y+5.5);
-doc.setFont(‘helvetica’,‘normal’);doc.setFontSize(7);doc.setTextColor(100,120,140);
-doc.text(d[1],mg+10+doc.getTextWidth(d[0])+4,y+5.5);
-y+=8;
-});
+  // DOCUMENTS LIST
+  chk(60);y+=6;
+  doc.setFillColor(10,22,40);doc.rect(mg,y,pw-mg*2,10,'F');doc.setFillColor(255,179,71);doc.rect(mg,y,3,10,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(255,255,255);
+  doc.text('DOCUMENTS A JOINDRE AU PMS',mg+7,y+7);y+=14;
+  var docList=[['Ce PMS signe et date','Document de reference'],['Fiches releves temperatures','Min 3 mois archives'],['Fiches reception marchandises','Toutes livraisons'],['Fiches controle nettoyage','Signees par responsable'],['Tableau des allergenes','Affiche et a jour'],['Attestations formation HACCP','Tout le personnel'],['Contrat deratisation','En cours de validite'],['Visites medicales','A jour pour tous'],['Fiches tracabilite','N lots et fournisseurs'],['FDS produits nettoyage','Disponibles en cuisine']];
+  docList.forEach(function(d,i){
+    chk(8);
+    doc.setFillColor(i%2===0?255:248,i%2===0?255:250,i%2===0?255:252);
+    doc.rect(mg,y,pw-mg*2,8,'F');doc.setDrawColor(220,228,238);doc.rect(mg,y,pw-mg*2,8,'S');
+    doc.setDrawColor(150,165,180);doc.rect(mg+2,y+1.5,5,5,'S');
+    doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(10,22,40);
+    doc.text(d[0],mg+10,y+5.5);
+    doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(100,120,140);
+    doc.text(d[1],mg+10+doc.getTextWidth(d[0])+4,y+5.5);
+    y+=8;
+  });
 
-// SIGNATURE
-chk(40);y+=8;
-doc.setDrawColor(180,195,215);doc.line(mg,y,pw-mg,y);y+=8;
-doc.setFont(‘helvetica’,‘bold’);doc.setFontSize(8);doc.setTextColor(10,22,40);
-doc.text(‘Signature du responsable :’,mg,y);doc.text(‘Date :’,pw-mg-50,y);
-y+=18;doc.line(mg,y,mg+70,y);doc.line(pw-mg-44,y,pw-mg,y);
+  // SIGNATURE
+  chk(40);y+=8;
+  doc.setDrawColor(180,195,215);doc.line(mg,y,pw-mg,y);y+=8;
+  doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(10,22,40);
+  doc.text('Signature du responsable :',mg,y);doc.text('Date :',pw-mg-50,y);
+  y+=18;doc.line(mg,y,mg+70,y);doc.line(pw-mg-44,y,pw-mg,y);
 
-pdfFooter(doc,pw,ph);
-doc.save(‘PMS_’+(nom.replace(/\s+/g,’*’))+’*’+new Date().toISOString().slice(0,10)+’.pdf’);
-toast(‘PMS telecharge !’);
+  pdfFooter(doc,pw,ph);
+  doc.save('PMS_'+(nom.replace(/\s+/g,'_'))+'_'+new Date().toISOString().slice(0,10)+'.pdf');
+  toast('PMS telecharge !');
 }
 
 function toast(msg){
-var t=document.getElementById(‘toast’);t.textContent=msg;t.classList.add(‘show’);
-setTimeout(function(){t.classList.remove(‘show’);},3000);
+  var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},3000);
 }
 </script>
-
 </body>
 </html>
